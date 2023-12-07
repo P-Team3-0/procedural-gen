@@ -4,7 +4,7 @@ using Sketchfab;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemymovement : MonoBehaviour
+public class enemy : MonoBehaviour
 {
     //Unity components/objects
     public GameObject player;
@@ -27,6 +27,9 @@ public class enemymovement : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    //Enemy variables
+    public float health;
+
     //Call every frame
     void Update()
     {
@@ -43,6 +46,7 @@ public class enemymovement : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        Debug.Log(agent.isActiveAndEnabled);
     }
 
     private void Patroling()
@@ -52,6 +56,8 @@ public class enemymovement : MonoBehaviour
         if (walkPointSet)
             transform.LookAt(walkPoint);
         transform.Rotate(0, 180, 0);
+        Debug.Log("Patroling");
+        Debug.Log(walkPoint);
         agent.SetDestination(walkPoint);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -74,6 +80,7 @@ public class enemymovement : MonoBehaviour
     {
         transform.LookAt(player.transform);
         transform.Rotate(0, 180, 0);
+        Debug.Log("Chase Player");
         agent.SetDestination(player.transform.position);
     }
 

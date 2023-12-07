@@ -138,6 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8904996014674446724}
+  - component: {fileID: 5184798115714637577}
   m_Layer: 0
   m_Name: Torso_1
   m_TagString: Untagged
@@ -161,6 +162,27 @@ Transform:
   - {fileID: 8965765757522728660}
   m_Father: {fileID: 8940399180259580796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5184798115714637577
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2322339126357155483}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.7
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &2335085243055278009
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8965765757522728660}
+  - component: {fileID: 8599773141753078436}
   m_Layer: 0
   m_Name: Head_0
   m_TagString: Untagged
@@ -192,6 +215,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8904996014674446724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8599773141753078436
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335085243055278009}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &2949166005048026539
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5397264192138953687}
+  - component: {fileID: 4631823969773880628}
   m_Layer: 0
   m_Name: Boulder.r_12
   m_TagString: Untagged
@@ -255,6 +300,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4756258678088129038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &4631823969773880628
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072825530146932403}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.3
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!1 &3483321666226187238
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +364,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 100147197305121262}
+  - component: {fileID: 4345688342826766250}
   m_Layer: 0
   m_Name: Legup.r_3
   m_TagString: Untagged
@@ -320,6 +387,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8940399180259580796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4345688342826766250
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3513968783432566119}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3703377603460169557
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 104742918659006381}
+  - component: {fileID: 4063184062526104882}
   m_Layer: 0
   m_Name: Legup.l_2
   m_TagString: Untagged
@@ -351,6 +442,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8940399180259580796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4063184062526104882
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3703377603460169557}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 3.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &4469577864961412447
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9146495229648770264}
+  - component: {fileID: 5149233989581426398}
   m_Layer: 0
   m_Name: Frontarm.l_10
   m_TagString: Untagged
@@ -416,6 +531,29 @@ Transform:
   - {fileID: 6008635704444533206}
   m_Father: {fileID: 4569995241328818551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5149233989581426398
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482770340026958098}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &5192851321250981587
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4756258678088129038}
+  - component: {fileID: 8828128436646277871}
   m_Layer: 0
   m_Name: Shoulder.r_13
   m_TagString: Untagged
@@ -448,6 +587,29 @@ Transform:
   - {fileID: 5397264192138953687}
   m_Father: {fileID: 3970581697579239151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8828128436646277871
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5192851321250981587}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Height: 5.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5849402511011628288
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +638,7 @@ Transform:
   m_GameObject: {fileID: 5849402511011628288}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.55, y: 16.13, z: -45.4}
+  m_LocalPosition: {x: 55.84, y: 17.2, z: -50}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -551,7 +713,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0.5
   playerDistance: 0
   sightRange: 30
-  attackRange: 1
+  attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &6157616936823912483
@@ -862,6 +1024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6735588732771488078}
+  - component: {fileID: 3554421831049715149}
   m_Layer: 0
   m_Name: Leglow.l_6
   m_TagString: Untagged
@@ -884,6 +1047,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3970581697579239151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3554421831049715149
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8340983794228737524}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 4.6
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &8343126431721706065
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +1079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4569995241328818551}
+  - component: {fileID: 566464797499418251}
   m_Layer: 0
   m_Name: Shoulder.l_11
   m_TagString: Untagged
@@ -916,6 +1103,29 @@ Transform:
   - {fileID: 9146495229648770264}
   m_Father: {fileID: 3970581697579239151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &566464797499418251
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8343126431721706065}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8661733762730209003
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +1135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4444095061737559723}
+  - component: {fileID: 6403068404499134165}
   m_Layer: 0
   m_Name: Leglow.r_5
   m_TagString: Untagged
@@ -947,6 +1158,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3970581697579239151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6403068404499134165
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8661733762730209003}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Height: 5.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8902122277844917931
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "procedural-gen.sln"
+    "dotnet.defaultSolution": "procedural-gen.sln",
+    "dotnet.preferCSharpExtension": true
 }
