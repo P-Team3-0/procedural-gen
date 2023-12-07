@@ -28,7 +28,9 @@ public class enemy : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
     //Enemy variables
-    public float health;
+    public int health;
+    public int attack;
+
 
     //Call every frame
     void Update()
@@ -46,7 +48,6 @@ public class enemy : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
-        Debug.Log(agent.isActiveAndEnabled);
     }
 
     private void Patroling()
@@ -56,8 +57,6 @@ public class enemy : MonoBehaviour
         if (walkPointSet)
             transform.LookAt(walkPoint);
         transform.Rotate(0, 180, 0);
-        Debug.Log("Patroling");
-        Debug.Log(walkPoint);
         agent.SetDestination(walkPoint);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -80,7 +79,6 @@ public class enemy : MonoBehaviour
     {
         transform.LookAt(player.transform);
         transform.Rotate(0, 180, 0);
-        Debug.Log("Chase Player");
         agent.SetDestination(player.transform.position);
     }
 
@@ -96,18 +94,25 @@ public class enemy : MonoBehaviour
         {
             //Attack code here
             GetComponent<Animator>().SetTrigger("Attack");
-            Debug.Log("Before Attack" + alredyAttacked);
             alredyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
-            Debug.Log(alredyAttacked);
         }
         GetComponent<Animator>().SetTrigger("Attack");
 
     }
     private void ResetAttack()
     {
-        Debug.Log("Reset Attack");
         alredyAttacked = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision");
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Collision with player");
+            player.GetComponent<player>().TakeDamage(attack);
+        }
     }
 
     private void OnDrawGizmosSelected()

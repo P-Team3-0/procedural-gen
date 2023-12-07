@@ -622,6 +622,7 @@ GameObject:
   - component: {fileID: 6898968571218840046}
   - component: {fileID: 5189743547733628565}
   - component: {fileID: -5547916151732567501}
+  - component: {fileID: 1197526913202434024}
   m_Layer: 0
   m_Name: Drugdr_The_Golem_Animated
   m_TagString: Untagged
@@ -638,7 +639,7 @@ Transform:
   m_GameObject: {fileID: 5849402511011628288}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55.84, y: 17.2, z: -50}
+  m_LocalPosition: {x: 18.105486, y: 16.005037, z: -41.971657}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -716,6 +717,35 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  health: 10
+  attack: 10
+--- !u!54 &1197526913202434024
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849402511011628288}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6157616936823912483
 GameObject:
   m_ObjectHideFlags: 0
