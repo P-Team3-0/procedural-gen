@@ -28,4 +28,14 @@ public class player : MonoBehaviour
             Debug.Log("Player died");
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Player: Collision");
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Collision with enemy");
+            collision.gameObject.GetComponent<enemy>().TakeDamage(2);
+        }
+    }
 }

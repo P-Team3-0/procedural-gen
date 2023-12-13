@@ -114,6 +114,15 @@ public class enemy : MonoBehaviour
             player.GetComponent<player>().TakeDamage(attack);
         }
     }
+    public void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+        Debug.Log(health);
+        if (health <= 0)
+        {
+            Debug.Log("Enemy died");
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {
