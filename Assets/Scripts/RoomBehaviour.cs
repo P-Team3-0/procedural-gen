@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomBeheviour : MonoBehaviour
+public class RoomBehaviour : MonoBehaviour
 {
     public GameObject[] walls;
     public GameObject[] doors;

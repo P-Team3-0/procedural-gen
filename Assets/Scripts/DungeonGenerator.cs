@@ -10,7 +10,7 @@ public class DungeonGenerator : MonoBehaviour
         public bool[] status = new bool[4];
     }
 
-    public Vector2 size = new Vector2(10, 10);
+    public Vector2 size;
     public int startPos = 0;
 
     public GameObject room;
@@ -31,8 +31,8 @@ public class DungeonGenerator : MonoBehaviour
         {
             for (int j = 0; j < size.y; i++)
             {
-                // GameObject newRoom = Instantiate(room, new Vector3(i * offset.x, 0, j * offset.y), Quaternion.identity).getComponent<RoomBehaviour>();
-                // newRoom.updateRoom(board[Mathf.FloorToInt(i * size.x + j)].status);
+                RoomBehaviour newRoom = Instantiate(room, new Vector3(i * offset.x, 0, j * offset.y), Quaternion.identity).GetComponent<RoomBehaviour>();
+                newRoom.updateRoom(board[Mathf.FloorToInt(i * size.x + j)].status);
             }
         }
     }
