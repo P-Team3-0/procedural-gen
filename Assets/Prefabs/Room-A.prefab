@@ -323,6 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8783995099301439343}
+  - component: {fileID: 1920601900291300493}
   m_Layer: 0
   m_Name: Room-A
   m_TagString: Untagged
@@ -349,6 +350,22 @@ Transform:
   - {fileID: 2552724400434723200}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1920601900291300493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060134431672068291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e833206c6684f95498ce03e154053ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walls:
+  - {fileID: 5400106364303171257}
+  doors:
+  - {fileID: 0}
 --- !u!1 &1130490031548519933
 GameObject:
   m_ObjectHideFlags: 0
@@ -4278,6 +4295,11 @@ PrefabInstance:
 --- !u!4 &1706436750254256486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6966706505589406848, guid: 49a5f24a081cbbc44bd23d76c2869723, type: 3}
+  m_PrefabInstance: {fileID: 8575079679656758758}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5400106364303171257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4463566038210007903, guid: 49a5f24a081cbbc44bd23d76c2869723, type: 3}
   m_PrefabInstance: {fileID: 8575079679656758758}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8829344350154325627

@@ -7,14 +7,7 @@ public class RoomBeheviour : MonoBehaviour
     public GameObject[] walls;
     public GameObject[] doors;
 
-    public bool[] statusDoors;
-
-    public void Start()
-    {
-        updateRoom(statusDoors);
-    }
-
-    void updateRoom(bool[] statusDoors)
+    public void updateRoom(bool[] statusDoors)
     {
         for (int i = 0; i < statusDoors.Length; i++)
         {
