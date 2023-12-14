@@ -6,6 +6,7 @@ public class player : MonoBehaviour
 {
     //Player variables
     public int health;
+    public int attack;
 
     // Start is called before the first frame update
     void Start()
@@ -16,26 +17,26 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        Debug.Log(health);
         if (health <= 0)
         {
-            Debug.Log("Player died");
+            // Debug.Log("Player died");
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Player: Collision");
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Collision with enemy");
-            collision.gameObject.GetComponent<enemy>().TakeDamage(2);
+            Debug.Log("Player collided with enemy");
+            collision.gameObject.GetComponent<enemy>().TakeDamage(attack);
+            // Reduce the impact of collision 
+            // Vector3 force = -collision.relativeVelocity * 0.7f;
+            // GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
         }
     }
 }

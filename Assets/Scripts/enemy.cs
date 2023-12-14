@@ -31,6 +31,8 @@ public class enemy : MonoBehaviour
     public int health;
     public int attack;
 
+    private Vector3 force;
+
 
     //Call every frame
     void Update()
@@ -38,9 +40,12 @@ public class enemy : MonoBehaviour
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
         if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInSightRange && !playerInAttackRange)
+        {
+            GetComponent<Animator>().SetTrigger("PlayerAway");
+            ChasePlayer();
+        }
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
 
@@ -107,20 +112,27 @@ public class enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision");
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Collision with player");
             player.GetComponent<player>().TakeDamage(attack);
+            // Reduce the impact of collision 
+            // force = collision.relativeVelocity * 0.01f;
+            // GetComponent<Rigidbody>().AddForce(-collision.relativeVelocity, ForceMode.Impulse);
+            StopForce();
         }
+    }
+
+    private void StopForce()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        Debug.Log(health);
         if (health <= 0)
         {
-            Debug.Log("Enemy died");
+            // Debug.Log("Enemy died");
         }
     }
 
