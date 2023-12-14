@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 1197526913202434024}
   m_Layer: 0
   m_Name: Drugdr_The_Golem_Animated
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,7 +639,7 @@ Transform:
   m_GameObject: {fileID: 5849402511011628288}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.105486, y: 16.005037, z: -41.971657}
+  m_LocalPosition: {x: 23.55, y: 16.13, z: -45.4}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -713,8 +713,8 @@ MonoBehaviour:
   walkPointRange: 20
   timeBetweenAttacks: 0.5
   playerDistance: 0
-  sightRange: 30
-  attackRange: 2
+  sightRange: 20
+  attackRange: 1.7
   playerInSightRange: 0
   playerInAttackRange: 0
   health: 10
@@ -727,7 +727,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5849402511011628288}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 200
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

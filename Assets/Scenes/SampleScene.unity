@@ -1747,7 +1747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &959705958
 Camera:
   m_ObjectHideFlags: 0
@@ -1898,16 +1898,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.30473056, y: 0.66255367, z: -0.3400471, w: 0.5937424}
-  m_LocalPosition: {x: 0, y: 0, z: -36.74}
+  m_LocalRotation: {x: -0.024829458, y: 0.95337963, z: 0.039312042, w: 0.29817015}
+  m_LocalPosition: {x: 0, y: 0, z: -31.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 54.337, y: 96.27, z: 0}
+  m_LocalEulerAnglesHint: {x: -5.15, y: 145.328, z: -1.375}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.44, y: 35.1}
+  m_AnchoredPosition: {x: -2.25, y: 18.43}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &972286795 stripped
@@ -3713,14 +3713,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5874250250695498109}
     m_Modifications:
-    - target: {fileID: -5547916151732567501, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}
-      propertyPath: sightRange
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: -5547916151732567501, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}
-      propertyPath: attackRange
-      value: 1.7
-      objectReference: {fileID: 0}
     - target: {fileID: 289280813016335030, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.55
@@ -3761,21 +3753,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1197526913202434024, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1197526913202434024, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5849402511011628288, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}
       propertyPath: m_Name
       value: Drugdr_The_Golem_Animated
-      objectReference: {fileID: 0}
-    - target: {fileID: 5849402511011628288, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
