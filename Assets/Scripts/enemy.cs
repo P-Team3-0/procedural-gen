@@ -21,7 +21,7 @@ public class enemy : MonoBehaviour
     //Attack variables
     public float timeBetweenAttacks;
     public float playerDistance;
-    bool alredyAttacked;
+    bool alreadyAttacked;
 
     //States
     public float sightRange, attackRange;
@@ -95,19 +95,17 @@ public class enemy : MonoBehaviour
         agent.SetDestination(transform.position);
 
 
-        if (!alredyAttacked && agent.remainingDistance < playerDistance)
+        if (!alreadyAttacked && agent.remainingDistance < playerDistance)
         {
             //Attack code here
             GetComponent<Animator>().SetTrigger("Attack");
-            alredyAttacked = true;
+            alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
-
-
     }
     private void ResetAttack()
     {
-        alredyAttacked = false;
+        alreadyAttacked = false;
     }
 
     private void OnCollisionEnter(Collision collision)
