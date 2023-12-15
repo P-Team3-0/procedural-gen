@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gobelin_monster
+* source:	https://sketchfab.com/3d-models/gobelin-monster-f71b5e7f9cff48e8b470d921c15643f7
+* author:	XialiMu.Bell (https://sketchfab.com/XialiMu.Bell)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gobelin_monster" (https://sketchfab.com/3d-models/gobelin-monster-f71b5e7f9cff48e8b470d921c15643f7) by XialiMu.Bell (https://sketchfab.com/XialiMu.Bell) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

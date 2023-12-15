@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bake.mon
+* source:	https://sketchfab.com/3d-models/bakemon-f311dba7046445f2bf1f2bda3d258d85
+* author:	Amphivena (https://sketchfab.com/Amphivena)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bake.mon" (https://sketchfab.com/3d-models/bakemon-f311dba7046445f2bf1f2bda3d258d85) by Amphivena (https://sketchfab.com/Amphivena) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
