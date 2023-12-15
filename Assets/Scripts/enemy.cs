@@ -102,7 +102,7 @@ public class enemy : MonoBehaviour
             alredyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
-        GetComponent<Animator>().SetTrigger("Attack");
+
 
     }
     private void ResetAttack()
