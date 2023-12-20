@@ -15,7 +15,7 @@ public class enemy : MonoBehaviour
 
     //Movement variables
     public Vector3 walkPoint;
-    bool walkPointSet;
+    protected bool walkPointSet;
     public float walkPointRange;
 
     //Attack variables
@@ -35,7 +35,7 @@ public class enemy : MonoBehaviour
 
 
     //Call every frame
-    void Update()
+    private void Update()
     {
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -55,7 +55,7 @@ public class enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    private void Patroling()
+    protected virtual void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
 
@@ -69,7 +69,7 @@ public class enemy : MonoBehaviour
             walkPointSet = false;
     }
 
-    private void SearchWalkPoint()
+    protected virtual void SearchWalkPoint()
     {
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -80,18 +80,18 @@ public class enemy : MonoBehaviour
             walkPointSet = true;
     }
 
-    private void ChasePlayer()
+    protected virtual void ChasePlayer()
     {
         transform.LookAt(player.transform);
         transform.Rotate(0, 180, 0);
         agent.SetDestination(player.transform.position);
     }
 
-    private void AttackPlayer()
+    protected virtual void AttackPlayer()
     {
         //Make sure enemy doesn't move
         transform.LookAt(player.transform);
-        transform.Rotate(0, 180, 0);
+        // transform.Rotate(0, 180, 0);
         agent.SetDestination(transform.position);
 
 
