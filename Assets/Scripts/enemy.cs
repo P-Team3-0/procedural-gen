@@ -15,13 +15,13 @@ public class enemy : MonoBehaviour
 
     //Movement variables
     public Vector3 walkPoint;
-    bool walkPointSet;
+    protected bool walkPointSet;
     public float walkPointRange;
 
     //Attack variables
     public float timeBetweenAttacks;
     public float playerDistance;
-    bool alredyAttacked;
+    protected bool alreadyAttacked;
 
     //States
     public float sightRange, attackRange;
@@ -35,11 +35,13 @@ public class enemy : MonoBehaviour
 
 
     //Call every frame
-    void Update()
+    private void Update()
     {
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        Debug.Log("attack range" + playerInAttackRange);
+        Debug.Log(playerInSightRange);
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange)
         {
@@ -55,7 +57,7 @@ public class enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    private void Patroling()
+    protected virtual void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
 
@@ -69,7 +71,7 @@ public class enemy : MonoBehaviour
             walkPointSet = false;
     }
 
-    private void SearchWalkPoint()
+    protected virtual void SearchWalkPoint()
     {
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -80,34 +82,30 @@ public class enemy : MonoBehaviour
             walkPointSet = true;
     }
 
-    private void ChasePlayer()
+    protected virtual void ChasePlayer()
     {
         transform.LookAt(player.transform);
         transform.Rotate(0, 180, 0);
         agent.SetDestination(player.transform.position);
     }
 
-    private void AttackPlayer()
+    protected virtual void AttackPlayer()
     {
         //Make sure enemy doesn't move
         transform.LookAt(player.transform);
         transform.Rotate(0, 180, 0);
         agent.SetDestination(transform.position);
-
-
-        if (!alredyAttacked && agent.remainingDistance < playerDistance)
+        if (!alreadyAttacked && agent.remainingDistance < playerDistance)
         {
             //Attack code here
             GetComponent<Animator>().SetTrigger("Attack");
-            alredyAttacked = true;
+            alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
-        GetComponent<Animator>().SetTrigger("Attack");
-
     }
-    private void ResetAttack()
+    protected virtual void ResetAttack()
     {
-        alredyAttacked = false;
+        alreadyAttacked = false;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -30,9 +30,12 @@ public class player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Destroy(collision.gameObject);
+        }
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Player collided with enemy");
             collision.gameObject.GetComponent<enemy>().TakeDamage(attack);
             // Reduce the impact of collision 
             // Vector3 force = -collision.relativeVelocity * 0.7f;
