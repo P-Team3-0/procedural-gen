@@ -22,7 +22,6 @@ public class player : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        Debug.Log("player health: " + health);
         if (health <= 0)
         {
             // Debug.Log("Player died");
@@ -31,6 +30,11 @@ public class player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Debug.Log(collision.gameObject);
+            Destroy(collision.gameObject);
+        }
         if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Player collided with enemy");

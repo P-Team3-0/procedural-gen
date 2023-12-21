@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5903802765004172604}
   m_Layer: 0
   m_Name: Smoke_Effect_Test Variant
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
