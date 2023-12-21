@@ -21,7 +21,7 @@ public class enemy : MonoBehaviour
     //Attack variables
     public float timeBetweenAttacks;
     public float playerDistance;
-    bool alreadyAttacked;
+    protected bool alreadyAttacked;
 
     //States
     public float sightRange, attackRange;
@@ -91,7 +91,7 @@ public class enemy : MonoBehaviour
     {
         //Make sure enemy doesn't move
         transform.LookAt(player.transform);
-        // transform.Rotate(0, 180, 0);
+        transform.Rotate(0, 180, 0);
         agent.SetDestination(transform.position);
 
 
@@ -103,7 +103,7 @@ public class enemy : MonoBehaviour
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
-    private void ResetAttack()
+    protected virtual void ResetAttack()
     {
         alreadyAttacked = false;
     }

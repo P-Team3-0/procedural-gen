@@ -3,19 +3,40 @@ using UnityEngine.AI;
 
 public class flyingEnemy : enemy
 {
-    public float flyingHeight = 10f;
-    private Vector3 targetPosition;
+    //Bullet variables
+    public GameObject bulletPrefab;
+    public float bulletSpeed;
+
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
-        // agent.updateUpAxis = false; // This allows for movement in 3D space
     }
 
     protected override void AttackPlayer()
     {
-        Debug.Log("AttackPlayer");
+        transform.LookAt(player.transform);
+        transform.Rotate(0, 180, 0);
+        agent.SetDestination(transform.position);
+        if (!alreadyAttacked && agent.remainingDistance < playerDistance)
+        {
+            CreateBullet();
+            alreadyAttacked = true;
+            Invoke(nameof(base.ResetAttack), timeBetweenAttacks);
+        }
+    }
+
+    private void CreateBullet()
+    {
+        // Create a bullet
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+        // Calculate the direction of the bullet
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+
+        // Set bullet speed
+        bullet.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
     }
     protected override void Patroling()
     {
@@ -23,8 +44,6 @@ public class flyingEnemy : enemy
 
         if (base.walkPointSet)
             transform.LookAt(walkPoint);
-        Debug.Log(walkPoint);
-        Debug.Log(walkPointSet);
         transform.Rotate(0, 180, 0);
         agent.SetDestination(walkPoint);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -49,8 +68,6 @@ public class flyingEnemy : enemy
     {
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        Debug.Log(playerInAttackRange);
-        Debug.Log(playerInSightRange);
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange)
         {
