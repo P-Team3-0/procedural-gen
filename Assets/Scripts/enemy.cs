@@ -40,6 +40,8 @@ public class enemy : MonoBehaviour
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        Debug.Log("attack range" + playerInAttackRange);
+        Debug.Log(playerInSightRange);
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange)
         {
@@ -93,8 +95,6 @@ public class enemy : MonoBehaviour
         transform.LookAt(player.transform);
         transform.Rotate(0, 180, 0);
         agent.SetDestination(transform.position);
-
-
         if (!alreadyAttacked && agent.remainingDistance < playerDistance)
         {
             //Attack code here
