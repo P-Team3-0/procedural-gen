@@ -1,0 +1,29 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Robot.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Robot_Skeleton.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Robot_PhysicsAsset.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacterRobot.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/IKRig_Robot.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/IKRetargeter_Robot.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Animations/ABP_Robot.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/ThirdPerson/Blueprints/BP_ThirdPersonGameMode.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/lambert2.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Animations/RobotBS_MM_WalkRun.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Animations/RobotMM_Fall_Loop.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Animations/RobotMM_Idle.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Animations/RobotMM_Jump.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Animations/RobotMM_Land.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Animations/RobotMM_Run_Fwd.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Animations/RobotMM_Walk_Fwd.uasset",
+				"C:/Users/fraia/Desktop/CG/procedural-gen/Content/PROGETTO/Character/Animations/RobotMM_Walk_InPlace.uasset"
+			]
+		}
+	]
+}
