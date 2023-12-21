@@ -6,6 +6,7 @@ public class flyingEnemy : enemy
     //Bullet variables
     public GameObject bulletPrefab;
     public float bulletSpeed;
+    public float bulletSpawnDistance;
 
 
     private void Start()
@@ -23,12 +24,16 @@ public class flyingEnemy : enemy
         {
             CreateBullet();
             alreadyAttacked = true;
-            Invoke(nameof(base.ResetAttack), timeBetweenAttacks);
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
 
     private void CreateBullet()
     {
+        // Calculate the offset position
+        // Vector3 offset = transform.forward * bulletSpawnDistance;
+        // Vector3 spawnPosition = transform.position + offset;
+
         // Create a bullet
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 
@@ -40,16 +45,16 @@ public class flyingEnemy : enemy
     }
     protected override void Patroling()
     {
-        if (!base.walkPointSet) SearchWalkPoint();
+        if (!walkPointSet) SearchWalkPoint();
 
-        if (base.walkPointSet)
+        if (walkPointSet)
             transform.LookAt(walkPoint);
         transform.Rotate(0, 180, 0);
         agent.SetDestination(walkPoint);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         if (distanceToWalkPoint.magnitude < 1f)
-            base.walkPointSet = false;
+            walkPointSet = false;
     }
 
     protected override void SearchWalkPoint()
@@ -74,5 +79,11 @@ public class flyingEnemy : enemy
             ChasePlayer();
         }
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, (player.transform.position - transform.position).normalized);
     }
 }
