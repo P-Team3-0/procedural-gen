@@ -22,6 +22,7 @@ public class player : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
+        Debug.Log("Player health: " + health);
         if (health <= 0)
         {
             // Debug.Log("Player died");
@@ -34,7 +35,7 @@ public class player : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Goblin")
         {
             collision.gameObject.GetComponent<enemy>().TakeDamage(attack);
             // Reduce the impact of collision 

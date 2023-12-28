@@ -40,8 +40,6 @@ public class enemy : MonoBehaviour
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        Debug.Log("attack range" + playerInAttackRange);
-        Debug.Log(playerInSightRange);
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange)
         {
@@ -63,7 +61,8 @@ public class enemy : MonoBehaviour
 
         if (walkPointSet)
             transform.LookAt(walkPoint);
-        transform.Rotate(0, 180, 0);
+        if (!gameObject.CompareTag("Goblin"))
+            transform.Rotate(0, 180, 0);
         agent.SetDestination(walkPoint);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
@@ -85,7 +84,8 @@ public class enemy : MonoBehaviour
     protected virtual void ChasePlayer()
     {
         transform.LookAt(player.transform);
-        transform.Rotate(0, 180, 0);
+        if (!gameObject.CompareTag("Goblin"))
+            transform.Rotate(0, 180, 0);
         agent.SetDestination(player.transform.position);
     }
 
@@ -93,7 +93,8 @@ public class enemy : MonoBehaviour
     {
         //Make sure enemy doesn't move
         transform.LookAt(player.transform);
-        transform.Rotate(0, 180, 0);
+        if (!gameObject.CompareTag("Goblin"))
+            transform.Rotate(0, 180, 0);
         agent.SetDestination(transform.position);
         if (!alreadyAttacked && agent.remainingDistance < playerDistance)
         {
@@ -128,6 +129,7 @@ public class enemy : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
+        Debug.Log("Enemy health: " + health);
         if (health <= 0)
         {
             // Debug.Log("Enemy died");
