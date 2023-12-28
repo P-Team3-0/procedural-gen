@@ -1,0 +1,11 @@
+Model Information:
+* title:	Smoke Effect Test
+* source:	https://sketchfab.com/3d-models/smoke-effect-test-5ec187facf7c4be4a468952b05496e2e
+* author:	UJWAL CHAUHAN (https://sketchfab.com/xamplle)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Smoke Effect Test" (https://sketchfab.com/3d-models/smoke-effect-test-5ec187facf7c4be4a468952b05496e2e) by UJWAL CHAUHAN (https://sketchfab.com/xamplle) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
