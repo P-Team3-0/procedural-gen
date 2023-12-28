@@ -63,7 +63,8 @@ public class enemy : MonoBehaviour
 
         if (walkPointSet)
             transform.LookAt(walkPoint);
-        transform.Rotate(0, 180, 0);
+        if (gameObject.tag != "Goblin")
+            transform.Rotate(0, 180, 0);
         agent.SetDestination(walkPoint);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
