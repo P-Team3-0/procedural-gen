@@ -14,7 +14,7 @@ public class CameraFollowPlayer : MonoBehaviour
     {
         cam = GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        offset = new Vector3(0, 2, -4);
+        offset = new Vector3(0, 4, -4);
     }
 
     void Update()
