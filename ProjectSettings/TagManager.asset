@@ -3,17 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Bullet
+  - Goblin
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - whatIsGround
   - Water
   - UI
-  - 
-  - 
-  - 
+  - whatIsPlayer
+  - Enemy
+  - whatIsFlying
   - 
   - 
   - 
