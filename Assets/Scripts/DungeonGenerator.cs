@@ -12,8 +12,8 @@ public class DungeonGenerator : MonoBehaviour
     }
 
     public GameObject roomPrefab;
-    // public GameObject bossRoomPrefab;
-    // public Vector2 offsetBossRoom;
+    public GameObject bossRoomPrefab;
+    public Vector2 offsetBossRoom;
 
     public Vector2Int size;
     public int startPos = 0;
@@ -44,6 +44,27 @@ public class DungeonGenerator : MonoBehaviour
                     newRoom.name = "Room " + (i + j * size.x);
                     newRoom.GetComponent<RoomBehaviour>().updateRoom(currentRoom.status);
                 }
+            }
+        }
+
+        // search a room that has the south door open, only this opened
+        // and instantiate the boss room there
+        // break the all loops when the room is found
+        // TODO: fai attaccare la stanza del boss anche a room finali a giù destra e sinistra
+        for (int i = 0; i < size.x; i++)
+        {
+            if (board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] && !board[i + (size.y - 1) * size.x].status[2] && !board[i + (size.y - 1) * size.x].status[3])
+            {
+                // search the Room + (size.x * size.y) - 1 gameobject and unlock the door
+                GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
+                room.GetComponent<RoomBehaviour>().unlockForTheBoss();
+
+
+                Vector3 pos = new Vector3(-i * offset.x - offsetBossRoom.x, 0, (size.y - 1) * offset.y + offsetBossRoom.y);
+                var newRoom = Instantiate(bossRoomPrefab, pos, Quaternion.identity);
+                newRoom.name = "Boss Room";
+                newRoom.GetComponent<RoomBehaviour>().updateRoom(new bool[] { false, true, false, false });
+                break;
             }
         }
     }

@@ -7,6 +7,12 @@ public class RoomBehaviour : MonoBehaviour
     public GameObject[] walls;
     public GameObject[] doors;
 
+    public void unlockForTheBoss()
+    {
+        doors[1].SetActive(true);
+        walls[1].SetActive(false);
+    }
+
     public void updateRoom(bool[] statusDoors)
     {
         for (int i = 0; i < statusDoors.Length; i++)
