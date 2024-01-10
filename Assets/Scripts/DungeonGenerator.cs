@@ -13,9 +13,15 @@ public class DungeonGenerator : MonoBehaviour
 
     public GameObject roomPrefab;
     public GameObject bossRoomPrefab;
-
-    public GameObject player;
     public Vector2 offsetBossRoom;
+
+    public GameObject playerPrefab;
+    public GameObject cameraPlayerPrefab;
+
+    public GameObject bossPrefab;
+    public GameObject[] enemiesPrefabs = new GameObject[3];
+
+    public int[] randomEnemyPositions = new int[3] { 10, -10, 0 };
 
     public Vector2Int size;
     public int startPos = 0;
@@ -27,7 +33,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void Start()
     {
-        Random.InitState(seed);
+        // Random.InitState(seed);
         MazeGenerator();
     }
 
@@ -49,7 +55,28 @@ public class DungeonGenerator : MonoBehaviour
 
                     if (i == 0 && j == 0)
                     {
-                        Instantiate(player, pos, Quaternion.identity);
+                        Instantiate(playerPrefab, pos, Quaternion.identity);
+                        Instantiate(cameraPlayerPrefab, pos, Quaternion.identity);
+                    }
+                    else
+                    {
+                        int numberOfEnemies = Random.Range(0, 5);
+
+                        for (int k = 0; k < numberOfEnemies; k++)
+                        {
+                            int randomEnemy = Random.Range(0, enemiesPrefabs.Length);
+                            // if the tag is FlyingEnemy, the enemy will be spawned in the air
+                            if (enemiesPrefabs[randomEnemy].tag == "FlyingEnemy")
+                            {
+                                Vector3 enemyPos = new Vector3(-i * offset.x + randomEnemyPositions[randomEnemy], 4.45f, j * offset.y + randomEnemyPositions[randomEnemy]);
+                                Instantiate(enemiesPrefabs[randomEnemy], enemyPos, Quaternion.identity);
+                            }
+                            else
+                            {
+                                Vector3 enemyPos = new Vector3(-i * offset.x + randomEnemyPositions[randomEnemy], 0, j * offset.y + randomEnemyPositions[randomEnemy]);
+                                Instantiate(enemiesPrefabs[randomEnemy], enemyPos, Quaternion.identity);
+                            }
+                        }
                     }
                 }
             }
@@ -67,11 +94,14 @@ public class DungeonGenerator : MonoBehaviour
                 GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
                 room.GetComponent<RoomBehaviour>().unlockForTheBoss();
 
-
                 Vector3 pos = new Vector3(-i * offset.x - offsetBossRoom.x, 0, (size.y - 1) * offset.y + offsetBossRoom.y);
                 var newRoom = Instantiate(bossRoomPrefab, pos, Quaternion.identity);
                 newRoom.name = "Boss Room";
                 newRoom.GetComponent<RoomBehaviour>().updateRoom(new bool[] { false, true, false, false });
+
+                //instatiate the boss
+                // Instantiate(bossPrefab, pos, Quaternion.identity);
+
                 break;
             }
         }

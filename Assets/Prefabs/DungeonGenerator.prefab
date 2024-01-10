@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5228274094902900837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7916381717182926120}
+  - component: {fileID: 2583680129687127085}
+  m_Layer: 0
+  m_Name: DungeonGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7916381717182926120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228274094902900837}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.950063, y: -5.7354527, z: -21.710413}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2583680129687127085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228274094902900837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43db4f1051e78d04cbfc59106b07cf68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 1060134431672068291, guid: 2dd9b2374db0aba45a83c510660afdd2, type: 3}
+  bossRoomPrefab: {fileID: 6690002495821353105, guid: 0629cbc857b2a314fbbc9e8494676de1, type: 3}
+  offsetBossRoom: {x: 2, y: 56.4}
+  playerPrefab: {fileID: 6974491721328931481, guid: 9118b084065607542942d6e85d8c5c80, type: 3}
+  cameraPlayerPrefab: {fileID: 1922786290838456288, guid: fa3618d25d138094d8c0cb45e63d1ebc, type: 3}
+  bossPrefab: {fileID: 5541695477197944624, guid: 37ae96e5b2ab4fb4784be0eabb037b5e, type: 3}
+  enemiesPrefabs:
+  - {fileID: 5541695477197944624, guid: 37ae96e5b2ab4fb4784be0eabb037b5e, type: 3}
+  - {fileID: 5849402511011628288, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}
+  - {fileID: 6868877340560994395, guid: 5ec25b5d40dd6644bb08841ff472e362, type: 3}
+  randomEnemyPositions: 0a000000f6ffffff00000000
+  size: {x: 4, y: 5}
+  startPos: 0
+  offset: {x: 29.9, y: 29.9}
+  seed: 78

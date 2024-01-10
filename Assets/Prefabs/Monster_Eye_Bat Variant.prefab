@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817623935059454980, guid: b3d8e98efce1bb04a98a382d294db81a, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: FlyingEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 2997212048560170572, guid: b3d8e98efce1bb04a98a382d294db81a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -289,6 +289,7 @@ MonoBehaviour:
   attack: 10
   bulletPrefab: {fileID: 148612903647282210, guid: 24db0a7f76c16d843803752e92940d56, type: 3}
   bulletSpeed: 10
+  bulletSpawnDistance: 0
 --- !u!195 &2554779579274756857
 NavMeshAgent:
   m_ObjectHideFlags: 0
