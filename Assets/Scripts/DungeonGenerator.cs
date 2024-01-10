@@ -13,6 +13,8 @@ public class DungeonGenerator : MonoBehaviour
 
     public GameObject roomPrefab;
     public GameObject bossRoomPrefab;
+
+    public GameObject player;
     public Vector2 offsetBossRoom;
 
     public Vector2Int size;
@@ -39,10 +41,16 @@ public class DungeonGenerator : MonoBehaviour
 
                 if (currentRoom.visited)
                 {
+                    // instantiate a gameobject (player) in the first room
                     Vector3 pos = new Vector3(-i * offset.x, 0, j * offset.y);
                     var newRoom = Instantiate(currentRoom.room, pos, Quaternion.identity);
                     newRoom.name = "Room " + (i + j * size.x);
                     newRoom.GetComponent<RoomBehaviour>().updateRoom(currentRoom.status);
+
+                    if (i == 0 && j == 0)
+                    {
+                        Instantiate(player, pos, Quaternion.identity);
+                    }
                 }
             }
         }
