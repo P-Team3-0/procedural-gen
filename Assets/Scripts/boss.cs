@@ -38,8 +38,8 @@ public class boss : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         if (playerInSightRange && !playerInAttackRange)
         {
-            GetComponent<Animator>().SetTrigger("Roar");
-            ChasePlayer();
+            if (canMove)
+                ChasePlayer();
         }
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
@@ -71,6 +71,12 @@ public class boss : MonoBehaviour
     protected virtual void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    private void BossCanMove()
+    {
+        canMove = true;
+        Debug.Log("Boss can move: " + canMove);
     }
 
     private void OnDrawGizmosSelected()
