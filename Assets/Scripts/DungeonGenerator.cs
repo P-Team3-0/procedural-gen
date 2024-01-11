@@ -33,7 +33,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void Start()
     {
-        // Random.InitState(seed);
+        Random.InitState(seed);
         MazeGenerator();
     }
 
@@ -98,8 +98,6 @@ public class DungeonGenerator : MonoBehaviour
                 Vector3 pos = new Vector3(-i * offset.x - offsetBossRoom.x, 0, (size.y - 1) * offset.y + offsetBossRoom.y);
                 // rotate of 180° the room
                 var newRoom = Instantiate(bossRoomPrefab, pos, Quaternion.Euler(0, 180, 0));
-                newRoom.name = "Boss Room";
-                newRoom.GetComponent<RoomBehaviour>().updateRoom(new bool[] { true, false, false, false });
 
                 //instatiate the boss
                 // Instantiate(bossPrefab, pos, Quaternion.identity);
@@ -114,12 +112,13 @@ public class DungeonGenerator : MonoBehaviour
                 GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
                 room.GetComponent<RoomBehaviour>().unlockForTheBoss_2();
 
-                Vector3 pos = new Vector3(-i * offset.x - 80.25f, 0, (size.y - 1) * offset.y + 3f);
+                Vector3 pos = new Vector3(-i * offset.x - 96.05f, 0, (size.y - 1) * offset.y + 0.35f);
                 // rotate of 180° the room
                 var newRoom = Instantiate(bossRoomPrefab, pos, Quaternion.Euler(0, -270, 0));
                 newRoom.name = "Boss Room";
-                //TODO: fix the doors, now the boss room has only one door
-                newRoom.GetComponent<RoomBehaviour>().updateRoom(new bool[] { true, false, false, false });
+
+                //instatiate the boss
+                // Instantiate(bossPrefab, pos, Quaternion.identity);
 
                 break;
             }
