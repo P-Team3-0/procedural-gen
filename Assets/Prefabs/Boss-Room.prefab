@@ -7006,7 +7006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3886366781421069802}
   - component: {fileID: 216707430761628041}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9750,7 +9750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6342700959861269962}
   - component: {fileID: 6741438858849284304}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FlyingArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13603,7 +13603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8547164071014031619}
   - component: {fileID: 2811090702730360494}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

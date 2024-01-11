@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Bullet
   - Goblin
+  - FlyingEnemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - whatIsPlayer
   - Enemy
   - whatIsFlying
-  - 
+  - BossFlyingArea
   - 
   - 
   - 
