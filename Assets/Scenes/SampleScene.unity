@@ -227,7 +227,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2583680129687127085, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: seed
-      value: 78
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2583680129687127085, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: size.x
@@ -244,6 +244,18 @@ PrefabInstance:
     - target: {fileID: 2583680129687127085, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: offset.y
       value: 29.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583680129687127085, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
+      propertyPath: bossRoomPrefab
+      value: 
+      objectReference: {fileID: 3682919088034645458, guid: 92b25f1c089e6bb4fb0ddfd7511ae278, type: 3}
+    - target: {fileID: 2583680129687127085, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
+      propertyPath: offsetBossRoom.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583680129687127085, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
+      propertyPath: offsetBossRoom.y
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 2583680129687127085, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: enemies.Array.size

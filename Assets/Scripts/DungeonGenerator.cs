@@ -83,24 +83,43 @@ public class DungeonGenerator : MonoBehaviour
         }
 
         // search a room that has the south door open, only this opened
-        // and instantiate the boss room there
-        // break the all loops when the room is found
-        // TODO: fai attaccare la stanza del boss anche a room finali a giù destra e sinistra
+        // and instantiate the boss room in front of it (north)
+        // or on the right of it (if the door on the left is opened)
         for (int i = 0; i < size.x; i++)
         {
-            if (board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] && !board[i + (size.y - 1) * size.x].status[2] && !board[i + (size.y - 1) * size.x].status[3])
+            if (board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] & !board[i + (size.y - 1) * size.x].status[2] && !board[i + (size.y - 1) * size.x].status[3])
             {
+                Debug.Log("Room " + ((size.x * size.y) - 1) + " has the north door open");
+
                 // search the Room + (size.x * size.y) - 1 gameobject and unlock the door
                 GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
                 room.GetComponent<RoomBehaviour>().unlockForTheBoss();
 
                 Vector3 pos = new Vector3(-i * offset.x - offsetBossRoom.x, 0, (size.y - 1) * offset.y + offsetBossRoom.y);
-                var newRoom = Instantiate(bossRoomPrefab, pos, Quaternion.identity);
+                // rotate of 180° the room
+                var newRoom = Instantiate(bossRoomPrefab, pos, Quaternion.Euler(0, 180, 0));
                 newRoom.name = "Boss Room";
-                newRoom.GetComponent<RoomBehaviour>().updateRoom(new bool[] { false, true, false, false });
+                newRoom.GetComponent<RoomBehaviour>().updateRoom(new bool[] { true, false, false, false });
 
                 //instatiate the boss
                 // Instantiate(bossPrefab, pos, Quaternion.identity);
+
+                break;
+            }
+            else if (!board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] && !board[i + (size.y - 1) * size.x].status[2] && board[i + (size.y - 1) * size.x].status[3])
+            {
+                Debug.Log("Room " + ((size.x * size.y) - 1) + " has the right door open");
+
+                // search the Room + (size.x * size.y) - 1 gameobject and unlock the door
+                GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
+                room.GetComponent<RoomBehaviour>().unlockForTheBoss_2();
+
+                Vector3 pos = new Vector3(-i * offset.x - 80.25f, 0, (size.y - 1) * offset.y + 3f);
+                // rotate of 180° the room
+                var newRoom = Instantiate(bossRoomPrefab, pos, Quaternion.Euler(0, -270, 0));
+                newRoom.name = "Boss Room";
+                //TODO: fix the doors, now the boss room has only one door
+                newRoom.GetComponent<RoomBehaviour>().updateRoom(new bool[] { true, false, false, false });
 
                 break;
             }
