@@ -5467,6 +5467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8183720627527152335}
   - component: {fileID: 4985278001309905587}
+  - component: {fileID: 8398917714252051116}
   m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
@@ -5545,6 +5546,27 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: e77a8351b0ddfbd4588c7269d93d5659, type: 2}
   m_BuildHeightMesh: 0
+--- !u!65 &8398917714252051116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7997677118301185691}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 25.3, y: 0.1, z: 25.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8099761403864670715
 GameObject:
   m_ObjectHideFlags: 0

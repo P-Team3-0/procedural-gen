@@ -27,6 +27,8 @@ public class DungeonGenerator : MonoBehaviour
     public int startPos = 0;
     public Vector2 offset;
 
+    private GameObject roomParent;
+
     public int seed = 42;
 
     List<Cell> board;
@@ -35,6 +37,77 @@ public class DungeonGenerator : MonoBehaviour
     {
         // Random.InitState(seed);
         MazeGenerator();
+    }
+
+    void Update()
+    {
+        for (int i = 0; i < size.x; i++)
+        {
+            for (int j = 0; j < size.y; j++)
+            {
+                Cell currentRoom = board[i + j * size.x];
+
+                if (currentRoom.visited)
+                {
+                    // check if the player is inside a room, inside a batch of space
+                    // if the player is inside a room, update the room status
+
+                    roomParent = GameObject.Find("Room " + (i + j * size.x));
+                    // get a child of the roomParent by name
+                    GameObject floor = roomParent.transform.Find("Floor").gameObject;
+
+                    if (floor == null)
+                    {
+                        Debug.Log("Floor is null");
+                    }
+
+                    BoxCollider collider = floor.GetComponent<BoxCollider>();
+
+                    GameObject player = GameObject.Find("Player(Clone)");
+
+
+                    if (collider.bounds.Contains(player.transform.position))
+                    {
+                        Debug.Log("Player is inside the room " + (i + j * size.x));
+
+                        int countEnemies = 0;
+
+                        foreach (Transform child in roomParent.transform)
+                        {
+
+                            if (child.tag == "Enemy" || child.tag == "FlyingEnemy")
+                            {
+                                countEnemies++;
+                            }
+                        }
+                        GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
+                        if (countEnemies == 0)
+                        {
+                            roomParent.GetComponent<RoomBehaviour>().updateRoom(currentRoom.status);
+
+                            if (board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] & !board[i + (size.y - 1) * size.x].status[2] && !board[i + (size.y - 1) * size.x].status[3])
+                            {
+                                room.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { true, true, false, false });
+                            }
+                            else if (!board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] && !board[i + (size.y - 1) * size.x].status[2] && board[i + (size.y - 1) * size.x].status[3])
+                            {
+                                room.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, true, true });
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("There are " + countEnemies + " enemies in the room");
+                            roomParent.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, false, false });
+                            room.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, false, false });
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+        }
     }
 
     void GenerateDungeon()
@@ -69,12 +142,16 @@ public class DungeonGenerator : MonoBehaviour
                             if (enemiesPrefabs[randomEnemy].tag == "FlyingEnemy")
                             {
                                 Vector3 enemyPos = new Vector3(-i * offset.x + randomEnemyPositions[randomEnemy], 4.45f, j * offset.y + randomEnemyPositions[randomEnemy]);
-                                Instantiate(enemiesPrefabs[randomEnemy], enemyPos, Quaternion.identity);
+                                // instantiate the enemy in the corrispective room as a child of the room
+                                roomParent = GameObject.Find("Room " + (i + j * size.x));
+                                Instantiate(enemiesPrefabs[randomEnemy], enemyPos, Quaternion.identity, roomParent.transform);
                             }
                             else
                             {
                                 Vector3 enemyPos = new Vector3(-i * offset.x + randomEnemyPositions[randomEnemy], 0, j * offset.y + randomEnemyPositions[randomEnemy]);
-                                Instantiate(enemiesPrefabs[randomEnemy], enemyPos, Quaternion.identity);
+                                // instantiate the enemy in the corrispective room as a child of the room
+                                roomParent = GameObject.Find("Room " + (i + j * size.x));
+                                Instantiate(enemiesPrefabs[randomEnemy], enemyPos, Quaternion.identity, roomParent.transform);
                             }
                         }
                     }
@@ -92,14 +169,12 @@ public class DungeonGenerator : MonoBehaviour
                 Debug.Log("Room " + ((size.x * size.y) - 1) + " has the north door open");
 
                 // search the Room + (size.x * size.y) - 1 gameobject and unlock the door
-                GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
-                room.GetComponent<RoomBehaviour>().unlockForTheBoss();
+                // GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
+                // room.GetComponent<RoomBehaviour>().unlockForTheBoss();
 
                 Vector3 pos = new Vector3(-i * offset.x - offsetBossRoom.x, 0, (size.y - 1) * offset.y + offsetBossRoom.y);
                 // rotate of 180° the room
                 var newRoom = Instantiate(bossRoomPrefab, pos, Quaternion.Euler(0, 180, 0));
-                newRoom.name = "Boss Room";
-                newRoom.GetComponent<RoomBehaviour>().updateRoom(new bool[] { true, false, false, false });
 
                 //instatiate the boss
                 // Instantiate(bossPrefab, pos, Quaternion.identity);
@@ -111,15 +186,16 @@ public class DungeonGenerator : MonoBehaviour
                 Debug.Log("Room " + ((size.x * size.y) - 1) + " has the right door open");
 
                 // search the Room + (size.x * size.y) - 1 gameobject and unlock the door
-                GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
-                room.GetComponent<RoomBehaviour>().unlockForTheBoss_2();
+                // GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
+                // room.GetComponent<RoomBehaviour>().unlockForTheBoss_2();
 
-                Vector3 pos = new Vector3(-i * offset.x - 80.25f, 0, (size.y - 1) * offset.y + 3f);
+                Vector3 pos = new Vector3(-i * offset.x - 96.05f, 0, (size.y - 1) * offset.y + 0.35f);
                 // rotate of 180° the room
                 var newRoom = Instantiate(bossRoomPrefab, pos, Quaternion.Euler(0, -270, 0));
                 newRoom.name = "Boss Room";
-                //TODO: fix the doors, now the boss room has only one door
-                newRoom.GetComponent<RoomBehaviour>().updateRoom(new bool[] { true, false, false, false });
+
+                //instatiate the boss
+                // Instantiate(bossPrefab, pos, Quaternion.identity);
 
                 break;
             }
