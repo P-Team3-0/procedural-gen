@@ -47,7 +47,6 @@ public class boss : MonoBehaviour
     private void ChasePlayer()
     {
         transform.LookAt(player.transform);
-        // if (!gameObject.CompareTag("Goblin"))
         transform.Rotate(0, 180, 0);
         agent.SetDestination(player.transform.position);
     }
@@ -56,7 +55,6 @@ public class boss : MonoBehaviour
     {
         //Make sure enemy doesn't move
         transform.LookAt(player.transform);
-        // if (!gameObject.CompareTag("Goblin"))
         transform.Rotate(0, 180, 0);
         agent.SetDestination(transform.position);
         if (!alreadyAttacked && agent.remainingDistance < playerDistance)
@@ -76,7 +74,6 @@ public class boss : MonoBehaviour
     private void BossCanMove()
     {
         canMove = true;
-        Debug.Log("Boss can move: " + canMove);
     }
 
     private void OnDrawGizmosSelected()

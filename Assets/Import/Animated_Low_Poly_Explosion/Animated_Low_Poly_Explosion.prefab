@@ -6054,6 +6054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6643866528474564476}
+  - component: {fileID: 2664665848433627763}
   m_Layer: 0
   m_Name: Animated_Low_Poly_Explosion
   m_TagString: Untagged
@@ -6077,6 +6078,27 @@ Transform:
   - {fileID: 8460831031698943816}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2664665848433627763
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9009445821697953249}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe713b1272b3cd24e97cf00f4dc75a0f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9094092371306341056
 GameObject:
   m_ObjectHideFlags: 0
