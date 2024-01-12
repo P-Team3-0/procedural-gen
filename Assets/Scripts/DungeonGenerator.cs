@@ -27,6 +27,8 @@ public class DungeonGenerator : MonoBehaviour
     public int startPos = 0;
     public Vector2 offset;
 
+    private GameObject roomParent;
+
     public int seed = 42;
 
     List<Cell> board;
@@ -35,6 +37,61 @@ public class DungeonGenerator : MonoBehaviour
     {
         Random.InitState(seed);
         MazeGenerator();
+    }
+
+    void Update()
+    {
+        for (int i = 0; i < size.x; i++)
+        {
+            for (int j = 0; j < size.y; j++)
+            {
+                Cell currentRoom = board[i + j * size.x];
+
+                if (currentRoom.visited)
+                {
+                    // check if the player is inside a room, inside a batch of space
+                    // if the player is inside a room, update the room status
+
+                    roomParent = GameObject.Find("Room " + (i + j * size.x));
+                    // get a child of the roomParent by name
+                    GameObject cube = roomParent.transform.Find("Cube").gameObject;
+
+                    BoxCollider collider = cube.GetComponent<BoxCollider>();
+
+                    GameObject player = GameObject.Find("Player(Clone)");
+
+                    // check if player is colliding the room Parent
+                    // The player has a capsule collider, so we need to check if the player is inside the roomParent
+                    if (collider.bounds.Contains(player.transform.position))
+                    {
+                        Debug.Log("Player is inside the room " + (i + j * size.x));
+
+                        int countEnemies = 0;
+
+                        foreach (Transform child in roomParent.transform)
+                        {
+                            if (child.tag == "Enemy" || child.tag == "FlyingEnemy")
+                            {
+                                countEnemies++;
+                            }
+                        }
+                        if (countEnemies == 0)
+                        {
+                            roomParent.GetComponent<RoomBehaviour>().updateRoom(currentRoom.status);
+                        }
+                        else
+                        {
+                            Debug.Log("There are " + countEnemies + " enemies in the room");
+                            roomParent.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, false, false });
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+        }
     }
 
     void GenerateDungeon()
@@ -60,7 +117,7 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     else
                     {
-                        int numberOfEnemies = Random.Range(0, 5);
+                        int numberOfEnemies = Random.Range(0, 2);
 
                         for (int k = 0; k < numberOfEnemies; k++)
                         {
@@ -69,12 +126,16 @@ public class DungeonGenerator : MonoBehaviour
                             if (enemiesPrefabs[randomEnemy].tag == "FlyingEnemy")
                             {
                                 Vector3 enemyPos = new Vector3(-i * offset.x + randomEnemyPositions[randomEnemy], 4.45f, j * offset.y + randomEnemyPositions[randomEnemy]);
-                                Instantiate(enemiesPrefabs[randomEnemy], enemyPos, Quaternion.identity);
+                                // instantiate the enemy in the corrispective room as a child of the room
+                                roomParent = GameObject.Find("Room " + (i + j * size.x));
+                                Instantiate(enemiesPrefabs[randomEnemy], enemyPos, Quaternion.identity, roomParent.transform);
                             }
                             else
                             {
                                 Vector3 enemyPos = new Vector3(-i * offset.x + randomEnemyPositions[randomEnemy], 0, j * offset.y + randomEnemyPositions[randomEnemy]);
-                                Instantiate(enemiesPrefabs[randomEnemy], enemyPos, Quaternion.identity);
+                                // instantiate the enemy in the corrispective room as a child of the room
+                                roomParent = GameObject.Find("Room " + (i + j * size.x));
+                                Instantiate(enemiesPrefabs[randomEnemy], enemyPos, Quaternion.identity, roomParent.transform);
                             }
                         }
                     }
