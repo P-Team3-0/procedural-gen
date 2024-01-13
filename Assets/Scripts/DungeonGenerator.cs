@@ -63,7 +63,7 @@ public class DungeonGenerator : MonoBehaviour
 
                     BoxCollider collider = floor.GetComponent<BoxCollider>();
 
-                    GameObject player = GameObject.Find("Player(Clone)");
+                    GameObject player = GameObject.FindWithTag("Player");
 
 
                     if (collider.bounds.Contains(player.transform.position))
