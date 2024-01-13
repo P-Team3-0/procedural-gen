@@ -49,6 +49,8 @@ MonoBehaviour:
   offsetBossRoom: {x: -0.5, y: 96.75}
   playerPrefab: {fileID: 6974491721328931481, guid: 9118b084065607542942d6e85d8c5c80, type: 3}
   cameraPlayerPrefab: {fileID: 1922786290838456288, guid: fa3618d25d138094d8c0cb45e63d1ebc, type: 3}
+  freeCameraPrefab: {fileID: 7056605393235961419, guid: d6afd526d4416a144940b42b9406f0d1, type: 3}
+  freeCameraBrainPrefab: {fileID: 8735505483758412921, guid: 5d0399e20e165174d9980cce2da247e2, type: 3}
   bossPrefab: {fileID: 5541695477197944624, guid: 37ae96e5b2ab4fb4784be0eabb037b5e, type: 3}
   enemiesPrefabs:
   - {fileID: 5541695477197944624, guid: 37ae96e5b2ab4fb4784be0eabb037b5e, type: 3}
