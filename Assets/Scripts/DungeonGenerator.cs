@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class DungeonGenerator : MonoBehaviour
 
     public GameObject playerPrefab;
     public GameObject cameraPlayerPrefab;
+    public CinemachineFreeLook freeLookCameraPrefab;
 
     public GameObject bossPrefab;
     public GameObject[] enemiesPrefabs = new GameObject[3];
@@ -129,7 +131,19 @@ public class DungeonGenerator : MonoBehaviour
                     if (i == 0 && j == 0)
                     {
                         Instantiate(playerPrefab, pos, Quaternion.identity);
+
+                        GameObject player = GameObject.FindWithTag("Player");
+
+                        //setting the freelookcamera parameters
+                        freeLookCameraPrefab.Follow = player.transform;
+                        freeLookCameraPrefab.LookAt = player.transform;
+                        freeLookCameraPrefab.GetRig(0).LookAt = player.transform;
+                        freeLookCameraPrefab.GetRig(1).LookAt = player.transform;
+                        freeLookCameraPrefab.GetRig(2).LookAt=player.transform;
+
+                        //instantiate camera and freelookCamera
                         Instantiate(cameraPlayerPrefab, pos, Quaternion.identity);
+                        Instantiate(freeLookCameraPrefab, pos, Quaternion.identity);
                     }
                     else
                     {
