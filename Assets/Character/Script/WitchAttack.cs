@@ -1,61 +1,74 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using Cinemachine;
+using System.Collections.Generic;
 
 public class WitchAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject firePoint;
-
+    private Camera freeLookCamera;
     public List<GameObject> vfx = new List<GameObject>();
-    public RotateToMouse rotateToMouse;
+    public GameObject player;
 
     private GameObject effectToSpawn;
     private float timeToFire = 0;
 
-    int AttackHash;
     void Start()
     {
         effectToSpawn = vfx[0];
+        freeLookCamera = FindObjectOfType<Camera>();
 
+        if (freeLookCamera == null)
+        {
+            Debug.LogError("FreeLook Camera non trovata nel tuo scenario!");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButton(0) && Time.time >= timeToFire)
         {
             timeToFire = Time.time + 1 / effectToSpawn.GetComponent<ProjectileMove>().fireRate;
-            // Crea una coroutine e ritarda l'esecuzione di SpawnVFX per 2 secondi
-            StartCoroutine(SpawnVFXWithDelay());
+            Vector3 firePointPosition = firePoint.transform.position;
+            // Calcola il centro della visuale in spazio mondo
+            Vector3 centerOfViewport = new Vector3(0.5f, 0.5f, 0);
+            Vector3 targetPosition = freeLookCamera.GetComponent<Camera>().ViewportToWorldPoint(centerOfViewport);
+
+            // Calcola la direzione dalla posizione del fuoco al centro della visuale
+            Vector3 direction = targetPosition - firePointPosition;
+            direction = new Vector3(direction.x, -direction.y, direction.z);
+            direction.Normalize();
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            Quaternion invertedRotation = rotation * Quaternion.Euler(0, 180, 0);
+            player.transform.localRotation = Quaternion.Lerp(player.transform.rotation, invertedRotation, 1);
+            // Istanzia l'effetto dal firePoint e applica la direzione
+            StartCoroutine(SpawnVFXWithDelay(invertedRotation));
         }
-
-
     }
 
-    void SpawnVFX()
+    void SpawnVFX(Quaternion rotation)
     {
         GameObject vfx;
-
         if (firePoint != null)
         {
-            vfx = Instantiate(effectToSpawn, firePoint.transform.position, Quaternion.identity);
-            if (rotateToMouse != null)
-            {
-                vfx.transform.localRotation = rotateToMouse.GetRotation();
-            }
+            
+
+            // Istanzia l'effetto dal firePoint e applica la rotazione
+            vfx = Instantiate(effectToSpawn, firePoint.transform.position, rotation);
+            
+            
         }
         else
         {
-            Debug.Log("no fire point");
+            Debug.Log("No fire point");
         }
     }
-    IEnumerator SpawnVFXWithDelay()
+    IEnumerator SpawnVFXWithDelay(Quaternion rotation)
     {
-        // Ritarda l'esecuzione per 2 secondi
+        // Ritarda l'esecuzione 
         yield return new WaitForSeconds(0.3f);
 
         // Spawna l'effetto visivo
-        SpawnVFX();
+        SpawnVFX(rotation);
     }
 }

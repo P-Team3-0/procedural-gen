@@ -137,9 +137,9 @@ public class DungeonGenerator : MonoBehaviour
                         //setting the freelookcamera parameters
                         freeLookCameraPrefab.Follow = player.transform;
                         freeLookCameraPrefab.LookAt = player.transform;
-                        freeLookCameraPrefab.GetRig(0).LookAt = player.transform;
-                        freeLookCameraPrefab.GetRig(1).LookAt = player.transform;
-                        freeLookCameraPrefab.GetRig(2).LookAt=player.transform;
+                        //freeLookCameraPrefab.GetRig(0).LookAt = player.transform;
+                        //freeLookCameraPrefab.GetRig(1).LookAt = player.transform;
+                        //freeLookCameraPrefab.GetRig(2).LookAt=player.transform;
 
                         //instantiate camera and freelookCamera
                         Instantiate(cameraPlayerPrefab, pos, Quaternion.identity);

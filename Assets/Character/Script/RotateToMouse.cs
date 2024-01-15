@@ -1,12 +1,14 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class RotateToMouse : MonoBehaviour
 {
     // Start is called before the first frame update
     public Camera cam;
-    public float maximumLenght;
+    public float maximumLength;
 
     private Ray rayMouse;
     private Vector3 pos;
@@ -20,33 +22,35 @@ public class RotateToMouse : MonoBehaviour
         {
             RaycastHit hit;
             var mousePos = Input.mousePosition;
-            rayMouse = cam.ScreenPointToRay(mousePos);
 
-            // Calculate the position of the mouse in camera space
-            pos = cam.ScreenToWorldPoint(mousePos);
+            // Converti le coordinate del mouse direttamente in coordinate del mondo
+            pos = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
 
-            if (Physics.Raycast(rayMouse.origin, rayMouse.direction, out hit, maximumLenght))
+            // Crea un ray dal personaggio al punto del mouse
+            rayMouse = new Ray(transform.position, (pos - transform.position).normalized);
+
+            if (Physics.Raycast(rayMouse.origin, rayMouse.direction, out hit, maximumLength))
             {
-                // Calculate the rotation using Quaternion.LookAt()
-                rotation = Quaternion.LookRotation(hit.point, transform.position);
+                // Modifica la direzione in modo che punti dal personaggio al punto colpito
+                direction = hit.point - transform.position;
+                rotation = Quaternion.LookRotation(direction);
             }
             else
             {
-                // Use the direction of the mouse ray
                 direction = rayMouse.direction;
                 rotation = Quaternion.LookRotation(direction);
             }
 
-            // Apply the rotation to the object
             if (Input.GetMouseButtonDown(0))
             {
-                transform.localRotation = Quaternion.Lerp(transform.rotation, rotation, 1);
-
+                // Applica la rotazione all'oggetto
+                transform.rotation = rotation;
+                Debug.Log(transform.rotation);
             }
         }
         else
         {
-            Debug.Log("no camera");
+            Debug.Log("No camera");
         }
     }
 
