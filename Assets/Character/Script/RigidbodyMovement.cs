@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class RigidbodyMovement : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class RigidbodyMovement : MonoBehaviour
     Animator animator;
     int isWalkingHash;
     int isRunningHash;
+    private CinemachineFreeLook activeCamera;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -20,8 +22,22 @@ public class RigidbodyMovement : MonoBehaviour
 
     void Update()
     {
-        ////////////Move With WASD
-        InputKey = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        activeCamera = GameObject.FindWithTag("FreeLookCamera").GetComponent<CinemachineFreeLook>();
+
+        // Get the direction that the camera is looking
+        Vector3 cameraForward = activeCamera.transform.forward;
+        cameraForward.y = 0; // keep only the horizontal direction
+        cameraForward.Normalize(); // Normalize it so that it's a unit vector
+
+        Vector3 cameraRight = activeCamera.transform.right;
+        cameraRight.y = 0; // keep only the horizontal direction
+        cameraRight.Normalize(); // Normalize it so that it's a unit vector
+
+        // Get the input
+        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        // Transform the input vector into world space, oriented relative to the camera's look direction
+        InputKey = (cameraRight * input.x + cameraForward * input.z);
     }
 
     void FixedUpdate()
@@ -37,7 +53,7 @@ public class RigidbodyMovement : MonoBehaviour
             float Angle = Mathf.Atan2(InputKey.x, InputKey.z) * Mathf.Rad2Deg; //=========================================== LookAt
             float Smooth = Mathf.SmoothDampAngle(transform.eulerAngles.y, Angle, ref Myfloat, 0.1f); //=================== Smooth Rotation
             transform.rotation = Quaternion.Euler(0, Smooth, 0); //============================================================ Change Angle
-            animator.SetBool(isWalkingHash, true);          
+            animator.SetBool(isWalkingHash, true);
         }
         if (!pressed)
         {
