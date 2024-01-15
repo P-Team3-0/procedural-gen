@@ -1,5 +1,45 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7136873280460584385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3896410955818784692}
+  - component: {fileID: 8184688655476769657}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3896410955818784692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136873280460584385}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00000027102, y: -0.00000057593, z: -0.0000003819}
+  m_LocalScale: {x: -0.0031795881, y: -0.0031795881, z: -0.0031795881}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8227720050649874972}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8184688655476769657
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136873280460584385}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &3075861683171043114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,7 +106,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6377409523878815030, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3896410955818784692}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1301666742839490564, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
       insertIndex: -1
@@ -101,11 +144,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   sightRange: 60
-  attackRange: 5
+  attackRange: 20
   playerInSightRange: 0
   playerInAttackRange: 0
   timeBetweenAttacks: 0.5
-  playerDistance: 5
+  playerDistance: 20
+  bossProjectile: {fileID: 1947871717301538, guid: c0241859dbff9a54f85830e4790d461f, type: 3}
 --- !u!195 &4381384348817885016
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -128,3 +172,8 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!4 &8227720050649874972 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6377409523878815030, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
+  m_PrefabInstance: {fileID: 3075861683171043114}
+  m_PrefabAsset: {fileID: 0}

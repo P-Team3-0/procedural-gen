@@ -20,6 +20,11 @@ public class boss : MonoBehaviour
 
     private bool canMove = false;
 
+    public GameObject bossProjectile;
+
+    private GameObject firePoint;
+    public Vector3 direction;
+
 
 
 
@@ -34,6 +39,7 @@ public class boss : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        firePoint = GameObject.Find("FirePoint");
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         if (playerInSightRange && !playerInAttackRange)
@@ -59,11 +65,21 @@ public class boss : MonoBehaviour
         agent.SetDestination(transform.position);
         if (!alreadyAttacked && agent.remainingDistance < playerDistance)
         {
-            //Attack code here
-            // GetComponent<Animator>().SetTrigger("Attack");
-            // alreadyAttacked = true;
-            Debug.Log("Boss Attack");
+            GameObject fireBreath = Instantiate(bossProjectile, firePoint.transform.position, Quaternion.identity);
+            Vector3 targetPosition = player.transform.position;
+            targetPosition.y = firePoint.transform.position.y; // Set the target y position to be the same as the firePoint's y position
+            Debug.Log(targetPosition);
+            direction = (targetPosition - firePoint.transform.position).normalized;
+            Debug.Log(direction);
+
+            projectileMovement bossProjectileScript = fireBreath.GetComponent<projectileMovement>();
+            if (bossProjectileScript != null)
+            {
+                bossProjectileScript.SetDirection(direction);
+            }
+
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            alreadyAttacked = true;
         }
     }
     protected virtual void ResetAttack()
@@ -83,6 +99,8 @@ public class boss : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(firePoint.transform.position, player.transform.position);
     }
 
 }
