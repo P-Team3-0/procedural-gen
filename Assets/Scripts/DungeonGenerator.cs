@@ -82,17 +82,18 @@ public class DungeonGenerator : MonoBehaviour
                                 countEnemies++;
                             }
                         }
-                        GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
                         if (countEnemies == 0)
                         {
                             roomParent.GetComponent<RoomBehaviour>().updateRoom(currentRoom.status);
 
                             if (board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] & !board[i + (size.y - 1) * size.x].status[2] && !board[i + (size.y - 1) * size.x].status[3])
                             {
+                                GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
                                 room.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { true, true, false, false });
                             }
                             else if (!board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] && !board[i + (size.y - 1) * size.x].status[2] && board[i + (size.y - 1) * size.x].status[3])
                             {
+                                GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
                                 room.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, true, true });
                             }
                         }
@@ -100,7 +101,6 @@ public class DungeonGenerator : MonoBehaviour
                         {
                             Debug.Log("There are " + countEnemies + " enemies in the room");
                             roomParent.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, false, false });
-                            room.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, false, false });
                         }
                     }
                     else
@@ -183,8 +183,8 @@ public class DungeonGenerator : MonoBehaviour
                 Debug.Log("Room " + ((size.x * size.y) - 1) + " has the north door open");
 
                 // search the Room + (size.x * size.y) - 1 gameobject and unlock the door
-                // GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
-                // room.GetComponent<RoomBehaviour>().unlockForTheBoss();
+                GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
+                room.GetComponent<RoomBehaviour>().unlockForTheBoss();
 
                 Vector3 pos = new Vector3(-i * offset.x - offsetBossRoom.x, 0, (size.y - 1) * offset.y + offsetBossRoom.y);
                 // rotate of 180° the room
@@ -200,8 +200,8 @@ public class DungeonGenerator : MonoBehaviour
                 Debug.Log("Room " + ((size.x * size.y) - 1) + " has the right door open");
 
                 // search the Room + (size.x * size.y) - 1 gameobject and unlock the door
-                // GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
-                // room.GetComponent<RoomBehaviour>().unlockForTheBoss_2();
+                GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
+                room.GetComponent<RoomBehaviour>().unlockForTheBoss_2();
 
                 Vector3 pos = new Vector3(-i * offset.x - 96.05f, 0, (size.y - 1) * offset.y + 0.35f);
                 // rotate of 180° the room

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1874945978821361896
+--- !u!1 &6912436094793807460
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3766099538863615743}
-  - component: {fileID: 119076671730953670}
+  - component: {fileID: 8681810967886867748}
+  - component: {fileID: 856237782657554036}
   m_Layer: 0
   m_Name: DungeonGenerator
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3766099538863615743
+--- !u!4 &8681810967886867748
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874945978821361896}
+  m_GameObject: {fileID: 6912436094793807460}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.950063, y: -5.7354527, z: -21.710413}
@@ -32,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &119076671730953670
+--- !u!114 &856237782657554036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874945978821361896}
+  m_GameObject: {fileID: 6912436094793807460}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43db4f1051e78d04cbfc59106b07cf68, type: 3}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 1060134431672068291, guid: 2dd9b2374db0aba45a83c510660afdd2, type: 3}
   bossRoomPrefab: {fileID: 3682919088034645458, guid: 92b25f1c089e6bb4fb0ddfd7511ae278, type: 3}
-  offsetBossRoom: {x: -3, y: 80}
+  offsetBossRoom: {x: -0.5, y: 96.75}
   playerPrefab: {fileID: 6974491721328931481, guid: 9118b084065607542942d6e85d8c5c80, type: 3}
   cameraPlayerPrefab: {fileID: 1922786290838456288, guid: fa3618d25d138094d8c0cb45e63d1ebc, type: 3}
   freeCameraPrefab: {fileID: 7056605393235961419, guid: d6afd526d4416a144940b42b9406f0d1, type: 3}
@@ -57,7 +57,7 @@ MonoBehaviour:
   - {fileID: 5849402511011628288, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}
   - {fileID: 6868877340560994395, guid: 5ec25b5d40dd6644bb08841ff472e362, type: 3}
   randomEnemyPositions: 0a000000f6ffffff00000000
-  size: {x: 4, y: 5}
+  size: {x: 5, y: 5}
   startPos: 0
   offset: {x: 29, y: 29.9}
-  seed: 1
+  seed: 10
