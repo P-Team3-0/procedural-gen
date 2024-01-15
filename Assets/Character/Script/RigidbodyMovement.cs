@@ -11,11 +11,13 @@ public class RigidbodyMovement : MonoBehaviour
     Animator animator;
     int isWalkingHash;
     int isRunningHash;
+    int AttackHash;
     void Start()
     {
         animator = GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
+        AttackHash = Animator.StringToHash("Attack");
     }
 
     void Update()
@@ -29,7 +31,14 @@ public class RigidbodyMovement : MonoBehaviour
 
         bool pressed = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
         bool runPressed = Input.GetKey(KeyCode.LeftShift);
-
+        if (Input.GetMouseButton(0))
+        {
+            animator.SetBool(AttackHash, true);
+        }
+        else
+        {
+            animator.SetBool(AttackHash, false);
+        }
 
         if (pressed)
         {
