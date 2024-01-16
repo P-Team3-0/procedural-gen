@@ -10,6 +10,8 @@ public class DungeonGenerator : MonoBehaviour
         public GameObject room;
         public bool visited = false;
         public bool[] status = new bool[4];
+
+        public bool even = false;
     }
 
     public GameObject roomPrefab;
@@ -37,7 +39,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void Start()
     {
-        Random.InitState(seed);
+        // Random.InitState(seed);
         MazeGenerator();
     }
 
@@ -130,8 +132,8 @@ public class DungeonGenerator : MonoBehaviour
                     var newRoomBehaviour = newRoom.GetComponent<RoomBehaviour>();
                     newRoomBehaviour.updateRoom(currentRoom.status);
 
-                    // Check for adjacent rooms and remove walls accordingly
-                    if ((i + j * size.x) % 2 == 0)
+                    // if room is even and visited, remove the walls
+                    if (currentRoom.even)
                     {
                         if (i > 0 && board[(i - 1) + j * size.x].visited)
                         {
@@ -170,7 +172,7 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     else
                     {
-                        int numberOfEnemies = Random.Range(0, 1);
+                        int numberOfEnemies = Random.Range(0, 5);
 
                         for (int k = 0; k < numberOfEnemies; k++)
                         {
@@ -264,6 +266,16 @@ public class DungeonGenerator : MonoBehaviour
             k++;
 
             board[currentCell].visited = true;
+
+            if (k % 2 == 0)
+            {
+                board[currentCell].even = true;
+            }
+            else
+            {
+                board[currentCell].even = false;
+            }
+
             board[currentCell].room = roomPrefab;
 
             if (currentCell == board.Count - 1)
