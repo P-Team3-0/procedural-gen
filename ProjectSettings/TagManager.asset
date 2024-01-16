@@ -9,6 +9,7 @@ TagManager:
   - Goblin
   - FlyingEnemy
   - FreeLookCamera
+  - Spell
   layers:
   - Default
   - TransparentFX

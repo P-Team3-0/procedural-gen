@@ -12,12 +12,14 @@ public class RigidbodyMovement : MonoBehaviour
     Animator animator;
     int isWalkingHash;
     int isRunningHash;
+    int AttackHash;
     private CinemachineFreeLook activeCamera;
     void Start()
     {
         animator = GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
+        AttackHash = Animator.StringToHash("Attack");
     }
 
     void Update()
@@ -45,7 +47,14 @@ public class RigidbodyMovement : MonoBehaviour
 
         bool pressed = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
         bool runPressed = Input.GetKey(KeyCode.LeftShift);
-
+        if (Input.GetMouseButton(0))
+        {
+            animator.SetBool(AttackHash, true);
+        }
+        else
+        {
+            animator.SetBool(AttackHash, false);
+        }
 
         if (pressed)
         {
@@ -53,7 +62,7 @@ public class RigidbodyMovement : MonoBehaviour
             float Angle = Mathf.Atan2(InputKey.x, InputKey.z) * Mathf.Rad2Deg; //=========================================== LookAt
             float Smooth = Mathf.SmoothDampAngle(transform.eulerAngles.y, Angle, ref Myfloat, 0.1f); //=================== Smooth Rotation
             transform.rotation = Quaternion.Euler(0, Smooth, 0); //============================================================ Change Angle
-            animator.SetBool(isWalkingHash, true);
+            animator.SetBool(isWalkingHash, true);          
         }
         if (!pressed)
         {

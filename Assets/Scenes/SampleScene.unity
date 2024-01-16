@@ -226,10 +226,26 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 119076671730953670, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 5222007430082180114, guid: 03b71b83fcab15f48bd5af3c4bca222f, type: 3}
+    - target: {fileID: 119076671730953670, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: cameraPlayerPrefab
       value: 
       objectReference: {fileID: 8643112841176925124, guid: 6bed822480b994a47bd782725ab9b53e, type: 3}
     - target: {fileID: 119076671730953670, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
+      propertyPath: freeLookCameraPrefab
+      value: 
+      objectReference: {fileID: 1595902024401763257, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
+    - target: {fileID: 856237782657554036, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 182091963032205809, guid: cf391b8d93f27be42b63f35da15a4b14, type: 3}
+    - target: {fileID: 856237782657554036, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
+      propertyPath: cameraPlayerPrefab
+      value: 
+      objectReference: {fileID: 8643112841176925124, guid: 6bed822480b994a47bd782725ab9b53e, type: 3}
+    - target: {fileID: 856237782657554036, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: freeLookCameraPrefab
       value: 
       objectReference: {fileID: 1595902024401763257, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
