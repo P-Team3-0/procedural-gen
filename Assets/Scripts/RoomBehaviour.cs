@@ -5,7 +5,8 @@ using UnityEngine;
 public class RoomBehaviour : MonoBehaviour
 {
     public GameObject[] walls; // down, up, right, left
-    public GameObject[] doors;
+    public GameObject[] doors; // down, up, right, left
+    public GameObject[] lineWalls; // down, up, right, left
 
     public void unlockForTheBoss()
     {
@@ -25,6 +26,25 @@ public class RoomBehaviour : MonoBehaviour
         {
             doors[i].SetActive(statusDoors[i]);
             walls[i].SetActive(!statusDoors[i]);
+        }
+    }
+
+    public void removeWalls(string direction)
+    {
+        switch (direction)
+        {
+            case "down":
+                lineWalls[0].SetActive(false);
+                break;
+            case "up":
+                lineWalls[1].SetActive(false);
+                break;
+            case "right":
+                lineWalls[2].SetActive(false);
+                break;
+            case "left":
+                lineWalls[3].SetActive(false);
+                break;
         }
     }
 

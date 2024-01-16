@@ -37,7 +37,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void Start()
     {
-        // Random.InitState(seed);
+        Random.InitState(seed);
         MazeGenerator();
     }
 
@@ -126,7 +126,30 @@ public class DungeonGenerator : MonoBehaviour
                     Vector3 pos = new Vector3(-i * offset.x, 0, j * offset.y);
                     var newRoom = Instantiate(currentRoom.room, pos, Quaternion.identity);
                     newRoom.name = "Room " + (i + j * size.x);
-                    newRoom.GetComponent<RoomBehaviour>().updateRoom(currentRoom.status);
+
+                    var newRoomBehaviour = newRoom.GetComponent<RoomBehaviour>();
+                    newRoomBehaviour.updateRoom(currentRoom.status);
+
+                    // Check for adjacent rooms and remove walls accordingly
+                    if ((i + j * size.x) % 2 == 0)
+                    {
+                        if (i > 0 && board[(i - 1) + j * size.x].visited)
+                        {
+                            newRoomBehaviour.removeWalls("left");
+                        }
+                        if (i < size.x - 1 && board[(i + 1) + j * size.x].visited)
+                        {
+                            newRoomBehaviour.removeWalls("right");
+                        }
+                        if (j > 0 && board[i + (j - 1) * size.x].visited)
+                        {
+                            newRoomBehaviour.removeWalls("down");
+                        }
+                        if (j < size.y - 1 && board[i + (j + 1) * size.x].visited)
+                        {
+                            newRoomBehaviour.removeWalls("up");
+                        }
+                    }
 
                     if (i == 0 && j == 0)
                     {
@@ -147,7 +170,7 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     else
                     {
-                        int numberOfEnemies = Random.Range(0, 5);
+                        int numberOfEnemies = Random.Range(0, 1);
 
                         for (int k = 0; k < numberOfEnemies; k++)
                         {
