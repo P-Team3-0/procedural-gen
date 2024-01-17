@@ -36,4 +36,9 @@ public class projectileMovement : MonoBehaviour
         direction = dir;
     }
 
+    public void SetSpeed(float distanceFromPlayer)
+    {
+        speed = distanceFromPlayer * speed;
+    }
+
 }

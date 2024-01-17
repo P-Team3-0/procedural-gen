@@ -66,16 +66,15 @@ public class boss : MonoBehaviour
         if (!alreadyAttacked && agent.remainingDistance < playerDistance)
         {
             GameObject fireBreath = Instantiate(bossProjectile, firePoint.transform.position, Quaternion.identity);
-            Vector3 targetPosition = player.transform.position;
-            targetPosition.y = firePoint.transform.position.y; // Set the target y position to be the same as the firePoint's y position
-            Debug.Log(targetPosition);
-            direction = (targetPosition - firePoint.transform.position).normalized;
-            Debug.Log(direction);
+            direction = (player.transform.position - firePoint.transform.position).normalized;
+            float distance = Vector3.Distance(player.transform.position, firePoint.transform.position);
 
             projectileMovement bossProjectileScript = fireBreath.GetComponent<projectileMovement>();
             if (bossProjectileScript != null)
             {
                 bossProjectileScript.SetDirection(direction);
+                bossProjectileScript.SetSpeed(distance);
+
             }
 
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -99,8 +98,6 @@ public class boss : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(firePoint.transform.position, player.transform.position);
     }
 
 }
