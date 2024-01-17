@@ -26,7 +26,8 @@ public class boss : MonoBehaviour
     private GameObject firePoint;
     public Vector3 direction;
 
-    private bool hasFlameBreath= true;
+    private bool hasFlameBreath = true;
+
 
 
 
@@ -46,10 +47,10 @@ public class boss : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInFlameBreathRange = Physics.CheckSphere(transform.position, flameBreathRange, whatIsPlayer);
-        if (playerInSightRange && !playerInAttackRange)
+        if (playerInSightRange && !playerInAttackRange && canMove)
         {
-            if (canMove)
-                ChasePlayer();
+            GetComponent<Animator>().SetTrigger("PlayerAway");
+            ChasePlayer();
         }
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
@@ -67,31 +68,39 @@ public class boss : MonoBehaviour
         transform.LookAt(player.transform);
         transform.Rotate(0, 180, 0);
         agent.SetDestination(transform.position);
-        if (!alreadyAttacked && agent.remainingDistance < playerDistance)
-        {   
-            if(hasFlameBreath && playerInFlameBreathRange){
-                GameObject flameBreathProjectile = Instantiate(flameBreath, firePoint.transform.position, Quaternion.identity);
-                direction = (player.transform.position - firePoint.transform.position).normalized;
-                Quaternion rotation = Quaternion.LookRotation(direction);
-                flameBreathProjectile.transform.rotation = rotation;
-                Invoke(nameof(ResetFlameBreath), timeBetweenFlameBreath);
-                hasFlameBreath = false;
+        if (agent.remainingDistance < playerDistance)
+        {
+            agent.GetComponent<Animator>().SetTrigger("Attack");
 
-            }
-            else{
-                GameObject fireBallProjectile = Instantiate(fireBall, firePoint.transform.position, Quaternion.identity);
-                direction = (player.transform.position - firePoint.transform.position).normalized;
-                float distance = Vector3.Distance(player.transform.position, firePoint.transform.position);
-                fireBallMovement fireBallScript = fireBallProjectile.GetComponent<fireBallMovement>();
-                if (fireBallScript != null)
-                {
-                    fireBallScript.SetDirection(direction);
-                    fireBallScript.SetSpeed(distance);
-                }
-            }
-
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            // Invoke(nameof(ResetAttack), timeBetweenAttacks);
             alreadyAttacked = true;
+        }
+    }
+
+    private void createProjectile()
+    {
+        if (hasFlameBreath && playerInFlameBreathRange)
+        {
+            GetComponent<Animator>().SetTrigger("Attack");
+            GameObject flameBreathProjectile = Instantiate(flameBreath, firePoint.transform.position, Quaternion.identity);
+            direction = (player.transform.position - firePoint.transform.position).normalized;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            flameBreathProjectile.transform.rotation = rotation;
+            Invoke(nameof(ResetFlameBreath), timeBetweenFlameBreath);
+            hasFlameBreath = false;
+        }
+        else
+        {
+            GetComponent<Animator>().SetTrigger("Attack");
+            GameObject fireBallProjectile = Instantiate(fireBall, firePoint.transform.position, Quaternion.identity);
+            direction = (player.transform.position - firePoint.transform.position).normalized;
+            float distance = Vector3.Distance(player.transform.position, firePoint.transform.position);
+            fireBallMovement fireBallScript = fireBallProjectile.GetComponent<fireBallMovement>();
+            if (fireBallScript != null)
+            {
+                fireBallScript.SetDirection(direction);
+                fireBallScript.SetSpeed(distance);
+            }
         }
     }
     protected virtual void ResetAttack()

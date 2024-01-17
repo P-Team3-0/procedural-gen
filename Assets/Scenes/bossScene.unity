@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mega_Wyvern Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6207442957496390084, guid: c790f8bec3cbdbf43940c04791179b8f, type: 3}
+      propertyPath: fireBall
+      value: 
+      objectReference: {fileID: 1947871717301538, guid: c0241859dbff9a54f85830e4790d461f, type: 3}
     - target: {fileID: 8980486842373125478, guid: c790f8bec3cbdbf43940c04791179b8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.939133
@@ -468,11 +472,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421339179914001491, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000081098905
+      value: 0.000000037476635
       objectReference: {fileID: 0}
     - target: {fileID: 421339179914001491, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000017768305
+      value: -0.000000008210919
       objectReference: {fileID: 0}
     - target: {fileID: 1595902024401763257, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
       propertyPath: m_Follow
@@ -496,11 +500,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5004660911344306929, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000005248878
+      value: 0.000000014846961
       objectReference: {fileID: 0}
     - target: {fileID: 5004660911344306929, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000011102213
+      value: 0.0000000031403686
       objectReference: {fileID: 0}
     - target: {fileID: 7012695401847461944, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -548,11 +552,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8980358785796776426, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000051584994
+      value: 0.000000017195001
       objectReference: {fileID: 0}
     - target: {fileID: 8980358785796776426, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000018775415
+      value: 6.258474e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
