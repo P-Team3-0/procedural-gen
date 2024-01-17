@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6912436094793807460
+--- !u!1 &3582515997266975894
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8681810967886867748}
-  - component: {fileID: 856237782657554036}
+  - component: {fileID: 5424066353078673944}
+  - component: {fileID: 4172170310013749580}
   m_Layer: 0
   m_Name: DungeonGenerator
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8681810967886867748
+--- !u!4 &5424066353078673944
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6912436094793807460}
+  m_GameObject: {fileID: 3582515997266975894}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.950063, y: -5.7354527, z: -21.710413}
@@ -32,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &856237782657554036
+--- !u!114 &4172170310013749580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6912436094793807460}
+  m_GameObject: {fileID: 3582515997266975894}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43db4f1051e78d04cbfc59106b07cf68, type: 3}
@@ -47,10 +47,9 @@ MonoBehaviour:
   roomPrefab: {fileID: 1060134431672068291, guid: 2dd9b2374db0aba45a83c510660afdd2, type: 3}
   bossRoomPrefab: {fileID: 3682919088034645458, guid: 92b25f1c089e6bb4fb0ddfd7511ae278, type: 3}
   offsetBossRoom: {x: -0.5, y: 96.75}
-  playerPrefab: {fileID: 6974491721328931481, guid: 9118b084065607542942d6e85d8c5c80, type: 3}
-  cameraPlayerPrefab: {fileID: 1922786290838456288, guid: fa3618d25d138094d8c0cb45e63d1ebc, type: 3}
-  freeCameraPrefab: {fileID: 7056605393235961419, guid: d6afd526d4416a144940b42b9406f0d1, type: 3}
-  freeCameraBrainPrefab: {fileID: 8735505483758412921, guid: 5d0399e20e165174d9980cce2da247e2, type: 3}
+  playerPrefab: {fileID: 182091963032205809, guid: cf391b8d93f27be42b63f35da15a4b14, type: 3}
+  cameraPlayerPrefab: {fileID: 8643112841176925124, guid: 6bed822480b994a47bd782725ab9b53e, type: 3}
+  freeLookCameraPrefab: {fileID: 1595902024401763257, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
   bossPrefab: {fileID: 5541695477197944624, guid: 37ae96e5b2ab4fb4784be0eabb037b5e, type: 3}
   enemiesPrefabs:
   - {fileID: 5541695477197944624, guid: 37ae96e5b2ab4fb4784be0eabb037b5e, type: 3}
@@ -59,5 +58,5 @@ MonoBehaviour:
   randomEnemyPositions: 0a000000f6ffffff00000000
   size: {x: 5, y: 5}
   startPos: 0
-  offset: {x: 29, y: 29.9}
-  seed: 10
+  offset: {x: 29.9, y: 29.9}
+  seed: 42

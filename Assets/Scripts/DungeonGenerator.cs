@@ -10,6 +10,8 @@ public class DungeonGenerator : MonoBehaviour
         public GameObject room;
         public bool visited = false;
         public bool[] status = new bool[4];
+
+        public bool even = false;
     }
 
     public GameObject roomPrefab;
@@ -126,7 +128,30 @@ public class DungeonGenerator : MonoBehaviour
                     Vector3 pos = new Vector3(-i * offset.x, 0, j * offset.y);
                     var newRoom = Instantiate(currentRoom.room, pos, Quaternion.identity);
                     newRoom.name = "Room " + (i + j * size.x);
-                    newRoom.GetComponent<RoomBehaviour>().updateRoom(currentRoom.status);
+
+                    var newRoomBehaviour = newRoom.GetComponent<RoomBehaviour>();
+                    newRoomBehaviour.updateRoom(currentRoom.status);
+
+                    // if room is even and visited, remove the walls
+                    if (currentRoom.even)
+                    {
+                        if (i > 0 && board[(i - 1) + j * size.x].visited)
+                        {
+                            newRoomBehaviour.removeWalls("left");
+                        }
+                        if (i < size.x - 1 && board[(i + 1) + j * size.x].visited)
+                        {
+                            newRoomBehaviour.removeWalls("right");
+                        }
+                        if (j > 0 && board[i + (j - 1) * size.x].visited)
+                        {
+                            newRoomBehaviour.removeWalls("down");
+                        }
+                        if (j < size.y - 1 && board[i + (j + 1) * size.x].visited)
+                        {
+                            newRoomBehaviour.removeWalls("up");
+                        }
+                    }
 
                     if (i == 0 && j == 0)
                     {
@@ -137,9 +162,9 @@ public class DungeonGenerator : MonoBehaviour
                         //setting the freelookcamera parameters
                         freeLookCameraPrefab.Follow = player.transform;
                         freeLookCameraPrefab.LookAt = player.transform;
-                        freeLookCameraPrefab.GetRig(0).LookAt = player.transform;
-                        freeLookCameraPrefab.GetRig(1).LookAt = player.transform;
-                        freeLookCameraPrefab.GetRig(2).LookAt=player.transform;
+                        //freeLookCameraPrefab.GetRig(0).LookAt = player.transform;
+                        //freeLookCameraPrefab.GetRig(1).LookAt = player.transform;
+                        //freeLookCameraPrefab.GetRig(2).LookAt=player.transform;
 
                         //instantiate camera and freelookCamera
                         Instantiate(cameraPlayerPrefab, pos, Quaternion.identity);
@@ -241,6 +266,16 @@ public class DungeonGenerator : MonoBehaviour
             k++;
 
             board[currentCell].visited = true;
+
+            if (k % 2 == 0)
+            {
+                board[currentCell].even = true;
+            }
+            else
+            {
+                board[currentCell].even = false;
+            }
+
             board[currentCell].room = roomPrefab;
 
             if (currentCell == board.Count - 1)
