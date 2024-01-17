@@ -10,20 +10,23 @@ public class boss : MonoBehaviour
 
     public LayerMask BossFlyingArea, whatIsPlayer;
 
-    public float sightRange, attackRange;
+    public float sightRange, attackRange, flameBreathRange;
 
-    public bool playerInSightRange, playerInAttackRange;
+    public bool playerInSightRange, playerInAttackRange, playerInFlameBreathRange;
 
-    public float timeBetweenAttacks;
+    public float timeBetweenAttacks, timeBetweenFlameBreath;
     public float playerDistance;
     protected bool alreadyAttacked;
 
     private bool canMove = false;
 
-    public GameObject bossProjectile;
+    public GameObject fireBall;
+    public GameObject flameBreath;
 
     private GameObject firePoint;
     public Vector3 direction;
+
+    private bool hasFlameBreath= true;
 
 
 
@@ -42,6 +45,7 @@ public class boss : MonoBehaviour
         firePoint = GameObject.Find("FirePoint");
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInFlameBreathRange = Physics.CheckSphere(transform.position, flameBreathRange, whatIsPlayer);
         if (playerInSightRange && !playerInAttackRange)
         {
             if (canMove)
@@ -64,17 +68,26 @@ public class boss : MonoBehaviour
         transform.Rotate(0, 180, 0);
         agent.SetDestination(transform.position);
         if (!alreadyAttacked && agent.remainingDistance < playerDistance)
-        {
-            GameObject fireBreath = Instantiate(bossProjectile, firePoint.transform.position, Quaternion.identity);
-            direction = (player.transform.position - firePoint.transform.position).normalized;
-            float distance = Vector3.Distance(player.transform.position, firePoint.transform.position);
+        {   
+            if(hasFlameBreath && playerInFlameBreathRange){
+                GameObject flameBreathProjectile = Instantiate(flameBreath, firePoint.transform.position, Quaternion.identity);
+                direction = (player.transform.position - firePoint.transform.position).normalized;
+                Quaternion rotation = Quaternion.LookRotation(direction);
+                flameBreathProjectile.transform.rotation = rotation;
+                Invoke(nameof(ResetFlameBreath), timeBetweenFlameBreath);
+                hasFlameBreath = false;
 
-            projectileMovement bossProjectileScript = fireBreath.GetComponent<projectileMovement>();
-            if (bossProjectileScript != null)
-            {
-                bossProjectileScript.SetDirection(direction);
-                bossProjectileScript.SetSpeed(distance);
-
+            }
+            else{
+                GameObject fireBallProjectile = Instantiate(fireBall, firePoint.transform.position, Quaternion.identity);
+                direction = (player.transform.position - firePoint.transform.position).normalized;
+                float distance = Vector3.Distance(player.transform.position, firePoint.transform.position);
+                fireBallMovement fireBallScript = fireBallProjectile.GetComponent<fireBallMovement>();
+                if (fireBallScript != null)
+                {
+                    fireBallScript.SetDirection(direction);
+                    fireBallScript.SetSpeed(distance);
+                }
             }
 
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -84,6 +97,11 @@ public class boss : MonoBehaviour
     protected virtual void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    private void ResetFlameBreath()
+    {
+        hasFlameBreath = true;
     }
 
     private void BossCanMove()
@@ -98,6 +116,8 @@ public class boss : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, flameBreathRange);
     }
 
 }

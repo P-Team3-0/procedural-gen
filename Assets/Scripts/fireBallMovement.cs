@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class projectileMovement : MonoBehaviour
+public class fireBallMovement : MonoBehaviour
 {
 
     public float speed;

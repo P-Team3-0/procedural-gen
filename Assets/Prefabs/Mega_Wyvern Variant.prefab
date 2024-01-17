@@ -113,43 +113,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1301666742839490564, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4166239198478291939}
+      addedObject: {fileID: 4381384348817885016}
     - targetCorrespondingSourceObject: {fileID: 1301666742839490564, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4381384348817885016}
+      addedObject: {fileID: 6207442957496390084}
   m_SourcePrefab: {fileID: 100100000, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
 --- !u!1 &4089221075098279726 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1301666742839490564, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
   m_PrefabInstance: {fileID: 3075861683171043114}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4166239198478291939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4089221075098279726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb40bbe444741f7418408d75ef8e3e53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  agent: {fileID: 4381384348817885016}
-  BossFlyingArea:
-    serializedVersion: 2
-    m_Bits: 512
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  sightRange: 60
-  attackRange: 20
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  timeBetweenAttacks: 0.5
-  playerDistance: 20
-  bossProjectile: {fileID: 1947871717301538, guid: c0241859dbff9a54f85830e4790d461f, type: 3}
 --- !u!195 &4381384348817885016
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -172,6 +145,38 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6207442957496390084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4089221075098279726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb40bbe444741f7418408d75ef8e3e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  agent: {fileID: 4381384348817885016}
+  BossFlyingArea:
+    serializedVersion: 2
+    m_Bits: 512
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  sightRange: 60
+  attackRange: 20
+  flameBreathRange: 15
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  playerInFlameBreathRange: 0
+  timeBetweenAttacks: 1.5
+  timeBetweenFlameBreath: 5
+  playerDistance: 15
+  fireBall: {fileID: 1947871717301538, guid: c0241859dbff9a54f85830e4790d461f, type: 3}
+  flameBreath: {fileID: 1634767862067424, guid: 0d77249c31cb013458840070cf38bd1c, type: 3}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!4 &8227720050649874972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6377409523878815030, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
