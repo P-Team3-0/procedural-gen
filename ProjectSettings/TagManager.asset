@@ -10,6 +10,7 @@ TagManager:
   - FlyingEnemy
   - FreeLookCamera
   - Spell
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - whatIsPlayer
   - Enemy
   - whatIsFlying
-  - 
+  - BossFlyingArea
   - 
   - 
   - 

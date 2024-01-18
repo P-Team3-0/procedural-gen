@@ -383,7 +383,7 @@ MonoBehaviour:
   m_CenterOnActivate: 1
 --- !u!1 &5686440847673820027
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -589,7 +589,7 @@ MonoBehaviour:
   m_ComponentOwner: {fileID: 5007155776424919235}
 --- !u!1 &8861282318449492859
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Animated Low Poly Explosion
+* source:	https://sketchfab.com/3d-models/animated-low-poly-explosion-15f9fa01e7ae4e5b8f188300ed89c8ea
+* author:	yanix (https://sketchfab.com/yanix)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Animated Low Poly Explosion" (https://sketchfab.com/3d-models/animated-low-poly-explosion-15f9fa01e7ae4e5b8f188300ed89c8ea) by yanix (https://sketchfab.com/yanix) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
