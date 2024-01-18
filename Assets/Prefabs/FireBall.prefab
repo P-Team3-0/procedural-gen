@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: 7080756416205546778}
   m_Layer: 0
   m_Name: FireBall
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4802,6 +4802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.6
   fireRate: 5
+  fire: {fileID: 1901245927194888, guid: 2d367458f6567a9418c829fd771faa2d, type: 3}
 --- !u!198 &198706150799401992
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -8388,9 +8389,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -8571,7 +8572,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
