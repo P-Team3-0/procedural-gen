@@ -8,4 +8,12 @@ public class DestroyFlame : MonoBehaviour
     {
         Destroy(gameObject, destroyDelay);
     }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log(other.name);
+        }
+    }
 }
