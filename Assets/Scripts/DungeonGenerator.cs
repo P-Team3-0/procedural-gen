@@ -18,6 +18,8 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject bossRoomPrefab;
     public Vector2 offsetBossRoom;
 
+    public int maxNumEnemies = 5;
+
     public GameObject playerPrefab;
     public GameObject cameraPlayerPrefab;
     public CinemachineFreeLook freeLookCameraPrefab;
@@ -172,7 +174,7 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     else
                     {
-                        int numberOfEnemies = Random.Range(0, 5);
+                        int numberOfEnemies = Random.Range(0, maxNumEnemies);
 
                         for (int k = 0; k < numberOfEnemies; k++)
                         {
