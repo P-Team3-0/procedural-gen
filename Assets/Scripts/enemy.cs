@@ -72,12 +72,18 @@ public class enemy : MonoBehaviour
 
     protected virtual void SearchWalkPoint()
     {
+        // Ottieni tutte le stanze
+        Transform room = transform.parent;
+        Vector3 roomSize = new Vector3(22, 0, 22);
+        Vector3 min = room.position - roomSize / 2;
+        Vector3 max = room.position + roomSize / 2;
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (walkPoint.x >= min.x && walkPoint.x <= max.x &&
+        walkPoint.z >= min.z && walkPoint.z <= max.z && Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
 
@@ -143,6 +149,8 @@ public class enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, walkPoint);
     }
 
 

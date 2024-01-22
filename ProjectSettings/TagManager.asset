@@ -11,6 +11,7 @@ TagManager:
   - FreeLookCamera
   - Spell
   - Floor
+  - RoomBounds
   layers:
   - Default
   - TransparentFX
