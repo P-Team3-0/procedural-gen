@@ -22,10 +22,10 @@ public class player : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        Debug.Log("Player health: " + health);
+        ("Player health: " + health);
         if (health <= 0)
         {
-            // Debug.Log("Player died");
+            // ("Player died");
         }
     }
 

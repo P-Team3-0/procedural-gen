@@ -135,10 +135,10 @@ public class enemy : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        Debug.Log("Enemy health: " + health);
+        ("Enemy health: " + health);
         if (health <= 0)
         {
-            // Debug.Log("Enemy died");
+            // ("Enemy died");
         }
     }
 
