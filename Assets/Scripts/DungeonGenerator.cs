@@ -74,7 +74,6 @@ public class DungeonGenerator : MonoBehaviour
 
                     if (collider.bounds.Contains(player.transform.position))
                     {
-                        Debug.Log("Player is inside the room " + (i + j * size.x));
 
                         int countEnemies = 0;
 
@@ -103,7 +102,6 @@ public class DungeonGenerator : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("There are " + countEnemies + " enemies in the room");
                             roomParent.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, false, false });
                         }
                     }
@@ -207,8 +205,6 @@ public class DungeonGenerator : MonoBehaviour
         {
             if (board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] & !board[i + (size.y - 1) * size.x].status[2] && !board[i + (size.y - 1) * size.x].status[3])
             {
-                Debug.Log("Room " + ((size.x * size.y) - 1) + " has the north door open");
-
                 // search the Room + (size.x * size.y) - 1 gameobject and unlock the door
                 GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
                 room.GetComponent<RoomBehaviour>().unlockForTheBoss();
@@ -224,8 +220,6 @@ public class DungeonGenerator : MonoBehaviour
             }
             else if (!board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] && !board[i + (size.y - 1) * size.x].status[2] && board[i + (size.y - 1) * size.x].status[3])
             {
-                Debug.Log("Room " + ((size.x * size.y) - 1) + " has the right door open");
-
                 // search the Room + (size.x * size.y) - 1 gameobject and unlock the door
                 GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
                 room.GetComponent<RoomBehaviour>().unlockForTheBoss_2();
@@ -254,9 +248,6 @@ public class DungeonGenerator : MonoBehaviour
                 board.Add(new Cell());
             }
         }
-
-        // Debug.Log(board.Count);
-
         int currentCell = startPos;
 
         Stack<int> path = new Stack<int>();

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ProjectileMove : MonoBehaviour
 {
-    
+
     public float speed;
     public float fireRate;
 
-    
+
     private void Start()
     {
 
@@ -21,7 +21,7 @@ public class ProjectileMove : MonoBehaviour
         }
         else
         {
-            Debug.Log("No Speed");
+            ("No Speed");
         }
 
     }
