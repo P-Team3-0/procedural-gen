@@ -125,6 +125,10 @@ public class enemy : MonoBehaviour
             // GetComponent<Rigidbody>().AddForce(-collision.relativeVelocity, ForceMode.Impulse);
             StopForce();
         }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            StopForce();
+        }
     }
 
     private void StopForce()
@@ -135,10 +139,10 @@ public class enemy : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        ("Enemy health: " + health);
+        Debug.Log("Enemy health: " + health);
         if (health <= 0)
         {
-            // ("Enemy died");
+            // Debug.Log("Enemy died");
         }
     }
 
