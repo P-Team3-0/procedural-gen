@@ -20,7 +20,7 @@ public class WitchAttack : MonoBehaviour
 
         if (freeLookCamera == null)
         {
-            Error("FreeLook Camera non trovata nel tuo scenario!");
+            Debug.Log("FreeLook Camera non trovata nel tuo scenario!");
         }
     }
 
@@ -60,7 +60,7 @@ public class WitchAttack : MonoBehaviour
         }
         else
         {
-            ("No fire point");
+            Debug.Log("No fire point");
         }
     }
     IEnumerator SpawnVFXWithDelay(Quaternion rotation)

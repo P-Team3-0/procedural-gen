@@ -13,7 +13,6 @@ public class DestroyFlame : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            (other.name);
         }
     }
 }

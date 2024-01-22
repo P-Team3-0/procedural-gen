@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43db4f1051e78d04cbfc59106b07cf68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefab: {fileID: 1060134431672068291, guid: 2dd9b2374db0aba45a83c510660afdd2, type: 3}
+  roomPrefab: {fileID: 7111576701136678338, guid: 454f6dab2f01a9f48807268d87d7d973, type: 3}
   bossRoomPrefab: {fileID: 3682919088034645458, guid: 92b25f1c089e6bb4fb0ddfd7511ae278, type: 3}
   offsetBossRoom: {x: -0.5, y: 96.75}
+  maxNumEnemies: 5
   playerPrefab: {fileID: 182091963032205809, guid: cf391b8d93f27be42b63f35da15a4b14, type: 3}
   cameraPlayerPrefab: {fileID: 8643112841176925124, guid: 6bed822480b994a47bd782725ab9b53e, type: 3}
   freeLookCameraPrefab: {fileID: 1595902024401763257, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}

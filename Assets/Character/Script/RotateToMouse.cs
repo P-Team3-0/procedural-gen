@@ -45,12 +45,11 @@ public class RotateToMouse : MonoBehaviour
             {
                 // Applica la rotazione all'oggetto
                 transform.rotation = rotation;
-                (transform.rotation);
             }
         }
         else
         {
-            ("No camera");
+            Debug.Log("No camera");
         }
     }
 

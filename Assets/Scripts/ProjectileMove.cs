@@ -21,7 +21,7 @@ public class ProjectileMove : MonoBehaviour
         }
         else
         {
-            ("No Speed");
+            Debug.Log("No Speed");
         }
 
     }

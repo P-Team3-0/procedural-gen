@@ -22,7 +22,6 @@ public class player : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        ("Player health: " + health);
         if (health <= 0)
         {
             // ("Player died");

@@ -79,7 +79,6 @@ public class DungeonGenerator : MonoBehaviour
 
                         foreach (Transform child in roomParent.transform)
                         {
-
                             if (child.tag == "Enemy" || child.tag == "FlyingEnemy")
                             {
                                 countEnemies++;
