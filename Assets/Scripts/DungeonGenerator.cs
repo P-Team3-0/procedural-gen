@@ -11,12 +11,14 @@ public class DungeonGenerator : MonoBehaviour
         public bool visited = false;
         public bool[] status = new bool[4];
 
-        public bool even = false;
+        // public bool even = false;
     }
 
     public GameObject roomPrefab;
     public GameObject bossRoomPrefab;
     public Vector2 offsetBossRoom;
+
+    public int maxNumEnemies = 5;
 
     public GameObject playerPrefab;
     public GameObject cameraPlayerPrefab;
@@ -130,26 +132,26 @@ public class DungeonGenerator : MonoBehaviour
                     var newRoomBehaviour = newRoom.GetComponent<RoomBehaviour>();
                     newRoomBehaviour.updateRoom(currentRoom.status);
 
-                    // if room is even and visited, remove the walls
-                    if (currentRoom.even)
-                    {
-                        if (i > 0 && board[(i - 1) + j * size.x].visited)
-                        {
-                            newRoomBehaviour.removeWalls("left");
-                        }
-                        if (i < size.x - 1 && board[(i + 1) + j * size.x].visited)
-                        {
-                            newRoomBehaviour.removeWalls("right");
-                        }
-                        if (j > 0 && board[i + (j - 1) * size.x].visited)
-                        {
-                            newRoomBehaviour.removeWalls("down");
-                        }
-                        if (j < size.y - 1 && board[i + (j + 1) * size.x].visited)
-                        {
-                            newRoomBehaviour.removeWalls("up");
-                        }
-                    }
+                    // // if room is even and visited, remove the walls
+                    // if (currentRoom.even)
+                    // {
+                    //     if (i > 0 && board[(i - 1) + j * size.x].visited)
+                    //     {
+                    //         newRoomBehaviour.removeWalls("left");
+                    //     }
+                    //     if (i < size.x - 1 && board[(i + 1) + j * size.x].visited)
+                    //     {
+                    //         newRoomBehaviour.removeWalls("right");
+                    //     }
+                    //     if (j > 0 && board[i + (j - 1) * size.x].visited)
+                    //     {
+                    //         newRoomBehaviour.removeWalls("down");
+                    //     }
+                    //     if (j < size.y - 1 && board[i + (j + 1) * size.x].visited)
+                    //     {
+                    //         newRoomBehaviour.removeWalls("up");
+                    //     }
+                    // }
 
                     if (i == 0 && j == 0)
                     {
@@ -170,7 +172,7 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     else
                     {
-                        int numberOfEnemies = Random.Range(0, 5);
+                        int numberOfEnemies = Random.Range(0, maxNumEnemies);
 
                         for (int k = 0; k < numberOfEnemies; k++)
                         {
@@ -258,14 +260,14 @@ public class DungeonGenerator : MonoBehaviour
 
             board[currentCell].visited = true;
 
-            if (k % 2 == 0)
-            {
-                board[currentCell].even = true;
-            }
-            else
-            {
-                board[currentCell].even = false;
-            }
+            // if (k % 2 == 0)
+            // {
+            //     board[currentCell].even = true;
+            // }
+            // else
+            // {
+            //     board[currentCell].even = false;
+            // }
 
             board[currentCell].room = roomPrefab;
 
