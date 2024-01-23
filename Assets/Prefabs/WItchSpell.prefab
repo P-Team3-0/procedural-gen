@@ -8473,9 +8473,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -8656,7 +8656,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 1
   TriggerModule:
@@ -9710,6 +9710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 40
   fireRate: 2
+  damage: 10
 --- !u!114 &927656429446838864
 MonoBehaviour:
   m_ObjectHideFlags: 0
