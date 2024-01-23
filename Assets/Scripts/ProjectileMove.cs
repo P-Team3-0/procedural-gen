@@ -29,7 +29,8 @@ public class ProjectileMove : MonoBehaviour
     }
     private void OnParticleCollision(GameObject other)
     {
-        if (other.layer == LayerMask.NameToLayer("Enemy"))
+        Debug.Log("Spell Collision: " + other.name);
+        if (LayerMask.LayerToName(other.layer) == "Enemy")
         {
             other.GetComponent<LifeManager>().TakeDamage(damage);
         }

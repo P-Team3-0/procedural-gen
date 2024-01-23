@@ -136,13 +136,13 @@ public class enemy : MonoBehaviour
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
-    public void TakeDamage(int damageAmount)
+    private void OnParticleCollision(GameObject other)
     {
-        health -= damageAmount;
-        Debug.Log("Enemy health: " + health);
-        if (health <= 0)
+        if (other.CompareTag("Spell"))
         {
-            // Debug.Log("Enemy died");
+            ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
+            int spellDamage = projectileMove.damage;
+            this.GetComponent<LifeManager>().TakeDamage(spellDamage);
         }
     }
 

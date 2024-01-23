@@ -87,7 +87,10 @@ public class RigidbodyMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (LayerMask.LayerToName(collision.gameObject.layer) == "Enemy")
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Enemy" || collision.gameObject.tag == "Bullet")
+        {
+            StopForce();
+        }
         {
             StopForce();
         }
