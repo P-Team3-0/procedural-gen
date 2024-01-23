@@ -119,7 +119,7 @@ public class enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<player>().TakeDamage(attack);
+            player.GetComponent<LifeManager>().TakeDamage(attack);
             // Reduce the impact of collision 
             // force = collision.relativeVelocity * 0.01f;
             // GetComponent<Rigidbody>().AddForce(-collision.relativeVelocity, ForceMode.Impulse);

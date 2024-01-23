@@ -8,6 +8,8 @@ public class ProjectileMove : MonoBehaviour
     public float speed;
     public float fireRate;
 
+    public int damage;
+
 
     private void Start()
     {
@@ -27,6 +29,10 @@ public class ProjectileMove : MonoBehaviour
     }
     private void OnParticleCollision(GameObject other)
     {
+        if (other.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            other.GetComponent<LifeManager>().TakeDamage(damage);
+        }
         Destroy(gameObject);
     }
 
