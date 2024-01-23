@@ -62,7 +62,7 @@ public class RigidbodyMovement : MonoBehaviour
             float Angle = Mathf.Atan2(InputKey.x, InputKey.z) * Mathf.Rad2Deg; //=========================================== LookAt
             float Smooth = Mathf.SmoothDampAngle(transform.eulerAngles.y, Angle, ref Myfloat, 0.1f); //=================== Smooth Rotation
             transform.rotation = Quaternion.Euler(0, Smooth, 0); //============================================================ Change Angle
-            animator.SetBool(isWalkingHash, true);          
+            animator.SetBool(isWalkingHash, true);
         }
         if (!pressed)
         {
@@ -85,6 +85,20 @@ public class RigidbodyMovement : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (LayerMask.LayerToName(collision.gameObject.layer) == "Enemy")
+        {
+            StopForce();
+        }
+    }
 
-
+    private void StopForce()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
 }
+
+
+
