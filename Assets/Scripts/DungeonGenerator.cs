@@ -79,7 +79,9 @@ public class DungeonGenerator : MonoBehaviour
 
                         foreach (Transform child in roomParent.transform)
                         {
-                            if (child.tag == "Enemy" || child.tag == "FlyingEnemy")
+                            // if layer is Enemy
+                            // pick the layer from the inspector, not the number
+                            if (LayerMask.LayerToName(child.gameObject.layer) == "Enemy")
                             {
                                 countEnemies++;
                             }
