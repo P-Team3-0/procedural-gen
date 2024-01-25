@@ -86,6 +86,28 @@ public class flyingEnemy : enemy
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.CompareTag("Spell"))
+        {
+            ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
+            int spellDamage = projectileMove.damage;
+            this.GetComponent<LifeManager>().TakeDamage(spellDamage);
+            Destroy(other.transform.parent.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        StopForce();
+    }
+
+    private void StopForce()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

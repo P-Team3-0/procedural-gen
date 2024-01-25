@@ -120,15 +120,8 @@ public class enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player.GetComponent<LifeManager>().TakeDamage(attack);
-            // Reduce the impact of collision 
-            // force = collision.relativeVelocity * 0.01f;
-            // GetComponent<Rigidbody>().AddForce(-collision.relativeVelocity, ForceMode.Impulse);
-            StopForce();
         }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            StopForce();
-        }
+        StopForce();
     }
 
     private void StopForce()
@@ -143,6 +136,7 @@ public class enemy : MonoBehaviour
             ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
             int spellDamage = projectileMove.damage;
             this.GetComponent<LifeManager>().TakeDamage(spellDamage);
+            Destroy(other.transform.parent.gameObject);
         }
     }
 
