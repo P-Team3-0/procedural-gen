@@ -8,11 +8,18 @@ public class fireBallMovement : ProjectileMove
 
     public GameObject fire;
 
+    public int fireBallDamage;
+
     private void OnParticleCollision(GameObject other)
-    {   
+    {
+        Debug.Log(other.name);
         if (other.CompareTag("Floor"))
         {
             Instantiate(fire, other.transform.position, Quaternion.identity);
+        }
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<LifeManager>().TakeDamage(fireBallDamage);
         }
         Destroy(gameObject);
     }

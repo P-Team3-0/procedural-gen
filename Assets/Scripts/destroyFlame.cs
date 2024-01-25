@@ -4,6 +4,8 @@ public class DestroyFlame : MonoBehaviour
 {
     public float destroyDelay;
 
+    public int damage;
+
     private void Start()
     {
         Destroy(gameObject, destroyDelay);
@@ -13,6 +15,7 @@ public class DestroyFlame : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            other.GetComponent<LifeManager>().TakeDamage(damage);
         }
     }
 }

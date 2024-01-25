@@ -4802,7 +4802,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.6
   fireRate: 5
+  damage: 10
   fire: {fileID: 1901245927194888, guid: 2d367458f6567a9418c829fd771faa2d, type: 3}
+  fireBallDamage: 40
 --- !u!198 &198706150799401992
 ParticleSystem:
   m_ObjectHideFlags: 0

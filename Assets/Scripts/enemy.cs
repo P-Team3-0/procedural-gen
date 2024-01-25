@@ -95,7 +95,6 @@ public class enemy : MonoBehaviour
 
     protected virtual void ChasePlayer()
     {
-        Debug.Log(isPlayerInRoom);
         transform.LookAt(player.transform);
         if (!gameObject.CompareTag("Goblin"))
             transform.Rotate(0, 180, 0);

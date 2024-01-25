@@ -20,6 +20,7 @@ public class LifeManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        Debug.Log("Damage: " + damage);
         Debug.Log("Health: " + health);
         if (health <= 0)
         {

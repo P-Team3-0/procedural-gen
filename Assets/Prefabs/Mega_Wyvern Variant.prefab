@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1301666742839490564, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
+      propertyPath: m_TagString
+      value: FlyingEnemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1565587540098095497, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -453,6 +457,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1301666742839490564, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6207442957496390084}
+    - targetCorrespondingSourceObject: {fileID: 1301666742839490564, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8223805937733140759}
   m_SourcePrefab: {fileID: 100100000, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
 --- !u!1 &4089221075098279726 stripped
 GameObject:
@@ -513,6 +520,19 @@ MonoBehaviour:
   fireBall: {fileID: 1947871717301538, guid: c0241859dbff9a54f85830e4790d461f, type: 3}
   flameBreath: {fileID: 1634767862067424, guid: 0d77249c31cb013458840070cf38bd1c, type: 3}
   direction: {x: 0, y: 0, z: 0}
+--- !u!114 &-8223805937733140759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4089221075098279726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5fc74baaeb70b45bc1ab2f51afd663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 300
 --- !u!4 &8227720050649874972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6377409523878815030, guid: 452b0553cf7cb9e4fb7ccf03eb874f01, type: 3}
