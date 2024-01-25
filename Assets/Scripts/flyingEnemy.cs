@@ -8,11 +8,36 @@ public class flyingEnemy : enemy
     public float bulletSpeed;
     public float bulletSpawnDistance;
 
+    private Transform room;
+    private Vector3 roomSize;
+
+    private Vector3 roomMin;
+    private Vector3 roomMax;
+
+    private bool isPlayerInRoom;
+
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        room = transform.parent;
+        roomSize = new Vector3(22, 0, 22);
+        roomMin = room.position - roomSize / 2;
+        roomMax = room.position + roomSize / 2;
+    }
+    private void Update()
+    {
+        isPlayerInRoom = player.transform.position.x >= roomMin.x && player.transform.position.x <= roomMax.x &&
+        player.transform.position.z >= roomMin.z && player.transform.position.z <= roomMax.z;
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        if ((!playerInSightRange && !playerInAttackRange) || (playerInSightRange && !isPlayerInRoom)) Patroling();
+        if (playerInSightRange && !playerInAttackRange && isPlayerInRoom)
+        {
+            ChasePlayer();
+        }
+        if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
 
     protected override void AttackPlayer()
@@ -59,35 +84,21 @@ public class flyingEnemy : enemy
 
     protected override void SearchWalkPoint()
     {
-        Transform room = transform.parent;
-        Vector3 roomSize = new Vector3(22, 0, 22);
-        Vector3 min = room.position - roomSize / 2;
-        Vector3 max = room.position + roomSize / 2;
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        if (walkPoint.x >= min.x && walkPoint.x <= max.x &&
-        walkPoint.z >= min.z && walkPoint.z <= max.z && Physics.Raycast(walkPoint, -transform.up, 6f, whatIsGround))
+        if (walkPoint.x >= roomMin.x && walkPoint.x <= roomMax.x &&
+        walkPoint.z >= roomMin.z && walkPoint.z <= roomMax.z && Physics.Raycast(walkPoint, -transform.up, 6f, whatIsGround))
             walkPointSet = true;
 
     }
 
-    private void Update()
-    {
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange)
-        {
-            ChasePlayer();
-        }
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
-    }
 
     private void OnParticleCollision(GameObject other)
     {
+
         if (other.CompareTag("Spell"))
         {
             ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
@@ -112,5 +123,9 @@ public class flyingEnemy : enemy
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, (player.transform.position - transform.position).normalized);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, walkPoint);
     }
 }

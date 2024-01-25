@@ -30,18 +30,25 @@ public class enemy : MonoBehaviour
     //Enemy variables
     public int health;
     public int attack;
+    private Transform room;
+    private Vector3 roomSize;
 
-    private Vector3 force;
+    private Vector3 roomMin;
+    private Vector3 roomMax;
+
+    private bool isPlayerInRoom;
 
 
     //Call every frame
     private void Update()
     {
+        isPlayerInRoom = player.transform.position.x >= roomMin.x && player.transform.position.x <= roomMax.x &&
+        player.transform.position.z >= roomMin.z && player.transform.position.z <= roomMax.z;
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange)
+        if ((!playerInSightRange && !playerInAttackRange) || (playerInSightRange && !isPlayerInRoom)) Patroling();
+        if (playerInSightRange && !playerInAttackRange && isPlayerInRoom)
         {
             GetComponent<Animator>().SetTrigger("PlayerAway");
             ChasePlayer();
@@ -53,6 +60,10 @@ public class enemy : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        room = transform.parent;
+        roomSize = new Vector3(22, 0, 22);
+        roomMin = room.position - roomSize / 2;
+        roomMax = room.position + roomSize / 2;
     }
 
     protected virtual void Patroling()
@@ -72,23 +83,19 @@ public class enemy : MonoBehaviour
 
     protected virtual void SearchWalkPoint()
     {
-        // Ottieni tutte le stanze
-        Transform room = transform.parent;
-        Vector3 roomSize = new Vector3(22, 0, 22);
-        Vector3 min = room.position - roomSize / 2;
-        Vector3 max = room.position + roomSize / 2;
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        if (walkPoint.x >= min.x && walkPoint.x <= max.x &&
-        walkPoint.z >= min.z && walkPoint.z <= max.z && Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (walkPoint.x >= roomMin.x && walkPoint.x <= roomMax.x &&
+        walkPoint.z >= roomMin.z && walkPoint.z <= roomMax.z && Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
 
     protected virtual void ChasePlayer()
     {
+        Debug.Log(isPlayerInRoom);
         transform.LookAt(player.transform);
         if (!gameObject.CompareTag("Goblin"))
             transform.Rotate(0, 180, 0);
