@@ -28,7 +28,6 @@ public class enemy : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
     //Enemy variables
-    public int health;
     public int attack;
     private Transform room;
     private Vector3 roomSize;
@@ -38,22 +37,34 @@ public class enemy : MonoBehaviour
 
     private bool isPlayerInRoom;
 
+    public float deathDelay;
+
+    public int health;
+
 
     //Call every frame
     private void Update()
     {
+        health = GetComponent<LifeManager>().health;
         isPlayerInRoom = player.transform.position.x >= roomMin.x && player.transform.position.x <= roomMax.x &&
         player.transform.position.z >= roomMin.z && player.transform.position.z <= roomMax.z;
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        if ((!playerInSightRange && !playerInAttackRange) || (playerInSightRange && !isPlayerInRoom)) Patroling();
-        if (playerInSightRange && !playerInAttackRange && isPlayerInRoom)
+        if (health > 0)
         {
-            GetComponent<Animator>().SetTrigger("PlayerAway");
-            ChasePlayer();
+            if ((!playerInSightRange && !playerInAttackRange) || (playerInSightRange && !isPlayerInRoom)) Patroling();
+            if (playerInSightRange && !playerInAttackRange && isPlayerInRoom)
+            {
+                GetComponent<Animator>().SetTrigger("PlayerAway");
+                ChasePlayer();
+            }
+            if (playerInSightRange && playerInAttackRange) AttackPlayer();
         }
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        else
+        {
+            Death();
+        }
     }
 
     private void Start()
@@ -64,6 +75,7 @@ public class enemy : MonoBehaviour
         roomSize = new Vector3(22, 0, 22);
         roomMin = room.position - roomSize / 2;
         roomMax = room.position + roomSize / 2;
+        health = GetComponent<LifeManager>().health;
     }
 
     protected virtual void Patroling()
@@ -119,6 +131,14 @@ public class enemy : MonoBehaviour
     protected virtual void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    private void Death()
+    {
+        var animator = GetComponent<Animator>();
+        animator.SetTrigger("Death");
+        GetComponent<NavMeshAgent>().enabled = false;
+        Destroy(gameObject, deathDelay);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -1849,8 +1849,9 @@ MonoBehaviour:
   attackRange: 1
   playerInSightRange: 0
   playerInAttackRange: 0
-  health: 50
   attack: 10
+  deathDelay: 4
+  health: 50
 --- !u!195 &-2179066775268333886
 NavMeshAgent:
   m_ObjectHideFlags: 0
