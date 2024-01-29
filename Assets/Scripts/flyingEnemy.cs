@@ -14,7 +14,8 @@ public class flyingEnemy : enemy
     private Vector3 roomMin;
     private Vector3 roomMax;
 
-    private bool isPlayerInRoom;
+    private bool playerInRoom;
+
 
 
     private void Start()
@@ -25,19 +26,28 @@ public class flyingEnemy : enemy
         roomSize = new Vector3(22, 0, 22);
         roomMin = room.position - roomSize / 2;
         roomMax = room.position + roomSize / 2;
+        health = GetComponent<LifeManager>().health;
     }
     private void Update()
     {
-        isPlayerInRoom = player.transform.position.x >= roomMin.x && player.transform.position.x <= roomMax.x &&
-        player.transform.position.z >= roomMin.z && player.transform.position.z <= roomMax.z;
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        if ((!playerInSightRange && !playerInAttackRange) || (playerInSightRange && !isPlayerInRoom)) Patroling();
-        if (playerInSightRange && !playerInAttackRange && isPlayerInRoom)
+        health = GetComponent<LifeManager>().health;
+        if (health > 0)
         {
-            ChasePlayer();
+            playerInRoom = player.transform.position.x >= roomMin.x && player.transform.position.x <= roomMax.x &&
+            player.transform.position.z >= roomMin.z && player.transform.position.z <= roomMax.z;
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            if ((!playerInSightRange && !playerInAttackRange) || (playerInSightRange && !playerInRoom)) Patroling();
+            if (playerInSightRange && !playerInAttackRange && playerInRoom)
+            {
+                ChasePlayer();
+            }
+            if (playerInSightRange && playerInAttackRange) AttackPlayer();
         }
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        else
+        {
+            Death();
+        }
     }
 
     protected override void AttackPlayer()
@@ -93,6 +103,19 @@ public class flyingEnemy : enemy
         walkPoint.z >= roomMin.z && walkPoint.z <= roomMax.z && Physics.Raycast(walkPoint, -transform.up, 6f, whatIsGround))
             walkPointSet = true;
 
+    }
+
+    protected override void Death()
+    {
+        var animator = GetComponent<Animator>();
+        animator.SetTrigger("Death");
+        while (transform.position.y > 0)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime, transform.position.z);
+        }
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        GetComponent<NavMeshAgent>().enabled = false;
+        Destroy(gameObject, deathDelay);
     }
 
 

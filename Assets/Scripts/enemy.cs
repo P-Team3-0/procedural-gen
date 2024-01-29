@@ -133,7 +133,7 @@ public class enemy : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    private void Death()
+    protected virtual void Death()
     {
         var animator = GetComponent<Animator>();
         animator.SetTrigger("Death");

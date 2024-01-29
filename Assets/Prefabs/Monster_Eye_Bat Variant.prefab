@@ -468,7 +468,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   attack: 10
-  deathDelay: 0
+  deathDelay: 6
   health: 50
   bulletPrefab: {fileID: 148612903647282210, guid: 24db0a7f76c16d843803752e92940d56, type: 3}
   bulletSpeed: 10
