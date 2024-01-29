@@ -8,13 +8,15 @@ public class flyingEnemy : enemy
     public float bulletSpeed;
     public float bulletSpawnDistance;
 
-    private Transform room;
-    private Vector3 roomSize;
+    private Transform currentRoom;
+    private Vector3 size;
 
-    private Vector3 roomMin;
-    private Vector3 roomMax;
+    private Vector3 min;
+    private Vector3 max;
 
     private bool playerInRoom;
+
+    public GameObject destroyEffect;
 
 
 
@@ -22,10 +24,10 @@ public class flyingEnemy : enemy
     {
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
-        room = transform.parent;
-        roomSize = new Vector3(22, 0, 22);
-        roomMin = room.position - roomSize / 2;
-        roomMax = room.position + roomSize / 2;
+        currentRoom = transform.parent;
+        size = new Vector3(22, 0, 22);
+        min = currentRoom.position - size / 2;
+        max = currentRoom.position + size / 2;
         health = GetComponent<LifeManager>().health;
     }
     private void Update()
@@ -33,8 +35,8 @@ public class flyingEnemy : enemy
         health = GetComponent<LifeManager>().health;
         if (health > 0)
         {
-            playerInRoom = player.transform.position.x >= roomMin.x && player.transform.position.x <= roomMax.x &&
-            player.transform.position.z >= roomMin.z && player.transform.position.z <= roomMax.z;
+            playerInRoom = player.transform.position.x >= min.x && player.transform.position.x <= max.x &&
+            player.transform.position.z >= min.z && player.transform.position.z <= max.z;
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             if ((!playerInSightRange && !playerInAttackRange) || (playerInSightRange && !playerInRoom)) Patroling();
@@ -99,22 +101,15 @@ public class flyingEnemy : enemy
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        if (walkPoint.x >= roomMin.x && walkPoint.x <= roomMax.x &&
-        walkPoint.z >= roomMin.z && walkPoint.z <= roomMax.z && Physics.Raycast(walkPoint, -transform.up, 6f, whatIsGround))
+        if (walkPoint.x >= min.x && walkPoint.x <= max.x &&
+        walkPoint.z >= min.z && walkPoint.z <= max.z && Physics.Raycast(walkPoint, -transform.up, 6f, whatIsGround))
             walkPointSet = true;
 
     }
 
     protected override void Death()
     {
-        var animator = GetComponent<Animator>();
-        animator.SetTrigger("Death");
-        while (transform.position.y > 0)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y - Time.deltaTime, transform.position.z);
-        }
-        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        GetComponent<NavMeshAgent>().enabled = false;
+        Instantiate(destroyEffect, transform.position, Quaternion.identity);
         Destroy(gameObject, deathDelay);
     }
 

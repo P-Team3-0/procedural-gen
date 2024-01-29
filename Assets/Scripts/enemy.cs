@@ -138,7 +138,6 @@ public class enemy : MonoBehaviour
         var animator = GetComponent<Animator>();
         animator.SetTrigger("Death");
         GetComponent<NavMeshAgent>().enabled = false;
-        Destroy(gameObject, deathDelay);
     }
 
     private void OnCollisionEnter(Collision collision)
