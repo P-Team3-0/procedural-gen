@@ -28,6 +28,8 @@ public class boss : MonoBehaviour
 
     private bool hasFlameBreath = true;
 
+    public int health;
+
 
 
 
@@ -38,21 +40,30 @@ public class boss : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        health = GetComponent<LifeManager>().health;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        health = GetComponent<LifeManager>().health;
         firePoint = GameObject.Find("FirePoint");
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInFlameBreathRange = Physics.CheckSphere(transform.position, flameBreathRange, whatIsPlayer);
-        if (playerInSightRange && !playerInAttackRange && canMove)
+        if (health > 0)
         {
-            GetComponent<Animator>().SetTrigger("PlayerAway");
-            ChasePlayer();
+            if (playerInSightRange && !playerInAttackRange && canMove)
+            {
+                GetComponent<Animator>().SetTrigger("PlayerAway");
+                ChasePlayer();
+            }
+            if (playerInSightRange && playerInAttackRange) AttackPlayer();
         }
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        else
+        {
+            Death();
+        }
     }
 
     private void ChasePlayer()
@@ -116,6 +127,37 @@ public class boss : MonoBehaviour
     private void BossCanMove()
     {
         canMove = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        StopForce();
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log(other.name);
+        if (other.CompareTag("Spell"))
+        {
+            ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
+            int spellDamage = projectileMove.damage;
+            this.GetComponent<LifeManager>().TakeDamage(spellDamage);
+            Destroy(other.transform.parent.gameObject);
+        }
+        StopForce();
+    }
+
+    private void StopForce()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
+
+    protected virtual void Death()
+    {
+        var animator = GetComponent<Animator>();
+        animator.SetTrigger("Death");
+        GetComponent<NavMeshAgent>().enabled = false;
     }
 
     private void OnDrawGizmosSelected()

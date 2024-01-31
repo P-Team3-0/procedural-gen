@@ -12,6 +12,8 @@ TagManager:
   - Spell
   - Floor
   - RoomBounds
+  - Golem
+  - Boss
   layers:
   - Default
   - TransparentFX

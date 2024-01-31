@@ -51,7 +51,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 182091963032205809, guid: cf391b8d93f27be42b63f35da15a4b14, type: 3}
   cameraPlayerPrefab: {fileID: 8643112841176925124, guid: 6bed822480b994a47bd782725ab9b53e, type: 3}
   freeLookCameraPrefab: {fileID: 1595902024401763257, guid: 41d6237e154c4e44a9a3268f6e662fa2, type: 3}
-  bossPrefab: {fileID: 5541695477197944624, guid: 37ae96e5b2ab4fb4784be0eabb037b5e, type: 3}
+  bossPrefab: {fileID: 4089221075098279726, guid: c790f8bec3cbdbf43940c04791179b8f, type: 3}
   enemiesPrefabs:
   - {fileID: 5541695477197944624, guid: 37ae96e5b2ab4fb4784be0eabb037b5e, type: 3}
   - {fileID: 5849402511011628288, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}

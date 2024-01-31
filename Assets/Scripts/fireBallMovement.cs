@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class fireBallMovement : ProjectileMove
 {
-    private Vector3 direction;
+    public Vector3 direction;
 
     public GameObject fire;
 
@@ -12,6 +12,7 @@ public class fireBallMovement : ProjectileMove
 
     private void OnParticleCollision(GameObject other)
     {
+        Debug.Log(other.name);
         if (other.CompareTag("Floor"))
         {
             Instantiate(fire, other.transform.position, Quaternion.identity);
@@ -30,7 +31,19 @@ public class fireBallMovement : ProjectileMove
 
     public void SetSpeed(float distanceFromPlayer)
     {
+        if (direction.z < 0)
+        {
+            distanceFromPlayer = -distanceFromPlayer;
+        }
         speed = distanceFromPlayer * speed;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        //Draw attack and sight range
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, direction);
+
     }
 
 }
