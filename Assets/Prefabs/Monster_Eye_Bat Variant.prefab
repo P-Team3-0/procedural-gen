@@ -470,7 +470,7 @@ MonoBehaviour:
   attack: 10
   deathDelay: 2
   health: 50
-  bulletPrefab: {fileID: 148612903647282210, guid: 24db0a7f76c16d843803752e92940d56, type: 3}
+  bulletPrefab: {fileID: 8145502431507700120, guid: b3f0aa090183c6a4cafb1328844a57d0, type: 3}
   bulletSpeed: 10
   bulletSpawnDistance: 0
   destroyEffect: {fileID: 1000011128802252, guid: bc54a49a378990d429b5fda6a91e7cef, type: 3}

@@ -96,6 +96,11 @@ public class RigidbodyMovement : MonoBehaviour
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        GetComponent<LifeManager>().TakeDamage(other.GetComponent<bullet>().damage);
+    }
+
     private void StopForce()
     {
         GetComponent<Rigidbody>().velocity = Vector3.zero;
