@@ -10,12 +10,15 @@ public class WitchAttack : MonoBehaviour
     public GameObject player;
 
     private Camera freeLookCamera;
-    private GameObject effectToSpawn;
+    private GameObject spell;
+    private GameObject golemSpell;
+
     private float timeToFire = 0;
 
     void Start()
     {
-        effectToSpawn = vfx[0];
+        spell = vfx[0];
+        golemSpell = vfx[1];
         freeLookCamera = FindObjectOfType<Camera>();
         if (freeLookCamera == null)
         {
@@ -25,26 +28,19 @@ public class WitchAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && Time.time >= timeToFire)
+        if (Input.GetMouseButtonDown(0) && Time.time >= timeToFire)
         {
-            timeToFire = Time.time + 1 / effectToSpawn.GetComponent<ProjectileMove>().fireRate;
-            Vector3 firePointPosition = firePoint.transform.position;
-
-            // Calcola il centro della visuale in spazio mondo
-            Vector3 targetPosition = CalculateTargetPosition();
-
-            // Calcola la direzione dalla posizione del fuoco al centro della visuale
-            Vector3 direction = targetPosition - firePointPosition;
-            direction.Normalize();
-
-            // Applica la direzione al player
-            player.transform.forward = direction;
-            Vector3 euler = player.transform.rotation.eulerAngles;
-            euler.x = 0f;
-            player.transform.rotation = Quaternion.Euler(euler);
+            timeToFire = Time.time + 1 / spell.GetComponent<ProjectileMove>().fireRate;
+            Vector3 direction= AttackFunction();
 
             // Istanzia l'effetto dal firePoint e applica la direzione
-            StartCoroutine(SpawnVFXWithDelay(direction));
+            StartCoroutine(DelaySX(direction));
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector3 direction = AttackFunction();
+            // Istanzia l'effetto dal firePoint e applica la direzione
+            StartCoroutine(DelayDX(direction));
         }
     }
 
@@ -62,26 +58,67 @@ public class WitchAttack : MonoBehaviour
 
         return targetPosition;
     }
-    void SpawnVFX(Vector3 direction)
+
+    Vector3 AttackFunction()
+    {
+        Vector3 firePointPosition = firePoint.transform.position;
+
+        // Calcola il centro della visuale in spazio mondo
+        Vector3 targetPosition = CalculateTargetPosition();
+
+        // Calcola la direzione dalla posizione del fuoco al centro della visuale
+        Vector3 direction = targetPosition - firePointPosition;
+        direction.Normalize();
+
+        // Applica la direzione al player
+        player.transform.forward = direction;
+        Vector3 euler = player.transform.rotation.eulerAngles;
+        euler.x = 0f;
+        player.transform.rotation = Quaternion.Euler(euler);
+        return direction;
+    }
+    void SpawnSpell(Vector3 direction)
     {
         GameObject vfx;
         if (firePoint != null)
         {
             Quaternion rotation = Quaternion.LookRotation(direction);
             // Istanzia l'effetto dal firePoint e applica la rotazione
-            vfx = Instantiate(effectToSpawn, firePoint.transform.position, rotation);
+            vfx = Instantiate(spell, firePoint.transform.position, rotation);
         }
         else
         {
             Debug.Log("No fire point");
         }
     }
-    IEnumerator SpawnVFXWithDelay(Vector3 direction)
+    void SpawnGolemSpell(Vector3 direction)
+    {
+        GameObject vfx;
+        if (firePoint != null)
+        {
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            // Istanzia l'effetto dal firePoint e applica la rotazione
+            vfx = Instantiate(golemSpell, firePoint.transform.position, rotation);
+        }
+        else
+        {
+            Debug.Log("No fire point");
+        }
+    }
+    IEnumerator DelaySX(Vector3 direction)
     {
         // Ritarda l'esecuzione 
         yield return new WaitForSeconds(0.3f);
 
         // Spawna l'effetto visivo
-        SpawnVFX(direction);
+        SpawnSpell(direction);
+    }
+    IEnumerator DelayDX(Vector3 direction)
+    {
+        // Ritarda l'esecuzione 
+        yield return new WaitForSeconds(0.3f);
+
+        // Spawna l'effetto visivo
+        SpawnGolemSpell(direction);
     }
 }
