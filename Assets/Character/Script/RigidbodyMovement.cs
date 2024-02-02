@@ -99,6 +99,7 @@ public class RigidbodyMovement : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
         GetComponent<LifeManager>().TakeDamage(other.GetComponent<bullet>().damage);
+        Destroy(other.gameObject);
     }
 
     private void StopForce()
