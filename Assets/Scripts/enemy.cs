@@ -146,6 +146,14 @@ public class enemy : MonoBehaviour
         {
             player.GetComponent<LifeManager>().TakeDamage(attack);
         }
+        else
+        {
+            if (collision.gameObject.transform.parent.tag == "Hammer")
+            {
+                GetComponent<LifeManager>().TakeDamage(collision.gameObject.transform.parent.GetComponent<ProjectileMove>().damage);
+            }
+
+        }
         StopForce();
     }
 
@@ -156,7 +164,8 @@ public class enemy : MonoBehaviour
     }
     private void OnParticleCollision(GameObject other)
     {
-        if (other.CompareTag("Spell"))
+        Debug.Log(other.name);
+        if (other.CompareTag("Spell") && gameObject.CompareTag("Goblin"))
         {
             ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
             int spellDamage = projectileMove.damage;

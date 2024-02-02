@@ -135,6 +135,10 @@ public class boss : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.transform.parent.tag == "Hammer")
+        {
+            GetComponent<LifeManager>().TakeDamage(collision.gameObject.transform.parent.GetComponent<ProjectileMove>().damage);
+        }
         StopForce();
     }
 

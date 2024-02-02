@@ -76,6 +76,8 @@ public class flyingEnemy : enemy
 
         // Calculate the direction of the bullet
         Vector3 direction = (player.transform.position - transform.position).normalized;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        bullet.transform.rotation = rotation;
 
         // Set bullet speed
         bullet.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
@@ -128,6 +130,10 @@ public class flyingEnemy : enemy
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.transform.parent.tag == "Hammer")
+        {
+            GetComponent<LifeManager>().TakeDamage(collision.gameObject.transform.parent.GetComponent<ProjectileMove>().damage);
+        }
         StopForce();
     }
 

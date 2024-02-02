@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1839983340598322582}
   m_Layer: 0
   m_Name: Mjolnir
-  m_TagString: Untagged
+  m_TagString: Hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fireRate: 4
+  damage: 10
 --- !u!1001 &4703111258994424843
 PrefabInstance:
   m_ObjectHideFlags: 0
