@@ -144,7 +144,8 @@ public class enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<LifeManager>().TakeDamage(attack);
+            if (health > 0)
+                player.GetComponent<LifeManager>().TakeDamage(attack);
         }
         else
         {
