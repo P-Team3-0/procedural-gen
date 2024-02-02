@@ -217,7 +217,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &1130657559
+--- !u!1001 &770738649
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -230,13 +230,9 @@ PrefabInstance:
       value: DungeonGenerator
       objectReference: {fileID: 0}
     - target: {fileID: 4172170310013749580, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
-      propertyPath: size.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4172170310013749580, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
-      propertyPath: size.y
-      value: 7
-      objectReference: {fileID: 0}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 4089221075098279726, guid: c790f8bec3cbdbf43940c04791179b8f, type: 3}
     - target: {fileID: 5424066353078673944, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.950063
@@ -287,4 +283,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 705507995}
-  - {fileID: 1130657559}
+  - {fileID: 770738649}

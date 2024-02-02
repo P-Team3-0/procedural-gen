@@ -18,7 +18,7 @@ public class boss : MonoBehaviour
     public float playerDistance;
     protected bool alreadyAttacked;
 
-    private bool canMove = false;
+    public bool canMove = false;
 
     public GameObject fireBall;
     public GameObject flameBreath;
@@ -29,6 +29,10 @@ public class boss : MonoBehaviour
     private bool hasFlameBreath = true;
 
     public int health;
+
+    public GameObject destroyEffect;
+
+    public float deathDelay;
 
 
 
@@ -136,7 +140,6 @@ public class boss : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log(other.name);
         if (other.CompareTag("Spell"))
         {
             ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
@@ -144,6 +147,7 @@ public class boss : MonoBehaviour
             this.GetComponent<LifeManager>().TakeDamage(spellDamage);
             Destroy(other.transform.parent.gameObject);
         }
+
         StopForce();
     }
 
@@ -155,9 +159,11 @@ public class boss : MonoBehaviour
 
     protected virtual void Death()
     {
-        var animator = GetComponent<Animator>();
-        animator.SetTrigger("Death");
-        GetComponent<NavMeshAgent>().enabled = false;
+        agent.SetDestination(transform.position);
+        StopForce();
+        GetComponent<Animator>().SetTrigger("Death");
+        Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject, deathDelay);
     }
 
     private void OnDrawGizmosSelected()
