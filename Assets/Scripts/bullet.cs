@@ -22,7 +22,8 @@ public class bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<player>().TakeDamage(damage);
+            player.GetComponent<LifeManager>().TakeDamage(damage);
         }
+        Destroy(gameObject);
     }
 }

@@ -18,7 +18,7 @@ public class boss : MonoBehaviour
     public float playerDistance;
     protected bool alreadyAttacked;
 
-    private bool canMove = false;
+    public bool canMove = false;
 
     public GameObject fireBall;
     public GameObject flameBreath;
@@ -27,6 +27,12 @@ public class boss : MonoBehaviour
     public Vector3 direction;
 
     private bool hasFlameBreath = true;
+
+    public int health;
+
+    public GameObject destroyEffect;
+
+    public float deathDelay;
 
 
 
@@ -38,21 +44,30 @@ public class boss : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        health = GetComponent<LifeManager>().health;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        health = GetComponent<LifeManager>().health;
         firePoint = GameObject.Find("FirePoint");
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         playerInFlameBreathRange = Physics.CheckSphere(transform.position, flameBreathRange, whatIsPlayer);
-        if (playerInSightRange && !playerInAttackRange && canMove)
+        if (health > 0)
         {
-            GetComponent<Animator>().SetTrigger("PlayerAway");
-            ChasePlayer();
+            if (playerInSightRange && !playerInAttackRange && canMove)
+            {
+                GetComponent<Animator>().SetTrigger("PlayerAway");
+                ChasePlayer();
+            }
+            if (playerInSightRange && playerInAttackRange) AttackPlayer();
         }
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        else
+        {
+            Death();
+        }
     }
 
     private void ChasePlayer()
@@ -118,6 +133,43 @@ public class boss : MonoBehaviour
         canMove = true;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.transform.parent.tag == "Hammer")
+        {
+            GetComponent<LifeManager>().TakeDamage(collision.gameObject.transform.parent.GetComponent<ProjectileMove>().damage);
+        }
+        StopForce();
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.CompareTag("Spell"))
+        {
+            ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
+            int spellDamage = projectileMove.damage;
+            this.GetComponent<LifeManager>().TakeDamage(spellDamage);
+            Destroy(other.transform.parent.gameObject);
+        }
+
+        StopForce();
+    }
+
+    private void StopForce()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
+
+    protected virtual void Death()
+    {
+        agent.SetDestination(transform.position);
+        StopForce();
+        GetComponent<Animator>().SetTrigger("Death");
+        Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject, deathDelay);
+    }
+
     private void OnDrawGizmosSelected()
     {
         //Draw attack and sight range
@@ -127,6 +179,9 @@ public class boss : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, flameBreathRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(firePoint.transform.position, direction);
+
     }
 
 }

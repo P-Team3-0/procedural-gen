@@ -8,11 +8,48 @@ public class flyingEnemy : enemy
     public float bulletSpeed;
     public float bulletSpawnDistance;
 
+    private Transform currentRoom;
+    private Vector3 size;
+
+    private Vector3 min;
+    private Vector3 max;
+
+    private bool playerInRoom;
+
+    public GameObject destroyEffect;
+
+
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        currentRoom = transform.parent;
+        size = new Vector3(22, 0, 22);
+        min = currentRoom.position - size / 2;
+        max = currentRoom.position + size / 2;
+        health = GetComponent<LifeManager>().health;
+    }
+    private void Update()
+    {
+        health = GetComponent<LifeManager>().health;
+        if (health > 0)
+        {
+            playerInRoom = player.transform.position.x >= min.x && player.transform.position.x <= max.x &&
+            player.transform.position.z >= min.z && player.transform.position.z <= max.z;
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            if ((!playerInSightRange && !playerInAttackRange) || (playerInSightRange && !playerInRoom)) Patroling();
+            if (playerInSightRange && !playerInAttackRange && playerInRoom)
+            {
+                ChasePlayer();
+            }
+            if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        }
+        else
+        {
+            Death();
+        }
     }
 
     protected override void AttackPlayer()
@@ -39,6 +76,8 @@ public class flyingEnemy : enemy
 
         // Calculate the direction of the bullet
         Vector3 direction = (player.transform.position - transform.position).normalized;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        bullet.transform.rotation = rotation;
 
         // Set bullet speed
         bullet.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
@@ -59,10 +98,6 @@ public class flyingEnemy : enemy
 
     protected override void SearchWalkPoint()
     {
-        Transform room = transform.parent;
-        Vector3 roomSize = new Vector3(22, 0, 22);
-        Vector3 min = room.position - roomSize / 2;
-        Vector3 max = room.position + roomSize / 2;
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
@@ -74,21 +109,47 @@ public class flyingEnemy : enemy
 
     }
 
-    private void Update()
+    protected override void Death()
     {
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange)
+        Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject, deathDelay);
+    }
+
+
+    private void OnParticleCollision(GameObject other)
+    {
+
+        if (other.CompareTag("Spell"))
         {
-            ChasePlayer();
+            ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
+            int spellDamage = projectileMove.damage;
+            this.GetComponent<LifeManager>().TakeDamage(spellDamage);
+            Destroy(other.transform.parent.gameObject);
         }
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.transform.parent.tag == "Hammer")
+        {
+            GetComponent<LifeManager>().TakeDamage(collision.gameObject.transform.parent.GetComponent<ProjectileMove>().damage);
+        }
+        StopForce();
+    }
+
+    private void StopForce()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, (player.transform.position - transform.position).normalized);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, walkPoint);
     }
 }

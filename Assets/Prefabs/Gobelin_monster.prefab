@@ -1759,6 +1759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3311591343962908956}
   - component: {fileID: 8322920307600471311}
+  - component: {fileID: 8941211986691646818}
   - component: {fileID: 1722922628566942551}
   - component: {fileID: -2179066775268333886}
   - component: {fileID: 6541685918232503019}
@@ -1807,6 +1808,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8941211986691646818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541695477197944624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5fc74baaeb70b45bc1ab2f51afd663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
 --- !u!114 &1722922628566942551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1835,8 +1849,10 @@ MonoBehaviour:
   attackRange: 1
   playerInSightRange: 0
   playerInAttackRange: 0
-  health: 50
   attack: 10
+  deathDelay: 4
+  health: 50
+  destroyEffect: {fileID: 124582, guid: 7cfd965531bf9634da22d39899b66569, type: 3}
 --- !u!195 &-2179066775268333886
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -8473,20 +8473,20 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
     m_Planes:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 3311591343962908956, guid: 37ae96e5b2ab4fb4784be0eabb037b5e, type: 3}
+    - {fileID: 289280813016335030, guid: 32aca4c053a5f01489bf16f44d32cc2c, type: 3}
+    - {fileID: 4983557392313783059, guid: 5ec25b5d40dd6644bb08841ff472e362, type: 3}
+    - {fileID: 8980486842373125478, guid: c790f8bec3cbdbf43940c04791179b8f, type: 3}
+    - {fileID: 8434886305426171743, guid: 454f6dab2f01a9f48807268d87d7d973, type: 3}
     - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
@@ -8656,7 +8656,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 1
   TriggerModule:
@@ -9710,6 +9710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 40
   fireRate: 2
+  damage: 10
 --- !u!114 &927656429446838864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9738,7 +9739,7 @@ GameObject:
   - component: {fileID: 7065638090925993533}
   m_Layer: 1
   m_Name: particle spark master
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9844,7 +9845,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.5
       minScalar: 0.0001
       maxCurve:
         serializedVersion: 2

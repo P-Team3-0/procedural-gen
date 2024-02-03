@@ -28,31 +28,54 @@ public class enemy : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
     //Enemy variables
-    public int health;
     public int attack;
+    private Transform room;
+    private Vector3 roomSize;
 
-    private Vector3 force;
+    private Vector3 roomMin;
+    private Vector3 roomMax;
+
+    private bool isPlayerInRoom;
+
+    public float deathDelay;
+
+    public int health;
 
 
     //Call every frame
     private void Update()
     {
+        health = GetComponent<LifeManager>().health;
+        isPlayerInRoom = player.transform.position.x >= roomMin.x && player.transform.position.x <= roomMax.x &&
+        player.transform.position.z >= roomMin.z && player.transform.position.z <= roomMax.z;
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange)
+        if (health > 0)
         {
-            GetComponent<Animator>().SetTrigger("PlayerAway");
-            ChasePlayer();
+            if ((!playerInSightRange && !playerInAttackRange) || (playerInSightRange && !isPlayerInRoom)) Patroling();
+            if (playerInSightRange && !playerInAttackRange && isPlayerInRoom)
+            {
+                GetComponent<Animator>().SetTrigger("PlayerAway");
+                ChasePlayer();
+            }
+            if (playerInSightRange && playerInAttackRange) AttackPlayer();
         }
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        else
+        {
+            Death();
+        }
     }
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        room = transform.parent;
+        roomSize = new Vector3(22, 0, 22);
+        roomMin = room.position - roomSize / 2;
+        roomMax = room.position + roomSize / 2;
+        health = GetComponent<LifeManager>().health;
     }
 
     protected virtual void Patroling()
@@ -72,18 +95,13 @@ public class enemy : MonoBehaviour
 
     protected virtual void SearchWalkPoint()
     {
-        // Ottieni tutte le stanze
-        Transform room = transform.parent;
-        Vector3 roomSize = new Vector3(22, 0, 22);
-        Vector3 min = room.position - roomSize / 2;
-        Vector3 max = room.position + roomSize / 2;
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        if (walkPoint.x >= min.x && walkPoint.x <= max.x &&
-        walkPoint.z >= min.z && walkPoint.z <= max.z && Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (walkPoint.x >= roomMin.x && walkPoint.x <= roomMax.x &&
+        walkPoint.z >= roomMin.z && walkPoint.z <= roomMax.z && Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
 
@@ -115,20 +133,29 @@ public class enemy : MonoBehaviour
         alreadyAttacked = false;
     }
 
+    protected virtual void Death()
+    {
+        var animator = GetComponent<Animator>();
+        animator.SetTrigger("Death");
+        GetComponent<NavMeshAgent>().enabled = false;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<player>().TakeDamage(attack);
-            // Reduce the impact of collision 
-            // force = collision.relativeVelocity * 0.01f;
-            // GetComponent<Rigidbody>().AddForce(-collision.relativeVelocity, ForceMode.Impulse);
-            StopForce();
+            if (health > 0)
+                player.GetComponent<LifeManager>().TakeDamage(attack);
         }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        else
         {
-            StopForce();
+            if (collision.gameObject.transform.parent.tag == "Hammer")
+            {
+                GetComponent<LifeManager>().TakeDamage(collision.gameObject.transform.parent.GetComponent<ProjectileMove>().damage);
+            }
+
         }
+        StopForce();
     }
 
     private void StopForce()
@@ -136,13 +163,15 @@ public class enemy : MonoBehaviour
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
-    public void TakeDamage(int damageAmount)
+    private void OnParticleCollision(GameObject other)
     {
-        health -= damageAmount;
-        Debug.Log("Enemy health: " + health);
-        if (health <= 0)
+        Debug.Log(other.name);
+        if (other.CompareTag("Spell") && gameObject.CompareTag("Goblin"))
         {
-            // Debug.Log("Enemy died");
+            ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
+            int spellDamage = projectileMove.damage;
+            this.GetComponent<LifeManager>().TakeDamage(spellDamage);
+            Destroy(other.transform.parent.gameObject);
         }
     }
 

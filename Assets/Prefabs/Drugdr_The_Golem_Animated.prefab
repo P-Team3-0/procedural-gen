@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8370492998130331463}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 381332972536976817}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Fingermiddel_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6243711616485036433}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: GLTF_created_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6008635704444533206}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Fingerback_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8904996014674446724}
   - component: {fileID: 5184798115714637577}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Torso_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8965765757522728660}
   - component: {fileID: 8599773141753078436}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Head_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4813816000427172708}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Armature_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5397264192138953687}
   - component: {fileID: 4631823969773880628}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Boulder.r_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8940399180259580796}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: ROOT_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100147197305121262}
   - component: {fileID: 4345688342826766250}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Legup.r_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 104742918659006381}
   - component: {fileID: 4063184062526104882}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Legup.l_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2797435215959675017}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Cube.002_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9146495229648770264}
   - component: {fileID: 5149233989581426398}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Frontarm.l_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4756258678088129038}
   - component: {fileID: 8828128436646277871}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Shoulder.r_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,11 +619,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 289280813016335030}
+  - component: {fileID: 1174203048185606721}
   - component: {fileID: 6898968571218840046}
   - component: {fileID: 5189743547733628565}
   - component: {fileID: -5547916151732567501}
   - component: {fileID: 1197526913202434024}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Drugdr_The_Golem_Animated
   m_TagString: Golem
   m_Icon: {fileID: 0}
@@ -646,6 +647,19 @@ Transform:
   - {fileID: 2581612722961415302}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1174203048185606721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5849402511011628288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5fc74baaeb70b45bc1ab2f51afd663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 60
 --- !u!195 &6898968571218840046
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -717,8 +731,10 @@ MonoBehaviour:
   attackRange: 1.7
   playerInSightRange: 0
   playerInAttackRange: 0
-  health: 10
   attack: 10
+  deathDelay: 2
+  health: 10
+  destroyEffect: {fileID: 124582, guid: 7cfd965531bf9634da22d39899b66569, type: 3}
 --- !u!54 &1197526913202434024
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -755,7 +771,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2581612722961415302}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Sketchfab_model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6989661945551605005}
   - component: {fileID: 834755653171207400}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Object_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -888,7 +904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3347179225729956735}
   - component: {fileID: 8516044455890412678}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Object_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,7 +1003,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3970581697579239151}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: GLTF_created_0_rootJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5758393298467001027}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Fingerfront_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1055,7 +1071,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6735588732771488078}
   - component: {fileID: 3554421831049715149}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Leglow.l_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1110,7 +1126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4569995241328818551}
   - component: {fileID: 566464797499418251}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Shoulder.l_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1166,7 +1182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4444095061737559723}
   - component: {fileID: 6403068404499134165}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Leglow.r_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1220,7 +1236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7900337207154663921}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: GLTF_SceneRootNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}

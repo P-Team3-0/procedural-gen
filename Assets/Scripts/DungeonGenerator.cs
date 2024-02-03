@@ -83,7 +83,8 @@ public class DungeonGenerator : MonoBehaviour
                             // pick the layer from the inspector, not the number
                             if (LayerMask.LayerToName(child.gameObject.layer) == "Enemy")
                             {
-                                countEnemies++;
+                                if (child.gameObject.GetComponent<LifeManager>().health > 0)
+                                    countEnemies++;
                             }
                         }
                         if (countEnemies == 0)

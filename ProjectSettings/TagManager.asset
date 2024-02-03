@@ -12,6 +12,10 @@ TagManager:
   - Spell
   - Floor
   - RoomBounds
+  - Golem
+  - Boss
+  - FxTemporaire
+  - Hammer
   layers:
   - Default
   - TransparentFX

@@ -3999,7 +3999,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3436608258151473985}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12826,7 +12826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 368091528902954380}
   - component: {fileID: 5141002393662023911}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FlyingArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34690,7 +34690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8296415774877973903}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,6 +8,8 @@ public class ProjectileMove : MonoBehaviour
     public float speed;
     public float fireRate;
 
+    public int damage;
+
 
     private void Start()
     {
@@ -24,10 +26,6 @@ public class ProjectileMove : MonoBehaviour
             Debug.Log("No Speed");
         }
 
-    }
-    private void OnParticleCollision(GameObject other)
-    {
-        Destroy(gameObject);
     }
 
 }
