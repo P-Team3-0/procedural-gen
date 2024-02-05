@@ -130,9 +130,13 @@ public class flyingEnemy : enemy
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.transform.parent.tag == "Hammer")
+        if (collision.gameObject.transform.parent != null)
         {
-            GetComponent<LifeManager>().TakeDamage(collision.gameObject.transform.parent.GetComponent<ProjectileMove>().damage);
+            if (collision.gameObject.transform.parent.tag == "Hammer")
+            {
+                GetComponent<LifeManager>().TakeDamage(collision.gameObject.transform.parent.GetComponent<ProjectileMove>().damage);
+            }
+
         }
         StopForce();
     }
