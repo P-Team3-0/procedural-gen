@@ -41,7 +41,6 @@ public class enemy : MonoBehaviour
 
     public int health;
 
-
     //Call every frame
     private void Update()
     {
@@ -145,7 +144,9 @@ public class enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             if (health > 0)
+            {
                 player.GetComponent<LifeManager>().TakeDamage(attack);
+            }
         }
         else
         {
@@ -165,7 +166,6 @@ public class enemy : MonoBehaviour
     }
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log(other.name);
         if (other.CompareTag("Spell") && gameObject.CompareTag("Goblin"))
         {
             ProjectileMove projectileMove = other.transform.parent.GetComponent<ProjectileMove>();
