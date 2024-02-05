@@ -5857,6 +5857,11 @@ MonoBehaviour:
   - {fileID: 2576354550157706075}
   - {fileID: 3113165833983937491}
   lineWalls: []
+  entraces:
+  - {fileID: 8076827511543009751}
+  - {fileID: 763640090497594123}
+  - {fileID: 6578339043320810727}
+  - {fileID: 8945668993847983077}
 --- !u!1 &7192706601418760881
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class RoomBehaviour : MonoBehaviour
     public GameObject[] doors; // down, up, right, left
     public GameObject[] lineWalls; // down, up, right, left
 
+    public GameObject[] entraces; // down, up, right, left
+
     public void unlockForTheBoss()
     {
         doors[1].SetActive(true);
@@ -24,9 +26,14 @@ public class RoomBehaviour : MonoBehaviour
     {
         for (int i = 0; i < statusDoors.Length; i++)
         {
-            Debug.Log(doors[i]);
-            doors[i].SetActive(statusDoors[i]);
-            walls[i].SetActive(!statusDoors[i]);
+            if (statusDoors[i])
+            {
+                entraces[i].GetComponent<Animator>().SetTrigger("OpenDoor");
+            }
+            else
+            {
+                entraces[i].GetComponent<Animator>().SetTrigger("CloseDoor");
+            }
         }
     }
 
