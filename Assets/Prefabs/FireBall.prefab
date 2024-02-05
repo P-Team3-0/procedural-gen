@@ -4805,7 +4805,7 @@ MonoBehaviour:
   damage: 10
   direction: {x: 0, y: 0, z: 0}
   fire: {fileID: 1901245927194888, guid: 2d367458f6567a9418c829fd771faa2d, type: 3}
-  fireBallDamage: 40
+  fireBallDamage: 1
 --- !u!198 &198706150799401992
 ParticleSystem:
   m_ObjectHideFlags: 0

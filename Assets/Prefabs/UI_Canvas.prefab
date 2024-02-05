@@ -114,4 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d133e1ef99fd00b4ab834b9edadb9c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: {fileID: 3654178623269492270, guid: 7e15df83f6c4c9247bba9a9a0dc7dbca, type: 3}
+  heartPrefab: {fileID: 3654178623269492270, guid: 7e15df83f6c4c9247bba9a9a0dc7dbca, type: 3}
+  pgGameObject: {fileID: 0}
+  health: 0

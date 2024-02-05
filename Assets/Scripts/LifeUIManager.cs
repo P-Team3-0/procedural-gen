@@ -5,9 +5,11 @@ using UnityEngine;
 public class LifeUIManager : MonoBehaviour
 {
     public GameObject heartPrefab;
-    private GameObject[] lives;
+    private GameObject[] lives = new GameObject[3];
 
     public GameObject pgGameObject;
+
+    public int health;
 
     void Start()
     {
@@ -15,7 +17,7 @@ public class LifeUIManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             GameObject newheartPrefab = Instantiate(heartPrefab, transform);
-            newheartPrefab.transform.position += new Vector3(i * 60.5f, 0, 0);
+            newheartPrefab.transform.position += new Vector3((i * 40) + 70f, 30f, 0);
             lives[i] = newheartPrefab;
         }
     }
@@ -23,15 +25,21 @@ public class LifeUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pgGameObject.GetComponent<LifeManager>().health == 2)
+        if (!pgGameObject)
+        {
+            pgGameObject = GameObject.FindWithTag("Player");
+        }
+        health = pgGameObject.GetComponent<LifeManager>().health;
+        Debug.Log(health);
+        if (health == 2)
         {
             Destroy(lives[2]);
         }
-        else if (pgGameObject.GetComponent<LifeManager>().health == 1)
+        else if (health == 1)
         {
             Destroy(lives[1]);
         }
-        else if (pgGameObject.GetComponent<LifeManager>().health == 0)
+        else if (health == 0)
         {
             Destroy(lives[0]);
         }
