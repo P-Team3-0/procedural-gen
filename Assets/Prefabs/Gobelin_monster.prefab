@@ -1849,10 +1849,9 @@ MonoBehaviour:
   attackRange: 1
   playerInSightRange: 0
   playerInAttackRange: 0
-  attack: 10
+  attack: 1
   deathDelay: 4
   health: 50
-  destroyEffect: {fileID: 124582, guid: 7cfd965531bf9634da22d39899b66569, type: 3}
 --- !u!195 &-2179066775268333886
 NavMeshAgent:
   m_ObjectHideFlags: 0

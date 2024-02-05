@@ -731,10 +731,9 @@ MonoBehaviour:
   attackRange: 1.7
   playerInSightRange: 0
   playerInAttackRange: 0
-  attack: 10
+  attack: 1
   deathDelay: 2
   health: 10
-  destroyEffect: {fileID: 124582, guid: 7cfd965531bf9634da22d39899b66569, type: 3}
 --- !u!54 &1197526913202434024
 Rigidbody:
   m_ObjectHideFlags: 0
