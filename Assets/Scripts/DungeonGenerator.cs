@@ -37,10 +37,11 @@ public class DungeonGenerator : MonoBehaviour
 
     List<Cell> board;
 
-    private AudioSource audioClosingDoor;
+    private AudioSource audioDoor;
 
     void Start()
     {
+        audioDoor = GetComponent<AudioSource>();
         // Random.InitState(seed);
         MazeGenerator();
     }
@@ -95,6 +96,7 @@ public class DungeonGenerator : MonoBehaviour
                             }
                             if (!alreadyUpdated)
                             {
+                                audioDoor.Play();
                                 roomParent.GetComponent<RoomBehaviour>().updateRoom(currentRoom.status);
                             }
 
@@ -136,6 +138,7 @@ public class DungeonGenerator : MonoBehaviour
                             }
                             else
                             {
+                                audioDoor.Play();
                                 roomParent.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, false, false });
                             }
                         }
