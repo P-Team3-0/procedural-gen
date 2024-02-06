@@ -89,6 +89,7 @@ public class RigidbodyMovement : MonoBehaviour
     {
         if (LayerMask.LayerToName(collision.gameObject.layer) == "Enemy" || collision.gameObject.tag == "Bullet")
         {
+            animator.SetTrigger("Colpo");
             StopForce();
         }
         {
@@ -98,6 +99,7 @@ public class RigidbodyMovement : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        animator.SetTrigger("Colpo");
         GetComponent<LifeManager>().TakeDamage(other.GetComponent<bullet>().damage);
         Destroy(other.gameObject);
     }
