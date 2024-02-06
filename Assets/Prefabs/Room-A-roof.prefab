@@ -489,7 +489,6 @@ GameObject:
   - component: {fileID: 942929781552562700}
   - component: {fileID: 2835097445836687147}
   m_Layer: 0
-n
   m_Name: Up entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}

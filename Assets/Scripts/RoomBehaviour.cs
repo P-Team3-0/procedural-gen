@@ -28,13 +28,8 @@ public class RoomBehaviour : MonoBehaviour
         Debug.Log("Updating room");
         for (int i = 0; i < status.Length; i++)
         {
-
             statusDoors[i] = status[i];
             // doors[i].SetActive(status[i]);
-
-        }
-    }
-
 
             if (status[i])
             {
