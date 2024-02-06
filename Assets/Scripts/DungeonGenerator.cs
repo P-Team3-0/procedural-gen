@@ -10,8 +10,6 @@ public class DungeonGenerator : MonoBehaviour
         public GameObject room;
         public bool visited = false;
         public bool[] status = new bool[4];
-
-        // public bool even = false;
     }
 
     public GameObject roomPrefab;
@@ -39,8 +37,11 @@ public class DungeonGenerator : MonoBehaviour
 
     List<Cell> board;
 
+    private AudioSource audioDoor;
+
     void Start()
     {
+        audioDoor = GetComponent<AudioSource>();
         // Random.InitState(seed);
         MazeGenerator();
     }
@@ -61,14 +62,7 @@ public class DungeonGenerator : MonoBehaviour
                     roomParent = GameObject.Find("Room " + (i + j * size.x));
                     // get a child of the roomParent by name
                     GameObject floor = roomParent.transform.Find("Floor").gameObject;
-
-                    if (floor == null)
-                    {
-                        Debug.Log("Floor is null");
-                    }
-
                     BoxCollider collider = floor.GetComponent<BoxCollider>();
-
                     GameObject player = GameObject.FindWithTag("Player");
 
 
@@ -89,22 +83,64 @@ public class DungeonGenerator : MonoBehaviour
                         }
                         if (countEnemies == 0)
                         {
-                            roomParent.GetComponent<RoomBehaviour>().updateRoom(currentRoom.status);
+                            bool alreadyUpdated = true;
+                            //check if the room has already the current status
+                            for (int k = 0; k < currentRoom.status.Length; k++)
+                            {
+                                if (currentRoom.status[k] != roomParent.GetComponent<RoomBehaviour>().statusDoors[k])
+                                {
+                                    alreadyUpdated = false;
+                                    break;
+                                }
+
+                            }
+                            if (!alreadyUpdated)
+                            {
+                                audioDoor.Play();
+                                roomParent.GetComponent<RoomBehaviour>().updateRoom(currentRoom.status);
+                            }
+
+                            GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
 
                             if (board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] & !board[i + (size.y - 1) * size.x].status[2] && !board[i + (size.y - 1) * size.x].status[3])
                             {
-                                GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
-                                room.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { true, true, false, false });
+                                if (room.GetComponent<RoomBehaviour>().statusDoors[0] && room.GetComponent<RoomBehaviour>().statusDoors[1])
+                                {
+                                    Debug.Log("Doors are already open");
+                                    continue;
+                                }
+                                else
+                                {
+                                    room.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { true, true, false, false });
+                                }
                             }
                             else if (!board[i + (size.y - 1) * size.x].status[0] && !board[i + (size.y - 1) * size.x].status[1] && !board[i + (size.y - 1) * size.x].status[2] && board[i + (size.y - 1) * size.x].status[3])
                             {
-                                GameObject room = GameObject.Find("Room " + ((size.x * size.y) - 1));
-                                room.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, true, true });
+
+                                if (room.GetComponent<RoomBehaviour>().statusDoors[2] && room.GetComponent<RoomBehaviour>().statusDoors[3])
+                                {
+                                    Debug.Log("Doors are already open");
+                                    continue;
+                                }
+                                else
+                                {
+                                    room.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, true, true });
+                                }
                             }
                         }
                         else
                         {
-                            roomParent.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, false, false });
+                            // if already closed, don't update the room
+                            if (!roomParent.GetComponent<RoomBehaviour>().statusDoors[0] && !roomParent.GetComponent<RoomBehaviour>().statusDoors[1] && !roomParent.GetComponent<RoomBehaviour>().statusDoors[2] && !roomParent.GetComponent<RoomBehaviour>().statusDoors[3])
+                            {
+                                Debug.Log("Doors are already closed");
+                                continue;
+                            }
+                            else
+                            {
+                                audioDoor.Play();
+                                roomParent.GetComponent<RoomBehaviour>().updateRoom(new bool[4] { false, false, false, false });
+                            }
                         }
                     }
                     else
@@ -134,27 +170,6 @@ public class DungeonGenerator : MonoBehaviour
                     var newRoomBehaviour = newRoom.GetComponent<RoomBehaviour>();
                     newRoomBehaviour.updateRoom(currentRoom.status);
 
-                    // // if room is even and visited, remove the walls
-                    // if (currentRoom.even)
-                    // {
-                    //     if (i > 0 && board[(i - 1) + j * size.x].visited)
-                    //     {
-                    //         newRoomBehaviour.removeWalls("left");
-                    //     }
-                    //     if (i < size.x - 1 && board[(i + 1) + j * size.x].visited)
-                    //     {
-                    //         newRoomBehaviour.removeWalls("right");
-                    //     }
-                    //     if (j > 0 && board[i + (j - 1) * size.x].visited)
-                    //     {
-                    //         newRoomBehaviour.removeWalls("down");
-                    //     }
-                    //     if (j < size.y - 1 && board[i + (j + 1) * size.x].visited)
-                    //     {
-                    //         newRoomBehaviour.removeWalls("up");
-                    //     }
-                    // }
-
                     if (i == 0 && j == 0)
                     {
                         Instantiate(playerPrefab, pos, Quaternion.identity);
@@ -164,9 +179,6 @@ public class DungeonGenerator : MonoBehaviour
                         //setting the freelookcamera parameters
                         freeLookCameraPrefab.Follow = player.transform;
                         freeLookCameraPrefab.LookAt = player.transform;
-                        //freeLookCameraPrefab.GetRig(0).LookAt = player.transform;
-                        //freeLookCameraPrefab.GetRig(1).LookAt = player.transform;
-                        //freeLookCameraPrefab.GetRig(2).LookAt=player.transform;
 
                         //instantiate camera and freelookCamera
                         Instantiate(cameraPlayerPrefab, pos, Quaternion.identity);
@@ -174,6 +186,12 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     else
                     {
+                        // if is the last room before the boss room, skip it
+                        if (size.x * size.y - 1 == i + j * size.x)
+                        {
+                            continue;
+                        }
+
                         int numberOfEnemies = Random.Range(0, maxNumEnemies);
 
                         for (int k = 0; k < numberOfEnemies; k++)
@@ -261,16 +279,6 @@ public class DungeonGenerator : MonoBehaviour
             k++;
 
             board[currentCell].visited = true;
-
-            // if (k % 2 == 0)
-            // {
-            //     board[currentCell].even = true;
-            // }
-            // else
-            // {
-            //     board[currentCell].even = false;
-            // }
-
             board[currentCell].room = roomPrefab;
 
             if (currentCell == board.Count - 1)
