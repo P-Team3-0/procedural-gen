@@ -5851,12 +5851,13 @@ MonoBehaviour:
   - {fileID: 7110431876599978207}
   - {fileID: 2671279352541954859}
   - {fileID: 570101346292041619}
+  statusWalls: 00000000
   doors:
   - {fileID: 7313235397111922308}
   - {fileID: 1793997092102736656}
   - {fileID: 2576354550157706075}
   - {fileID: 3113165833983937491}
-  lineWalls: []
+  statusDoors: 00000000
   entraces:
   - {fileID: 8076827511543009751}
   - {fileID: 763640090497594123}
