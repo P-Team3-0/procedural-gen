@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6229328139029857716}
   - component: {fileID: 3492644690669910104}
   - component: {fileID: 3175711109967614398}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pillarP (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247761526109915000}
   - component: {fileID: 6596295810715164410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coll_sx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7952908825424626682}
   - component: {fileID: 4732626590944653575}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: up-r-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 5471844599186942557}
   - component: {fileID: 6295777001380913759}
   - component: {fileID: 4329213210612731431}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3928385853893403325}
   - component: {fileID: 3430843808924530686}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coll_dx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 942929781552562700}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Up entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458477373522397312}
   - component: {fileID: 5359850151604686994}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: up-l-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 1567238037819872681}
   - component: {fileID: 3794975989609856927}
   - component: {fileID: 2707972545990502696}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wallbis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 3825159007127032286}
   - component: {fileID: 348660562197716746}
   - component: {fileID: 358174939619553493}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Down Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 7388443761343850216}
   - component: {fileID: 1279821326090382808}
   - component: {fileID: 3675556013650377878}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1058,7 +1058,7 @@ GameObject:
   - component: {fileID: 7469027027433565791}
   - component: {fileID: 8637890614886916319}
   - component: {fileID: 8105800644750070843}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Up Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1144,7 +1144,7 @@ GameObject:
   - component: {fileID: 1826735150304864843}
   - component: {fileID: 6081422898928410120}
   - component: {fileID: 3777440179064650592}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1354,7 +1354,7 @@ GameObject:
   - component: {fileID: 2094362330045018677}
   - component: {fileID: 4820195912772001523}
   - component: {fileID: 8125597311001064644}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wallbis (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1648,7 +1648,7 @@ GameObject:
   - component: {fileID: 9173703335344262210}
   - component: {fileID: 4501864531107887865}
   - component: {fileID: 7531573510761691066}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pillarP (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1848,7 +1848,7 @@ GameObject:
   - component: {fileID: 2313035534946713287}
   - component: {fileID: 5644867614846311930}
   - component: {fileID: 8582776804706615973}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Right Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1934,7 +1934,7 @@ GameObject:
   - component: {fileID: 3449482686588242203}
   - component: {fileID: 4514285025660408630}
   - component: {fileID: 9107315222933543735}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wallbis (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2018,7 +2018,7 @@ GameObject:
   - component: {fileID: 3765334556933302892}
   - component: {fileID: 7878942058688155859}
   - component: {fileID: 7511144631070057758}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Right Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2226,7 +2226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1902273376070210985}
   - component: {fileID: 6081400236160807207}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: left-r-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2282,7 +2282,7 @@ GameObject:
   - component: {fileID: 8241494378621175082}
   - component: {fileID: 7297276249986594394}
   - component: {fileID: 4274795389984079063}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2470,7 +2470,7 @@ GameObject:
   - component: {fileID: 2983151740359069459}
   - component: {fileID: 6444668859781445760}
   - component: {fileID: 6445657852407093184}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2555,7 +2555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 604466574602311896}
   - component: {fileID: 6605651448613013715}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coll_sx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2609,7 +2609,7 @@ GameObject:
   - component: {fileID: 8949900369254935396}
   - component: {fileID: 8837428522835303807}
   - component: {fileID: 7501957592480436226}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wallbis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3006,7 +3006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 586030950448104051}
   - component: {fileID: 5842643368454306690}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coll_dx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3059,7 +3059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 920325802065895850}
   - component: {fileID: 1128629664554632242}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: right-l-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3282,7 +3282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7033027685556307586}
   - component: {fileID: 918264608497452494}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: left-r-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3432,7 +3432,7 @@ GameObject:
   - component: {fileID: 6755999587343169013}
   - component: {fileID: 5411346125393503676}
   - component: {fileID: 2613325771253241169}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3514,7 +3514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6861723840024062473}
   - component: {fileID: 9026433493579857348}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: right-r-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3674,7 +3674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9056365652811410312}
   - component: {fileID: 6215062476607108152}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-l-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3786,7 +3786,7 @@ GameObject:
   - component: {fileID: 5813439671521764687}
   - component: {fileID: 5353917984459467055}
   - component: {fileID: 6861991520380664795}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3870,7 +3870,7 @@ GameObject:
   - component: {fileID: 5361540103870202014}
   - component: {fileID: 757290352266087786}
   - component: {fileID: 3199331874036080449}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pillarP (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3976,7 +3976,7 @@ GameObject:
   - component: {fileID: 3867742133246738653}
   - component: {fileID: 1952327508887058545}
   - component: {fileID: 6216930304452146705}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4059,7 +4059,7 @@ GameObject:
   - component: {fileID: 8899214006033946561}
   - component: {fileID: 7327333306222054140}
   - component: {fileID: 1002042372926279128}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4738,7 +4738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1302479710595870227}
   - component: {fileID: 8566352667330256398}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coll_dx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4791,7 +4791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 683384620021160136}
   - component: {fileID: 1497719481416357334}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coll_sx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4939,7 +4939,7 @@ GameObject:
   - component: {fileID: 2659867347589405301}
   - component: {fileID: 1170009880116429928}
   - component: {fileID: 1293438561614888573}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wallbis (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5125,7 +5125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 367545586263382433}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Entrances
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5370,7 +5370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8001803346858177952}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Right entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5405,7 +5405,7 @@ GameObject:
   - component: {fileID: 8249029380854860787}
   - component: {fileID: 6100187445173743637}
   - component: {fileID: 7331673677103389642}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wallbis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5592,7 +5592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6012423223713852153}
   - component: {fileID: 1646342493425933421}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-r-wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5649,7 +5649,7 @@ GameObject:
   - component: {fileID: 7240419224013914972}
   - component: {fileID: 5622045274174491556}
   - component: {fileID: 7711499296424483167}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Up Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5921,7 +5921,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 25.3, y: 0.1, z: 25.1}
+  m_Size: {x: 17, y: 0.1, z: 17}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7228254624294536981
 GameObject:
@@ -5934,7 +5934,7 @@ GameObject:
   - component: {fileID: 6143058009797577317}
   - component: {fileID: 8580757060391917261}
   - component: {fileID: 4121242667932066942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6016,7 +6016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4140283067165574766}
   - component: {fileID: 2023309219394450318}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coll_dx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6070,13 +6070,13 @@ GameObject:
   - component: {fileID: 246153031327742248}
   - component: {fileID: 3745906312681711124}
   - component: {fileID: 1072844484290109202}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Down Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &246153031327742248
 Transform:
   m_ObjectHideFlags: 0
@@ -6154,7 +6154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5818079842874720230}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6195,7 +6195,7 @@ GameObject:
   - component: {fileID: 6891815851558451866}
   - component: {fileID: 8886422482916241064}
   - component: {fileID: 47942309512929571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6279,7 +6279,7 @@ GameObject:
   - component: {fileID: 5334904628391893887}
   - component: {fileID: 5632471911300325838}
   - component: {fileID: 8788896918767037005}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pillarP (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6595,7 +6595,7 @@ GameObject:
   - component: {fileID: 2810714433272161934}
   - component: {fileID: 2403014169984118236}
   - component: {fileID: 4811752621156330755}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: down-left-wallbis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6781,7 +6781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8830178947808294614}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Down entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7118,7 +7118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9119719895278880813}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pillars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7154,7 +7154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6078784806078180399}
   - component: {fileID: 1041412879355334009}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: coll_sx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7206,7 +7206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2812157952491801237}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
