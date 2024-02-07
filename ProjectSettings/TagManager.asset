@@ -17,6 +17,7 @@ TagManager:
   - FxTemporaire
   - Hammer
   - Bubble
+  - Death
   layers:
   - Default
   - TransparentFX

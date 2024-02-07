@@ -9,13 +9,16 @@ public class LifeManager : MonoBehaviour
     private bool isDead=false;
     private bool playerTakeDamage = true;
     GameObject Bubble;
+    GameObject DeathEffect;
     void Start()
     {
         Bubble = GameObject.FindWithTag("Bubble");
+        DeathEffect = GameObject.FindWithTag("Death");
 
-        if (Bubble != null)
+        if (Bubble != null && DeathEffect != null)
         {
             Bubble.SetActive(false);
+            DeathEffect.SetActive(false);
         }
     }
     public void TakeDamage(int damage)
@@ -49,16 +52,18 @@ public class LifeManager : MonoBehaviour
     private void ResetTakeDamage()
     {
         playerTakeDamage = true;
-        if (Bubble != null)
+        if (Bubble != null && DeathEffect != null)
         {
             Bubble.SetActive(false);
+            DeathEffect.SetActive(false);
         }
     }
     private void Die()
     {
-        if (Bubble != null)
+        if (Bubble != null && DeathEffect !=null)
         {
             Bubble.SetActive(false);
+            DeathEffect.SetActive(true);
         }
         isDead = true;
         animator.SetTrigger("Death");
