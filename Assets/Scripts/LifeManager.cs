@@ -8,6 +8,16 @@ public class LifeManager : MonoBehaviour
     Animator animator;
     private bool isDead=false;
     private bool playerTakeDamage = true;
+    GameObject Bubble;
+    void Start()
+    {
+        Bubble = GameObject.FindWithTag("Bubble");
+
+        if (Bubble != null)
+        {
+            Bubble.SetActive(false);
+        }
+    }
     public void TakeDamage(int damage)
     {
         if (gameObject.tag == "Player")
@@ -16,8 +26,12 @@ public class LifeManager : MonoBehaviour
             if (playerTakeDamage)
             {
                 animator.SetTrigger("Colpo");
-                health -= damage;
+                health -= damage;               
                 Debug.Log("Health: " + health);
+                if (health>0 && Bubble != null)
+                {
+                    Bubble.SetActive(true);
+                }
                 if (health <= 0 && !isDead)
                 {
                     Die();
@@ -35,13 +49,18 @@ public class LifeManager : MonoBehaviour
     private void ResetTakeDamage()
     {
         playerTakeDamage = true;
+        if (Bubble != null)
+        {
+            Bubble.SetActive(false);
+        }
     }
     private void Die()
     {
-        // Imposta la variabile isDead su true
+        if (Bubble != null)
+        {
+            Bubble.SetActive(false);
+        }
         isDead = true;
-
-        // Attiva il trigger dell'animazione di morte
         animator.SetTrigger("Death");
         GetComponent<RigidbodyMovement>().enabled = false;
         GetComponent<LifeManager>().enabled = false;
