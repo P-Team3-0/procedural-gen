@@ -16,6 +16,7 @@ TagManager:
   - Boss
   - FxTemporaire
   - Hammer
+  - Bubble
   layers:
   - Default
   - TransparentFX

@@ -45,5 +45,7 @@ public class LifeManager : MonoBehaviour
         animator.SetTrigger("Death");
         GetComponent<RigidbodyMovement>().enabled = false;
         GetComponent<LifeManager>().enabled = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<CapsuleCollider>().isTrigger = true;
     }
 }
