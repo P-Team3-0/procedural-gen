@@ -13,6 +13,7 @@ public class RigidbodyMovement : MonoBehaviour
     int isWalkingHash;
     int isRunningHash;
     int AttackHash;
+    GameObject winEffect;
     private CinemachineFreeLook activeCamera;
     void Start()
     {
@@ -20,10 +21,15 @@ public class RigidbodyMovement : MonoBehaviour
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
         AttackHash = Animator.StringToHash("Attack");
+        winEffect = GameObject.FindWithTag("Win");
+       
+        if (winEffect != null)
+            winEffect.SetActive(false);
     }
 
     void Update()
     {
+        Win();
         activeCamera = GameObject.FindWithTag("FreeLookCamera").GetComponent<CinemachineFreeLook>();
 
         // Get the direction that the camera is looking
@@ -106,6 +112,22 @@ public class RigidbodyMovement : MonoBehaviour
     {
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+    }
+
+    private void Win()
+    {
+        GameObject boss = GameObject.FindWithTag("Boss");
+        LifeManager lifeManager = boss.GetComponent<LifeManager>();
+        if (lifeManager != null && lifeManager.health == 0)
+        {
+            winEffect.SetActive(true);
+            animator.SetTrigger("win");
+            GetComponent<RigidbodyMovement>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<CapsuleCollider>().isTrigger = true;
+            GameObject firePoint = gameObject.transform.Find("Sphere").gameObject;
+            firePoint.GetComponent<WitchAttack>().enabled = false;
+        }
     }
 }
 
