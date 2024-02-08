@@ -16,6 +16,8 @@ TagManager:
   - Boss
   - FxTemporaire
   - Hammer
+  - Bubble
+  - Death
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - Enemy
   - whatIsFlying
   - BossFlyingArea
-  - 
+  - Wall
   - 
   - 
   - 
