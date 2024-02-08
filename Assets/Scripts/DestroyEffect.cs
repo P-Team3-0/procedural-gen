@@ -7,8 +7,11 @@ public class DestroyEffect : MonoBehaviour
 
     public float destroyDelay;
 
+    public AudioSource destroySound;
+
     private void Start()
     {
+        destroySound.Play();
         RemoveEffect();
     }
 
