@@ -47,6 +47,8 @@ public class enemy : MonoBehaviour
 
     public AudioSource enemyDeath;
 
+    public AudioSource enemyAttack;
+
     //Call every frame
     private void Update()
     {
@@ -95,7 +97,6 @@ public class enemy : MonoBehaviour
             transform.Rotate(0, 180, 0);
         agent.SetDestination(walkPoint);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
@@ -220,5 +221,26 @@ public class enemy : MonoBehaviour
     {
         enemyWalk.Stop();
         Invoke(nameof(WalkSound), walkSoundStartIntervall);
+    }
+
+    private void AttackSound()
+    {
+        if (enemyWalk.isPlaying)
+        {
+            enemyWalk.Stop();
+        }
+        enemyAttack.Play();
+        Invoke(nameof(StopAttackSound), 2f);
+
+    }
+
+    private void StopAttackSound()
+    {
+        enemyAttack.Stop();
+    }
+
+    private void animationStopWalkSound()
+    {
+        enemyWalk.Stop();
     }
 }
