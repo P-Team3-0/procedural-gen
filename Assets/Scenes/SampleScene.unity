@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172170310013749580, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: maxNumEnemies
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5424066353078673944, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: m_LocalPosition.x
