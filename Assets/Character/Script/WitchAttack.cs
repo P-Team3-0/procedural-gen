@@ -11,17 +11,19 @@ public class WitchAttack : MonoBehaviour
     public List<GameObject> vfx = new List<GameObject>();
     public GameObject player;
     public string layer="Enemy";
+    public int countEnemies;
+    public int controlOutfit;
+    public Texture2D textureToAssign;
     private Camera freeLookCamera;
     private GameObject spell;
     private GameObject golemSpell;
-    public int countEnemies;
-    public int controlOutfit;
     private float timeToFire = 0;
     GameObject changeEffect;
-    public Texture2D textureToAssign;
+    Animator animator;
 
     void Start()
     {
+        animator = player.GetComponent<Animator>();
         spell = vfx[0];
         golemSpell = vfx[1];
         freeLookCamera = FindObjectOfType<Camera>();
@@ -56,8 +58,9 @@ public class WitchAttack : MonoBehaviour
         {
             spell = vfx[2];
             if (controlOutfit == 1)
-            { 
-                changeEffect.SetActive(true);
+            {
+                Invoke("effectOutfit", 2);
+                animator.SetTrigger("trasformation");                
                 Invoke("Outfit", 3);
                 controlOutfit = -1;
             }
@@ -197,5 +200,8 @@ public class WitchAttack : MonoBehaviour
         }
         changeEffect.SetActive(false);
     }
-
+    public void effectOutfit()
+    {
+        changeEffect.SetActive(true);
+    }
 }
