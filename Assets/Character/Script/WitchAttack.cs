@@ -2,17 +2,19 @@ using UnityEngine;
 using System.Collections;
 using Cinemachine;
 using System.Collections.Generic;
+using System.Drawing;
+using Unity.VisualScripting;
 
 public class WitchAttack : MonoBehaviour
 {
     public GameObject firePoint;
     public List<GameObject> vfx = new List<GameObject>();
     public GameObject player;
-
+    public string layer="Enemy";
     private Camera freeLookCamera;
     private GameObject spell;
     private GameObject golemSpell;
-
+    int countEnemies;
     private float timeToFire = 0;
 
     void Start()
@@ -24,6 +26,7 @@ public class WitchAttack : MonoBehaviour
         {
             Debug.Log("FreeLook Camera non trovata nel tuo scenario!");
         }
+        countEnemies = 0;
     }
 
     void Update()
@@ -32,7 +35,21 @@ public class WitchAttack : MonoBehaviour
         {
             timeToFire = Time.time + 1 / spell.GetComponent<ProjectileMove>().fireRate;
             Vector3 direction= AttackFunction();
-
+            if (countEnemies != 1)
+            {
+                LayerMask layerMaskToSearch = LayerMask.NameToLayer(layer);
+                GameObject[] objectsWithLayer = FindObjectsWithLayer(layerMaskToSearch);
+                foreach (var obj in objectsWithLayer)
+                {
+                    LifeManager lifeManager = obj.GetComponent<LifeManager>();
+                    if (lifeManager != null && lifeManager.health > 0)
+                        countEnemies++; 
+                }  
+            }
+            if (countEnemies == 1)
+                spell = vfx[2];
+            else
+                countEnemies = 0;           
             // Istanzia l'effetto dal firePoint e applica la direzione
             StartCoroutine(DelaySX(direction));
         }
@@ -120,5 +137,19 @@ public class WitchAttack : MonoBehaviour
 
         // Spawna l'effetto visivo
         SpawnGolemSpell(direction);
+    }
+
+    private GameObject[] FindObjectsWithLayer(LayerMask layer)
+    {
+        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+        var objectsWithLayer = new System.Collections.Generic.List<GameObject>();
+        foreach (var obj in allObjects)
+        {
+            if (obj.layer == layer)
+            {
+                objectsWithLayer.Add(obj);
+            }
+        }
+        return objectsWithLayer.ToArray();
     }
 }

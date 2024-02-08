@@ -71,5 +71,7 @@ public class LifeManager : MonoBehaviour
         GetComponent<LifeManager>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<CapsuleCollider>().isTrigger = true;
+        GameObject firePoint = gameObject.transform.Find("Sphere").gameObject;
+        firePoint.GetComponent<WitchAttack>().enabled = false;
     }
 }
