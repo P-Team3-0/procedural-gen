@@ -12,7 +12,7 @@ public class WitchAttack : MonoBehaviour
     public GameObject player;
     public string layer="Enemy";
     public int countEnemies;
-    public int controlOutfit;
+    public bool controlOutfit;
     public Texture2D textureToAssign;
     private Camera freeLookCamera;
     private GameObject spell;
@@ -32,7 +32,7 @@ public class WitchAttack : MonoBehaviour
             Debug.Log("FreeLook Camera non trovata nel tuo scenario!");
         }
         countEnemies = 0;
-        controlOutfit = 0;
+        controlOutfit = true;
         changeEffect = GameObject.FindWithTag("changeEffect");
         if (changeEffect != null )
             changeEffect.SetActive(false);      
@@ -40,34 +40,13 @@ public class WitchAttack : MonoBehaviour
 
     void Update()
     {
-        if (countEnemies != 1)
-        {
-            LayerMask layerMaskToSearch = LayerMask.NameToLayer(layer);
-            GameObject[] objectsWithLayer = FindObjectsWithLayer(layerMaskToSearch);
-            foreach (var obj in objectsWithLayer)
-            {
-                LifeManager lifeManager = obj.GetComponent<LifeManager>();
-                if (lifeManager != null && lifeManager.health > 0)
-                {
-                    countEnemies++;
-                    controlOutfit++;
-                }
-            }
-        }
-        if (countEnemies == 1)
+        if (player.GetComponent<RigidbodyMovement>().playerEntered && controlOutfit)
         {
             spell = vfx[2];
-            if (controlOutfit == 1)
-            {
-                Invoke("effectOutfit", 2);               
-                animator.SetTrigger("trasformation");                
-                Invoke("Outfit", 3);
-                controlOutfit = -1;
-            }
-        }else
-        {
-            countEnemies = 0;
-            controlOutfit = 0;
+            Invoke("effectOutfit", 2);
+            animator.SetTrigger("trasformation");
+            Invoke("Outfit", 3);
+            controlOutfit = false;
         }
         if (Input.GetMouseButtonDown(0) && Time.time >= timeToFire)
         {
@@ -158,20 +137,6 @@ public class WitchAttack : MonoBehaviour
 
         // Spawna l'effetto visivo
         SpawnGolemSpell(direction);
-    }
-
-    private GameObject[] FindObjectsWithLayer(LayerMask layer)
-    {
-        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
-        var objectsWithLayer = new System.Collections.Generic.List<GameObject>();
-        foreach (var obj in allObjects)
-        {
-            if (obj.layer == layer)
-            {
-                objectsWithLayer.Add(obj);
-            }
-        }
-        return objectsWithLayer.ToArray();
     }
 
     public static GameObject[] FindPrefabsWithTagInsidePrefab(GameObject parentPrefab, string tag)

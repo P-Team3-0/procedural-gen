@@ -22,6 +22,7 @@ public class RigidbodyMovement : MonoBehaviour
     int AttackHash;
     GameObject winEffect;
     private CinemachineFreeLook activeCamera;
+    public bool playerEntered = false;
     void Start()
     {
         animator = GetComponent<Animator>();

@@ -10,10 +10,11 @@ public class checkPlayer : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             GameObject boss = GameObject.FindWithTag("Boss");
+            GameObject player = GameObject.FindWithTag("Player");
             boss.GetComponent<boss>().playerEntered = true;
+            player.GetComponent<RigidbodyMovement>().playerEntered = true;
             Destroy(gameObject);
         }
     }
-
 }
 
