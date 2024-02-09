@@ -11,6 +11,8 @@ public class RigidbodyMovement : MonoBehaviour
     public AudioSource witchWalk;
     public AudioSource witchRun;
     public AudioSource witchWin;
+    public AudioSource witchDeath;
+    public AudioSource witchUpgrade;
     float Myfloat;
     int controlWalk;
     int controlRun;
@@ -153,6 +155,15 @@ public class RigidbodyMovement : MonoBehaviour
             GameObject firePoint = gameObject.transform.Find("Sphere").gameObject;
             firePoint.GetComponent<WitchAttack>().enabled = false;
         }
+    }
+
+    private void playSoundDeath()
+    {
+        witchDeath.Play();
+    }
+    private void playSoundUpgrade()
+    {
+        witchUpgrade.Play();
     }
 }
 
