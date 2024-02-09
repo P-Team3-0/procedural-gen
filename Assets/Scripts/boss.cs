@@ -34,6 +34,8 @@ public class boss : MonoBehaviour
 
     public float deathDelay;
 
+    public bool playerEntered = false;
+
 
 
 
@@ -57,6 +59,11 @@ public class boss : MonoBehaviour
         playerInFlameBreathRange = Physics.CheckSphere(transform.position, flameBreathRange, whatIsPlayer);
         if (health > 0)
         {
+            if (playerEntered)
+            {
+                GetComponent<Animator>().SetTrigger("PlayerEntered");
+                playerEntered = false;
+            }
             if (playerInSightRange && !playerInAttackRange && canMove)
             {
                 GetComponent<Animator>().SetTrigger("PlayerAway");

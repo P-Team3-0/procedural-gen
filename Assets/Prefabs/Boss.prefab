@@ -1576,7 +1576,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  sightRange: 60
+  sightRange: 75
   attackRange: 20
   flameBreathRange: 15
   playerInSightRange: 0
@@ -1592,6 +1592,7 @@ MonoBehaviour:
   health: 0
   destroyEffect: {fileID: 108504, guid: 51dc732277878774fb236ed4a628c05c, type: 3}
   deathDelay: 2
+  playerEntered: 0
 --- !u!114 &-8223805937733140759
 MonoBehaviour:
   m_ObjectHideFlags: 0

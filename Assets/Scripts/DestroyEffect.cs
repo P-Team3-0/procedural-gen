@@ -11,7 +11,11 @@ public class DestroyEffect : MonoBehaviour
 
     private void Start()
     {
-        destroySound.Play();
+        if (destroySound != null)
+        {
+            destroySound.Play();
+        }
+
         RemoveEffect();
     }
 
