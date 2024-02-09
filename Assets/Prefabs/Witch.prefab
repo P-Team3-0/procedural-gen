@@ -239,6 +239,7 @@ MonoBehaviour:
   witchWin: {fileID: -6106937396507947609}
   witchDeath: {fileID: 2306535908614515514}
   witchUpgrade: {fileID: 5358735309495420775}
+  playerEntered: 0
 --- !u!95 &218350704657052584
 Animator:
   serializedVersion: 5
@@ -272,7 +273,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b87b8d72c809f844a97b67d67734b5cd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.4
   m_Pitch: 0.9
   Loop: 1
   Mute: 0
@@ -368,7 +369,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d25cc9c876925164aad0a9f8c5ee642e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.4
   m_Pitch: 1.5
   Loop: 1
   Mute: 0

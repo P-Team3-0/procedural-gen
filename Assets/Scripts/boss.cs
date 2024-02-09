@@ -181,13 +181,11 @@ public class boss : MonoBehaviour
 
     private void PlayRoar()
     {
-        Debug.Log("Roar");
         bossRoar.Play();
     }
 
     private void PlayWalk()
     {
-        Debug.Log("Walk");
         bossWalk.Play();
     }
 
