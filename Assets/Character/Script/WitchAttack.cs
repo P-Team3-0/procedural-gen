@@ -59,7 +59,7 @@ public class WitchAttack : MonoBehaviour
             spell = vfx[2];
             if (controlOutfit == 1)
             {
-                Invoke("effectOutfit", 2);
+                Invoke("effectOutfit", 2);               
                 animator.SetTrigger("trasformation");                
                 Invoke("Outfit", 3);
                 controlOutfit = -1;

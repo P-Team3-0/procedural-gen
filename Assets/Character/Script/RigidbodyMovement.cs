@@ -8,7 +8,14 @@ public class RigidbodyMovement : MonoBehaviour
     // Start is called before the first frame update
     public Rigidbody rb;
     public Vector3 InputKey;
+    public AudioSource witchWalk;
+    public AudioSource witchRun;
+    public AudioSource witchWin;
+    public AudioSource witchDeath;
+    public AudioSource witchUpgrade;
     float Myfloat;
+    int controlWalk;
+    int controlRun;
     Animator animator;
     int isWalkingHash;
     int isRunningHash;
@@ -21,8 +28,10 @@ public class RigidbodyMovement : MonoBehaviour
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
         AttackHash = Animator.StringToHash("Attack");
+        controlWalk = 0;
+        controlRun = 0;
         winEffect = GameObject.FindWithTag("Win");
-       
+
         if (winEffect != null)
             winEffect.SetActive(false);
     }
@@ -68,10 +77,20 @@ public class RigidbodyMovement : MonoBehaviour
             float Angle = Mathf.Atan2(InputKey.x, InputKey.z) * Mathf.Rad2Deg; //=========================================== LookAt
             float Smooth = Mathf.SmoothDampAngle(transform.eulerAngles.y, Angle, ref Myfloat, 0.1f); //=================== Smooth Rotation
             transform.rotation = Quaternion.Euler(0, Smooth, 0); //============================================================ Change Angle
+            if (controlWalk == 0)
+            {
+                witchWalk.Play();
+                controlWalk = 1;
+            }
             animator.SetBool(isWalkingHash, true);
         }
         if (!pressed)
         {
+            if (controlWalk == 1)
+            {
+                witchWalk.Stop();
+                controlWalk = 0;
+            }
             animator.SetBool(isWalkingHash, false);
         }
         if (pressed && runPressed)
@@ -80,15 +99,22 @@ public class RigidbodyMovement : MonoBehaviour
             float Angle = Mathf.Atan2(InputKey.x, InputKey.z) * Mathf.Rad2Deg; //=========================================== LookAt
             float Smooth = Mathf.SmoothDampAngle(transform.eulerAngles.y, Angle, ref Myfloat, 0.1f); //=================== Smooth Rotation
             transform.rotation = Quaternion.Euler(0, Smooth, 0); //============================================================ Change Angle
+            if (controlRun == 0)
+            {
+                witchRun.Play();
+                controlRun = 1;
+            }
             animator.SetBool(isRunningHash, true);
         }
         if (!pressed || !runPressed)
         {
+            if (controlRun == 1)
+            {
+                witchRun.Stop();
+                controlRun = 0;
+            }
             animator.SetBool(isRunningHash, false);
         }
-
-
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -122,12 +148,22 @@ public class RigidbodyMovement : MonoBehaviour
         {
             winEffect.SetActive(true);
             animator.SetTrigger("win");
+            witchWin.Play();
             GetComponent<RigidbodyMovement>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<CapsuleCollider>().isTrigger = true;
             GameObject firePoint = gameObject.transform.Find("Sphere").gameObject;
             firePoint.GetComponent<WitchAttack>().enabled = false;
         }
+    }
+
+    private void playSoundDeath()
+    {
+        witchDeath.Play();
+    }
+    private void playSoundUpgrade()
+    {
+        witchUpgrade.Play();
     }
 }
 
