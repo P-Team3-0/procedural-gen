@@ -17,7 +17,7 @@ public class LifeUIManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             GameObject newheartPrefab = Instantiate(heartPrefab, transform);
-            newheartPrefab.transform.position += new Vector3((i * 40) + 70f, 30f, 0);
+            newheartPrefab.transform.position += new Vector3((i * 50) + 45f, 15f, 0);
             lives[i] = newheartPrefab;
         }
     }
@@ -43,5 +43,17 @@ public class LifeUIManager : MonoBehaviour
         {
             Destroy(lives[0]);
         }
+
+        // if the player has no health, restart the scene after 5 seconds
+        if (health == 0)
+        {
+            StartCoroutine(RestartScene());
+        }
+    }
+
+    IEnumerator RestartScene()
+    {
+        yield return new WaitForSeconds(7);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
