@@ -11,14 +11,19 @@ public class WitchAttack : MonoBehaviour
     public List<GameObject> vfx = new List<GameObject>();
     public GameObject player;
     public string layer="Enemy";
+    public int countEnemies;
+    public int controlOutfit;
+    public Texture2D textureToAssign;
     private Camera freeLookCamera;
     private GameObject spell;
     private GameObject golemSpell;
-    int countEnemies;
     private float timeToFire = 0;
+    GameObject changeEffect;
+    Animator animator;
 
     void Start()
     {
+        animator = player.GetComponent<Animator>();
         spell = vfx[0];
         golemSpell = vfx[1];
         freeLookCamera = FindObjectOfType<Camera>();
@@ -27,36 +32,52 @@ public class WitchAttack : MonoBehaviour
             Debug.Log("FreeLook Camera non trovata nel tuo scenario!");
         }
         countEnemies = 0;
+        controlOutfit = 0;
+        changeEffect = GameObject.FindWithTag("changeEffect");
+        if (changeEffect != null )
+            changeEffect.SetActive(false);      
     }
 
     void Update()
     {
+        if (countEnemies != 1)
+        {
+            LayerMask layerMaskToSearch = LayerMask.NameToLayer(layer);
+            GameObject[] objectsWithLayer = FindObjectsWithLayer(layerMaskToSearch);
+            foreach (var obj in objectsWithLayer)
+            {
+                LifeManager lifeManager = obj.GetComponent<LifeManager>();
+                if (lifeManager != null && lifeManager.health > 0)
+                {
+                    countEnemies++;
+                    controlOutfit++;
+                }
+            }
+        }
+        if (countEnemies == 1)
+        {
+            spell = vfx[2];
+            if (controlOutfit == 1)
+            {
+                Invoke("effectOutfit", 2);
+                animator.SetTrigger("trasformation");                
+                Invoke("Outfit", 3);
+                controlOutfit = -1;
+            }
+        }else
+        {
+            countEnemies = 0;
+            controlOutfit = 0;
+        }
         if (Input.GetMouseButtonDown(0) && Time.time >= timeToFire)
         {
             timeToFire = Time.time + 1 / spell.GetComponent<ProjectileMove>().fireRate;
-            Vector3 direction= AttackFunction();
-            if (countEnemies != 1)
-            {
-                LayerMask layerMaskToSearch = LayerMask.NameToLayer(layer);
-                GameObject[] objectsWithLayer = FindObjectsWithLayer(layerMaskToSearch);
-                foreach (var obj in objectsWithLayer)
-                {
-                    LifeManager lifeManager = obj.GetComponent<LifeManager>();
-                    if (lifeManager != null && lifeManager.health > 0)
-                        countEnemies++; 
-                }  
-            }
-            if (countEnemies == 1)
-                spell = vfx[2];
-            else
-                countEnemies = 0;           
-            // Istanzia l'effetto dal firePoint e applica la direzione
+            Vector3 direction = AttackFunction();
             StartCoroutine(DelaySX(direction));
         }
         if (Input.GetMouseButtonDown(1))
         {
             Vector3 direction = AttackFunction();
-            // Istanzia l'effetto dal firePoint e applica la direzione
             StartCoroutine(DelayDX(direction));
         }
     }
@@ -151,5 +172,36 @@ public class WitchAttack : MonoBehaviour
             }
         }
         return objectsWithLayer.ToArray();
+    }
+
+    public static GameObject[] FindPrefabsWithTagInsidePrefab(GameObject parentPrefab, string tag)
+    {
+        var foundPrefabs = new System.Collections.Generic.List<GameObject>();
+        Transform[] allChildren = parentPrefab.GetComponentsInChildren<Transform>(true);
+        foreach (Transform child in allChildren)
+        {
+            if (child.gameObject.CompareTag(tag))          
+                foundPrefabs.Add(child.gameObject);           
+        }
+        return foundPrefabs.ToArray();
+    }
+    private void Outfit()
+    {
+        GameObject[] prefabViola = FindPrefabsWithTagInsidePrefab(player, "Viola");
+        foreach (var obj in prefabViola)
+        {
+            SkinnedMeshRenderer meshRenderer = obj.GetComponent<SkinnedMeshRenderer>();
+            if (meshRenderer != null && textureToAssign != null)
+            {
+                Material material = new Material(meshRenderer.sharedMaterial);
+                material.mainTexture = textureToAssign;
+                meshRenderer.material = material;
+            }
+        }
+        changeEffect.SetActive(false);
+    }
+    public void effectOutfit()
+    {
+        changeEffect.SetActive(true);
     }
 }
