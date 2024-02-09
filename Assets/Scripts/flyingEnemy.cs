@@ -48,6 +48,7 @@ public class flyingEnemy : enemy
         }
         else
         {
+            enemyWalk.Stop();
             Death();
         }
     }

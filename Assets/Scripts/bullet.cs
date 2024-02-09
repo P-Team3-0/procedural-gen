@@ -7,10 +7,14 @@ public class bullet : MonoBehaviour
     public int damage;
     public GameObject player;
 
+    public AudioSource bulletSound;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        bulletSound.Play();
+        Invoke(nameof(stopSound), 1f);
     }
 
     // Update is called once per frame
@@ -25,5 +29,10 @@ public class bullet : MonoBehaviour
             player.GetComponent<LifeManager>().TakeDamage(damage);
         }
         Destroy(gameObject);
+    }
+
+    private void stopSound()
+    {
+        bulletSound.Stop();
     }
 }

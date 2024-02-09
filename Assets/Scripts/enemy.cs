@@ -41,6 +41,14 @@ public class enemy : MonoBehaviour
 
     public int health;
 
+    public AudioSource enemyWalk;
+    public float walkSoundStartIntervall;
+    public float walkSoundEndIntervall;
+
+    public AudioSource enemyDeath;
+
+    public AudioSource enemyAttack;
+
     //Call every frame
     private void Update()
     {
@@ -62,6 +70,7 @@ public class enemy : MonoBehaviour
         }
         else
         {
+            enemyWalk.Stop();
             Death();
         }
     }
@@ -75,6 +84,7 @@ public class enemy : MonoBehaviour
         roomMin = room.position - roomSize / 2;
         roomMax = room.position + roomSize / 2;
         health = GetComponent<LifeManager>().health;
+        Invoke(nameof(WalkSound), 0.5f);
     }
 
     protected virtual void Patroling()
@@ -87,7 +97,6 @@ public class enemy : MonoBehaviour
             transform.Rotate(0, 180, 0);
         agent.SetDestination(walkPoint);
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
@@ -156,6 +165,7 @@ public class enemy : MonoBehaviour
             }
 
         }
+
         StopForce();
     }
 
@@ -186,5 +196,51 @@ public class enemy : MonoBehaviour
         Gizmos.DrawLine(transform.position, walkPoint);
     }
 
+    private void WalkSound()
+    {
+        if (health > 0)
+        {
+            enemyWalk.Play();
+            Invoke(nameof(StopWalkSound), walkSoundEndIntervall);
+        }
+        else
+        {
+            enemyWalk.Stop();
+        }
+    }
 
+    private void playEnemyDeath()
+    {
+        if (enemyDeath != null)
+        {
+            enemyDeath.Play();
+        }
+    }
+
+    private void StopWalkSound()
+    {
+        enemyWalk.Stop();
+        Invoke(nameof(WalkSound), walkSoundStartIntervall);
+    }
+
+    private void AttackSound()
+    {
+        if (enemyWalk.isPlaying)
+        {
+            enemyWalk.Stop();
+        }
+        enemyAttack.Play();
+        Invoke(nameof(StopAttackSound), 2f);
+
+    }
+
+    private void StopAttackSound()
+    {
+        enemyAttack.Stop();
+    }
+
+    private void animationStopWalkSound()
+    {
+        enemyWalk.Stop();
+    }
 }
