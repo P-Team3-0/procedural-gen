@@ -48,6 +48,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void Update()
     {
+        Cursor.visible = false;
         for (int i = 0; i < size.x; i++)
         {
             for (int j = 0; j < size.y; j++)
