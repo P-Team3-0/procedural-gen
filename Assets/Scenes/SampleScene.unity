@@ -137,11 +137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172170310013749580, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: size.x
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4172170310013749580, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: size.y
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4172170310013749580, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: maxNumEnemies
@@ -297,6 +297,10 @@ PrefabInstance:
     - target: {fileID: 4172170310013749580, guid: 62909540674d2bf45b3354eddef3448b, type: 3}
       propertyPath: size.x
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342525041297712869, guid: 2260a220f76f009469beb76c81b419ef, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4246114852495005029, guid: 2260a220f76f009469beb76c81b419ef, type: 3}
       propertyPath: m_Pivot.x
