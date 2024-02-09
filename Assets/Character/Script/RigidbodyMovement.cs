@@ -10,8 +10,7 @@ public class RigidbodyMovement : MonoBehaviour
     public Vector3 InputKey;
     public AudioSource witchWalk;
     public AudioSource witchRun;
-    public float walkSoundStartIntervall;
-    public float walkSoundEndIntervall;
+    public AudioSource witchWin;
     float Myfloat;
     int controlWalk;
     int controlRun;
@@ -147,6 +146,7 @@ public class RigidbodyMovement : MonoBehaviour
         {
             winEffect.SetActive(true);
             animator.SetTrigger("win");
+            witchWin.Play();
             GetComponent<RigidbodyMovement>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<CapsuleCollider>().isTrigger = true;
