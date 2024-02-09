@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7040419896893473737}
   - component: {fileID: 1839983340598322582}
   - component: {fileID: 1283084822414689288}
+  - component: {fileID: -7734812100706099476}
   m_Layer: 0
   m_Name: Mjolnir
   m_TagString: Hammer
@@ -146,6 +147,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7734812100706099476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5617149591397525094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4442a45fbde3cf54b9500c8001b4a0e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyDelay: 3
+  destroySound: {fileID: 0}
 --- !u!1001 &4703111258994424843
 PrefabInstance:
   m_ObjectHideFlags: 0

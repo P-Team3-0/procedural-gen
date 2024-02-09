@@ -198,9 +198,6 @@ public class boss : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, flameBreathRange);
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(firePoint.transform.position, direction);
-
     }
 
 }

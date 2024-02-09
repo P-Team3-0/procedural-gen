@@ -30,7 +30,6 @@ public class LifeUIManager : MonoBehaviour
             pgGameObject = GameObject.FindWithTag("Player");
         }
         health = pgGameObject.GetComponent<LifeManager>().health;
-        Debug.Log(health);
         if (health == 2)
         {
             Destroy(lives[2]);
