@@ -17,7 +17,7 @@ public class LifeUIManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             GameObject newheartPrefab = Instantiate(heartPrefab, transform);
-            newheartPrefab.transform.position += new Vector3((i * 40) + 70f, 30f, 0);
+            newheartPrefab.transform.position += new Vector3((i * 50) + 45f, 15f, 0);
             lives[i] = newheartPrefab;
         }
     }
