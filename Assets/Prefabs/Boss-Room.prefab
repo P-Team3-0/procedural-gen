@@ -14826,12 +14826,14 @@ MonoBehaviour:
   - {fileID: 7444060995459474387}
   - {fileID: 3887774260719884416}
   - {fileID: 3887774260719884416}
+  statusWalls: 00000000
   doors:
   - {fileID: 0}
   - {fileID: 4528666708010693606}
   - {fileID: 3887774260719884416}
   - {fileID: 4528666708010693606}
-  lineWalls: []
+  statusDoors: 00000000
+  entraces: []
 --- !u!1 &3694726825887840549
 GameObject:
   m_ObjectHideFlags: 0
