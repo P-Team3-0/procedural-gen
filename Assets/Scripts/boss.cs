@@ -181,13 +181,11 @@ public class boss : MonoBehaviour
 
     private void PlayRoar()
     {
-        Debug.Log("Roar");
         bossRoar.Play();
     }
 
     private void PlayWalk()
     {
-        Debug.Log("Walk");
         bossWalk.Play();
     }
 
@@ -200,9 +198,6 @@ public class boss : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, flameBreathRange);
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(firePoint.transform.position, direction);
-
     }
 
 }

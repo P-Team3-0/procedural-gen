@@ -741,6 +741,7 @@ MonoBehaviour:
   walkSoundStartIntervall: 0
   walkSoundEndIntervall: 1
   enemyDeath: {fileID: 1569262391478718077}
+  enemyAttack: {fileID: 6798380504796686661}
 --- !u!54 &1197526913202434024
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -239,6 +239,7 @@ MonoBehaviour:
   witchWin: {fileID: -6106937396507947609}
   witchDeath: {fileID: 2306535908614515514}
   witchUpgrade: {fileID: 5358735309495420775}
+  playerEntered: 0
 --- !u!95 &218350704657052584
 Animator:
   serializedVersion: 5
@@ -272,7 +273,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b87b8d72c809f844a97b67d67734b5cd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.4
   m_Pitch: 0.9
   Loop: 1
   Mute: 0
@@ -368,7 +369,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d25cc9c876925164aad0a9f8c5ee642e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.4
   m_Pitch: 1.5
   Loop: 1
   Mute: 0
@@ -10175,6 +10176,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4362116635353214823}
     m_Modifications:
+    - target: {fileID: 684837414281441225, guid: b99922c2f59b1a542bdd06ae8bee47ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1205021609740332654, guid: b99922c2f59b1a542bdd06ae8bee47ae, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.009
@@ -10236,6 +10241,10 @@ PrefabInstance:
       value: Magic shield blue
       objectReference: {fileID: 0}
     - target: {fileID: 1289543790355709915, guid: b99922c2f59b1a542bdd06ae8bee47ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289543790355709915, guid: b99922c2f59b1a542bdd06ae8bee47ae, type: 3}
       propertyPath: m_TagString
       value: Bubble
       objectReference: {fileID: 0}
@@ -10255,6 +10264,10 @@ PrefabInstance:
       propertyPath: lengthInSec
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3420514587834401623, guid: b99922c2f59b1a542bdd06ae8bee47ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3906390675509293155, guid: b99922c2f59b1a542bdd06ae8bee47ae, type: 3}
       propertyPath: lengthInSec
       value: 5
@@ -10262,6 +10275,10 @@ PrefabInstance:
     - target: {fileID: 5135780860574305825, guid: b99922c2f59b1a542bdd06ae8bee47ae, type: 3}
       propertyPath: lengthInSec
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296318069342208415, guid: b99922c2f59b1a542bdd06ae8bee47ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7033338938660550818, guid: b99922c2f59b1a542bdd06ae8bee47ae, type: 3}
       propertyPath: m_LocalPosition.y
