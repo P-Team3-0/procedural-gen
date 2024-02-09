@@ -11,6 +11,7 @@ public class checkPlayer : MonoBehaviour
         {
             GameObject boss = GameObject.FindWithTag("Boss");
             boss.GetComponent<boss>().playerEntered = true;
+            Destroy(gameObject);
         }
     }
 
