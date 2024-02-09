@@ -43,5 +43,17 @@ public class LifeUIManager : MonoBehaviour
         {
             Destroy(lives[0]);
         }
+
+        // if the player has no health, restart the scene after 5 seconds
+        if (health == 0)
+        {
+            StartCoroutine(RestartScene());
+        }
+    }
+
+    IEnumerator RestartScene()
+    {
+        yield return new WaitForSeconds(7);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
