@@ -144,7 +144,7 @@ public class RigidbodyMovement : MonoBehaviour
     {
         GameObject boss = GameObject.FindWithTag("Boss");
         LifeManager lifeManager = boss.GetComponent<LifeManager>();
-        if (lifeManager != null && lifeManager.health == 0)
+        if (lifeManager != null && lifeManager.health <= 0)
         {
             winEffect.SetActive(true);
             animator.SetTrigger("win");
