@@ -18,6 +18,8 @@ TagManager:
   - Hammer
   - Bubble
   - Death
+  - Viola
+  - changeEffect
   layers:
   - Default
   - TransparentFX
