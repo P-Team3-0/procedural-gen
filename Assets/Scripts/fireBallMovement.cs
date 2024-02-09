@@ -12,7 +12,6 @@ public class fireBallMovement : ProjectileMove
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log(other.name);
         if (other.CompareTag("Floor"))
         {
             Instantiate(fire, other.transform.position, Quaternion.identity);
