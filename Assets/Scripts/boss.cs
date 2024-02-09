@@ -36,7 +36,9 @@ public class boss : MonoBehaviour
 
     public bool playerEntered = false;
 
+    public AudioSource bossRoar;
 
+    public AudioSource bossWalk;
 
 
 
@@ -175,6 +177,18 @@ public class boss : MonoBehaviour
         GetComponent<Animator>().SetTrigger("Death");
         Instantiate(destroyEffect, transform.position, Quaternion.identity);
         Destroy(gameObject, deathDelay);
+    }
+
+    private void PlayRoar()
+    {
+        Debug.Log("Roar");
+        bossRoar.Play();
+    }
+
+    private void PlayWalk()
+    {
+        Debug.Log("Walk");
+        bossWalk.Play();
     }
 
     private void OnDrawGizmosSelected()
