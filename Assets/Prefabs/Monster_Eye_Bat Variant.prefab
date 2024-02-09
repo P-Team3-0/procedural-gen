@@ -1171,9 +1171,9 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 20
   timeBetweenAttacks: 2
-  playerDistance: 6
+  playerDistance: 4
   sightRange: 20
-  attackRange: 9
+  attackRange: 4
   playerInSightRange: 0
   playerInAttackRange: 0
   attack: 10
